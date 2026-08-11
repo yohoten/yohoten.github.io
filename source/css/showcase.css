@@ -1,0 +1,188 @@
+/* ============================================================
+   作品集页面样式（work_showcase）
+   说明：全部使用 Butterfly 主题 CSS 变量（--card-bg / --font-color
+   / --card-box-shadow 等），自动适配深浅色与紫色主题风格。
+   ============================================================ */
+
+/* 顶部引言卡片 */
+#article-container .showcase-lead {
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1.6rem;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  border-left: 4px solid #8b5cf6;
+  line-height: 1.9;
+}
+
+#article-container .showcase-lead strong {
+  color: #8b5cf6;
+}
+
+/* 分类导航 chips */
+#article-container .showcase-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+#article-container .showcase-cats li {
+  margin: 0;
+  padding: .28em .95em;
+  border-radius: 20px;
+  font-size: .85em;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, .1);
+  border: 1px solid rgba(139, 92, 246, .3);
+}
+
+/* 作品卡片网格 */
+#article-container .showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin: 1.4rem 0 2rem;
+}
+
+#article-container .showcase-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  color: var(--font-color);
+  text-decoration: none !important;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#article-container .showcase-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-hover-box-shadow);
+}
+
+/* 封面区：无图时显示渐变占位 */
+#article-container .showcase-card .showcase-cover {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 55%, #22d3ee 120%);
+}
+
+#article-container .showcase-card .showcase-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+#article-container .showcase-card:hover .showcase-cover img {
+  transform: scale(1.08);
+}
+
+#article-container .showcase-card .showcase-body {
+  padding: 1rem 1.15rem 1.2rem;
+}
+
+#article-container .showcase-card .showcase-title {
+  margin: 0 0 .45rem;
+  font-size: 1.12em;
+  font-weight: 600;
+  color: var(--font-color);
+}
+
+#article-container .showcase-card .showcase-desc {
+  margin: 0 0 .7rem;
+  font-size: .9em;
+  line-height: 1.65;
+  color: var(--font-color);
+  opacity: .78;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#article-container .showcase-card .showcase-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 .85rem;
+}
+
+#article-container .showcase-card .showcase-tag {
+  padding: .12em .6em;
+  border-radius: 4px;
+  font-size: .78em;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, .12);
+  border: 1px solid rgba(139, 92, 246, .35);
+}
+
+#article-container .showcase-card .showcase-links a {
+  margin-right: 1rem;
+  font-size: .88em;
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+#article-container .showcase-card .showcase-links a:hover {
+  text-decoration: underline;
+}
+
+#article-container .showcase-card .showcase-links i {
+  margin-right: .25em;
+}
+
+/* 待添加占位卡片 */
+#article-container .showcase-card.showcase-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border: 2px dashed rgba(139, 92, 246, .45);
+  box-shadow: none;
+  text-align: center;
+  font-size: .95em;
+  color: var(--font-color);
+  opacity: .75;
+}
+
+#article-container .showcase-card.showcase-placeholder:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* 详情子页：项目信息卡 */
+#article-container .showcase-detail {
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.4rem;
+  border-radius: 8px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  border-top: 3px solid #8b5cf6;
+  line-height: 1.8;
+}
+
+#article-container .showcase-detail p {
+  margin: .35rem 0;
+}
+
+#article-container .showcase-meta-line {
+  margin: .5rem 0 .9rem;
+  font-size: .9em;
+  color: var(--font-color);
+  opacity: .75;
+}
+
+/* 响应式：窄屏单列 */
+@media (max-width: 768px) {
+  #article-container .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}

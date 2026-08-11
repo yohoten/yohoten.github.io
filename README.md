@@ -8,7 +8,7 @@
 
 - 🎨 **现代卡片式 UI**：紫色主色调、顶部横幅（banner）、旋转头像、深浅色切换
 - 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索
-- 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 友链 / 关于 / 404
+- 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 友链 / 关于 / 404
 - 💻 **Mac 风格代码高亮**、文章封面、目录（TOC）、相关文章、文章版权
 - 📊 **访问统计**：基于不蒜子（busuanzi）的 PV / UV
 - 🔍 **SEO**：sitemap.xml + robots.txt
@@ -29,7 +29,7 @@ Yohoten_Blog/
 ├── _config.yml              # 站点全局配置（标题、URL、搜索、部署）
 ├── _config.butterfly.yml    # Butterfly 主题配置（UI 相关，优先级最高）
 ├── package.json             # 依赖清单（hexo、主题、插件）
-├── scaffolds/               # 文章/页面模板
+├── scaffolds/               # 文章/页面模板（含 showcase.md）
 ├── source/
 │   ├── _posts/              # Markdown 文章
 │   ├── _data/link.yml       # 友情链接数据
@@ -39,6 +39,8 @@ Yohoten_Blog/
 │   ├── categories/          # 分类页
 │   ├── tags/                # 标签页
 │   ├── link/                # 友链页
+│   ├── work_showcase/       # 作品集（数据分析/可视化作品展示）
+│   ├── css/                 # 自定义样式（如 showcase.css）
 │   └── images/              # 本地图片资源（头像、横幅、封面、图标）
 ├── .github/workflows/       # GitHub Actions 自动部署
 └── public/                  # 构建产物（可部署）
@@ -126,9 +128,48 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 | `lazyload` | 图片懒加载 |
 | `aside` | 侧边栏卡片（作者/公告/最新文章/分类/标签/归档/信息） |
 | `local_search` | 站内搜索 |
+| `inject.head` | 注入自定义资源（如作品集样式 showcase.css） |
 
 > 主题本身通过 npm 管理（`hexo-theme-butterfly`），配置文件在 `node_modules/` 中，**不要直接改**，所有自定义写入站点根目录的 `_config.butterfly.yml` 即可。
 > 若需要深度定制主题源码（改 pug/stylus/js），请改用 git 方式安装：`git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly`，并把 `package.json` 中 `hexo-theme-butterfly` 依赖移除。
+
+## 🖼 作品集页（work_showcase）
+
+导航栏「作品集」入口指向 `https://你的域名/work_showcase/`，用于展示**数据分析 / 数据科学 / 数据可视化**方向的作品。结构：
+
+- 总览页：[`source/work_showcase/index.md`](source/work_showcase/index.md) —— 作品卡片网格（`.showcase-card`）
+- 每个作品一个子页：`source/work_showcase/项目slug/index.md`，front matter 统一规范见下方
+- 封面图放 `source/images/showcase/`，建议 960×540（16:9）
+- 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过 `inject.head` 注入，自动适配深浅色）
+
+### 新增一个作品
+
+1. 复制 `source/work_showcase/示例项目/` 文件夹，重命名为 `source/work_showcase/项目slug/`
+2. 填写子页 front matter：
+
+```yaml
+---
+title: 项目标题
+date: 2025-01-05 12:00:00
+type: "showcase"
+categories:
+  - 数据分析
+tags:
+  - Python
+  - pandas
+cover: /images/showcase/封面.png
+description: 一句话简介（显示在总览卡片，建议 20~40 字）
+showcase:
+  demo: https://demo链接
+  repo: https://github.com/源码
+  tech: [Python, pandas, ECharts]
+---
+```
+
+3. 正文按「项目简介 → 数据与预处理 → 分析方法 → 可视化与结论 → 相关链接」编写
+4. 在总览页 `.showcase-grid` 中复制一张 `.showcase-card` 卡片，替换 `href` / 封面 / 标题 / 描述 / 标签 / 链接
+
+> 命令行方式：`npx hexo new showcase "标题" --path work_showcase/slug`（使用 [`scaffolds/showcase.md`](scaffolds/showcase.md) 模板）。
 
 ## 🌐 站点配置（_config.yml）
 

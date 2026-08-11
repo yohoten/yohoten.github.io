@@ -17,6 +17,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
+  作品集: /work_showcase/ || fas fa-chart-line
   友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
 
@@ -229,3 +230,9 @@ lazyload:
 #   envId: https://你的twikoo服务地址
 #   region:
 #   option:
+
+# ---------- 注入自定义资源 ----------
+# 作品集页面样式（source/css/showcase.css）
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">

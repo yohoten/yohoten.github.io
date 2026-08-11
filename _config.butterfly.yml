@@ -1,0 +1,231 @@
+# ============================================================
+# Yohoten's Blog - Butterfly 主题配置
+# 说明：此文件为站点级主题配置，优先级高于主题包内置的 _config.yml
+# 只写需要覆盖/启用的配置项即可，未写到的项使用主题默认值
+# 文档：https://butterfly.js.org/posts/4aa8abbe/
+# ============================================================
+
+# ---------- 导航栏 ----------
+nav:
+  logo: /images/logo.svg
+  display_title: false # logo 已含标题文字，不再重复显示
+  fixed: true
+
+# ---------- 菜单 ----------
+menu:
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  友链: /link/ || fas fa-link
+  关于: /about/ || fas fa-heart
+
+# ---------- 代码块（mac 风格） ----------
+highlight_theme: mac
+highlight_copy: true
+highlight_lang: true
+highlight_shrink: false
+
+# ---------- 社交链接（请替换为你的真实地址） ----------
+social:
+  fab fa-github: https://github.com/yohoten || Github || "#24292e"
+  fas fa-envelope: mailto:yoho12138@qq.com || Email || "#4a7dbe"
+
+# ---------- 站点图标与头像 ----------
+favicon: /images/favicon.svg
+avatar:
+  img: /images/wechat_avatar_01.jpg
+  effect: true # 头像旋转效果
+
+# ---------- 顶部横幅图片 ----------
+disable_top_img: false
+index_img: /images/banner-20240815_DSC.jpg        # 首页横幅
+default_top_img: /images/banner-20240815_DSC.jpg  # 默认文章/页面横幅
+archive_img: /images/banner-20240815_DSC.jpg      # 归档页横幅
+
+# ---------- 文章封面 ----------
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  position: both
+  default_cover:
+    - /images/cover1.svg
+    - /images/cover2.svg
+
+# ---------- 首页文章摘要 ----------
+index_post_content:
+  method: 2 # 2: 优先显示 description，否则自动截取正文
+  length: 300
+
+# ---------- 文章元信息 ----------
+post_meta:
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: false
+    label: true
+  post:
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+
+# ---------- 目录 ----------
+toc:
+  post: true
+  page: false
+  number: true
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+# ---------- 文章版权 ----------
+post_copyright:
+  enable: true
+  decode: false
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# ---------- 相关文章 ----------
+related_post:
+  enable: true
+  limit: 6
+  date_type: created
+
+# ---------- 页脚 ----------
+footer:
+  owner:
+    enable: true
+    since: 2025
+  custom_text: 记录技术 · 分享生活 · 保持热爱
+  copyright: true
+
+# ---------- 侧边栏 ----------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: 过了垭口，就是平原
+    button:
+      enable: true
+      icon: fab fa-github
+      text: 关注我
+      link: https://github.com/yohoten
+  card_announcement:
+    enable: true
+    content: 欢迎来到 Yohoten's Blog，一起记录成长～
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+  card_categories:
+    enable: true
+    limit: 8
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random
+    order: 1
+  card_archives:
+    enable: true
+    type: monthly
+    format: YYYY年MM月
+    order: -1
+    limit: 8
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+
+# ---------- 访问统计（不蒜子，公共免费服务） ----------
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+# ---------- 阅读模式 / 暗色模式 ----------
+readmode: true
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: 2 # 2: 18:00-6:00 自动切换深色
+
+# ---------- 主题色（参考站 hue=250 的紫色调） ----------
+theme_color:
+  enable: true
+  main: "#8b5cf6"
+  paginator: "#7c3aed"
+  button_hover: "#a855f7"
+  text_selection: "#a855f7"
+  link_color: "#7c3aed"
+  meta_color: "#858585"
+  hr_color: "#c4b5fd"
+  code_foreground: "#F47466"
+  code_background: "rgba(27, 31, 35, .05)"
+  toc_color: "#8b5cf6"
+  blockquote_padding_color: "#8b5cf6"
+  blockquote_background_color: "#8b5cf6"
+  scrollbar_color: "#8b5cf6"
+  meta_theme_color_light: "#ffffff"
+  meta_theme_color_dark: "#0d0d0d"
+
+# ---------- 首页布局 ----------
+index_site_info_top: 30%
+index_top_img_height: 65vh
+
+# ---------- 页脚背景与遮罩 ----------
+footer_bg: true
+mask:
+  header: true
+  footer: true
+
+# ---------- 页面效果 ----------
+enter_transitions: true
+rightside_scroll_percent: true
+
+# ---------- 本地搜索（需已安装 hexo-generator-search） ----------
+local_search:
+  enable: true
+  preload: true
+  top_n_per_article: 1
+  unescape: false
+
+# ---------- 404 页面（需 source/404.md，配合 type: "404"） ----------
+error_404:
+  enable: true
+  subtitle: '页面走丢了，去首页看看吧'
+  background: /img/404.jpg
+
+# ---------- 图片懒加载 ----------
+lazyload:
+  enable: true
+  field: site # site/post
+  placeholder:
+  blur: false
+
+# ---------- 评论系统（默认关闭，按需启用） ----------
+# 使用步骤：
+#   1. 部署 Twikoo 服务端并拿到环境 ID（envId），参考 https://twikoo.js.org/
+#   2. 取消下方注释，填入 envId，保存后执行 hexo clean && hexo generate
+# comments:
+#   use: twikoo
+#   text: true
+#   lazyload: true
+#   count: true
+#   card_post_count: true
+# twikoo:
+#   envId: https://你的twikoo服务地址
+#   region:
+#   option:

@@ -17,13 +17,19 @@ type: "showcase"
   <li>Streamlit</li>
   <li>Plotly</li>
   <li>XGBoost</li>
+  <li>LightGBM</li>
+  <li>LSTM</li>
   <li>SHAP</li>
   <li>Flask</li>
   <li>Power BI</li>
   <li>ECharts</li>
+  <li>folium</li>
+  <li>RFM</li>
+  <li>BTYD</li>
   <li>数据可视化</li>
   <li>数据分析</li>
   <li>机器学习</li>
+  <li>情感分析</li>
 </ul>
 
 <h2 class="showcase-title-block">核心项目</h2>
@@ -53,6 +59,33 @@ type: "showcase"
       <a class="btn-demo" href="https://scenicflowforecast-bfyery7asaxwksfrcshvyw.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/scenicflow_forecast" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
       <a class="btn-code" href="/work_showcase/峰流智测-景区客流预测/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">Olist 电商多模态智能分析（OMMA）</h3>
+      <span class="showcase-badge badge-data">数据分析</span>
+    </div>
+    <p class="showcase-desc">基于巴西 Olist 10 万笔订单的多模态智能分析：融合地理空间、文本情感、评分预测、客户价值细分（RFM + K-Means）、生命周期价值预测（BTYD）与客户流失七大维度，配套 6 模块交互看板。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">10 万笔订单</span>
+      <span class="metric-item">7 大分析维度</span>
+      <span class="metric-item">LSTM 评分预测</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Plotly</span>
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">XGBoost</span>
+      <span class="tech-item">LSTM</span>
+      <span class="tech-item">RFM</span>
+      <span class="tech-item">BTYD</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://lbqzltiv9cqooawtaww9pg.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/omma" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/work_showcase/Olist电商多模态智能分析/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 

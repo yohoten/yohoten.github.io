@@ -1,0 +1,5 @@
+git status
+git remote -v
+git add -A
+git push origin main
+git push gitee main

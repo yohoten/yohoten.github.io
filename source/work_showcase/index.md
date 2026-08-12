@@ -16,6 +16,10 @@ type: "showcase"
   <li>Pandas</li>
   <li>Streamlit</li>
   <li>Plotly</li>
+  <li>XGBoost</li>
+  <li>SHAP</li>
+  <li>Flask</li>
+  <li>Power BI</li>
   <li>ECharts</li>
   <li>数据可视化</li>
   <li>数据分析</li>
@@ -26,6 +30,79 @@ type: "showcase"
 
 <div class="showcase-grid">
 
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
+      <span class="showcase-badge badge-ml">机器学习</span>
+    </div>
+    <p class="showcase-desc">以九寨沟 1,869 天真实官方数据为样板，XGBoost 时序预测 R²=0.9665、MAPE≈5.1%，提供未来 7 日滚动预测、90% 置信区间与承载量三色预警，覆盖数据采集→预测→看板→运营决策→API 全链路。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">R² = 0.9665</span>
+      <span class="metric-item">MAPE ≈ 5.1%</span>
+      <span class="metric-item">7 日滚动预测</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">XGBoost</span>
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">Plotly</span>
+      <span class="tech-item">SHAP</span>
+      <span class="tech-item">Flask</span>
+      <span class="tech-item">Power BI</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://scenicflowforecast-bfyery7asaxwksfrcshvyw.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/scenicflow_forecast" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/work_showcase/峰流智测-景区客流预测/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">重庆上市车企财务智能预警研究</h3>
+      <span class="showcase-badge badge-viz">数据可视化</span>
+    </div>
+    <p class="showcase-desc">基于 Streamlit + Plotly + Pandas 打造的交互式数据分析看板，支持多维度筛选、联动图表与关键指标总览，帮助快速洞察数据分布与变化趋势。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">交互式看板</span>
+      <span class="metric-item">多维度联动</span>
+      <span class="metric-item">实时筛选</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">Plotly</span>
+      <span class="tech-item">Pandas</span>
+      <span class="tech-item">Python</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://ijsywabw6q8r4sn7y66mka.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="/work_showcase/重庆上市车企财务智能预警研究/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">示例：电商用户行为分析</h3>
+      <span class="showcase-badge badge-tpl">模板示例</span>
+    </div>
+    <p class="showcase-desc">模板卡片，展示如何组织一个作品：用 pandas 清洗 10 万条订单数据，分析用户分层与复购率，并用 ECharts 产出可视化看板。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">10 万条订单</span>
+      <span class="metric-item">复购率分析</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">ECharts</span>
+      <span class="tech-item">数据分析</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-code" href="https://github.com/yohoten" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/work_showcase/示例项目/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+</div>
+
 {% note info %}
 **如何新增一个作品（三步）**
 
@@ -34,4 +111,4 @@ type: "showcase"
 3. 回到本页，在 `.showcase-grid` 中复制一张 `.showcase-card`，把标题、徽章（`badge-viz / badge-ml / badge-bi` 三选一）、描述、指标、技术栈和按钮（`btn-demo` 在线演示 / `btn-code` 源码与详情）改成你的项目即可。
 
 > 有在线演示的项目优先使用渐变青色按钮 `btn-demo`；仅源码的项目使用描边按钮 `btn-code`；暂无源码的演示项目可省略源码按钮。
-> {% endnote %}
+{% endnote %}

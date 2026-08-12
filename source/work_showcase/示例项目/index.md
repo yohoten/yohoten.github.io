@@ -8,8 +8,7 @@ tags:
   - Python
   - pandas
   - ECharts
-cover: /images/showcase/cover-sample.svg
-description: 一句话简介（将显示在作品集总览卡片上，建议 20~40 字）
+description: 模板示例：一句话简介（将显示在作品集总览卡片上，建议 20~40 字）
 showcase:
   demo: https://example.com/demo
   repo: https://github.com/yohoten/example
@@ -20,6 +19,11 @@ showcase:
 <p><strong>项目简介</strong>：2~3 句话说明这个项目做了什么、解决什么问题、对谁有价值。</p>
 <p><strong>数据与工具</strong>：数据来源、数据规模、清洗/建模/可视化所用的工具与版本。</p>
 <p><strong>成果</strong>：一句话结论或核心指标，例如「复购率提升 12%」。</p>
+</div>
+
+<div class="showcase-btn-row">
+  <a class="btn-demo" href="https://example.com/demo" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+  <a class="btn-code" href="https://github.com/yohoten/example" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码仓库</a>
 </div>
 
 <div class="showcase-meta-line">

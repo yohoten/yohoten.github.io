@@ -6,50 +6,80 @@ type: "showcase"
 
 <div class="showcase-lead">
 这里是 <strong>Yohoten</strong> 的作品展示页，聚焦 <strong>数据分析 · 数据科学 · 数据可视化</strong>。
-每一张卡片代表一个完整项目，从数据获取、清洗、建模到可视化呈现的完整过程都会沉淀为一篇作品。
-点击卡片可查看项目详情、过程与结论；「源码 / 演示」链接在卡片右下角。
+每一张卡片代表一个完整项目：从数据获取、清洗、建模到可视化呈现，过程与结论都会沉淀为一篇作品。
+点击卡片中的「在线演示」可直接体验交互看板，「详情」查看完整的分析思路与实现过程。
 </div>
 
+<h2 class="showcase-title-block">技术栈</h2>
+
 <ul class="showcase-cats">
-  <li>数据分析</li>
-  <li>数据科学</li>
-  <li>数据可视化</li>
-  <li>机器学习</li>
   <li>Python</li>
+  <li>Pandas</li>
+  <li>Streamlit</li>
+  <li>Plotly</li>
+  <li>ECharts</li>
+  <li>数据可视化</li>
+  <li>数据分析</li>
+  <li>机器学习</li>
 </ul>
 
-## 作品
+<h2 class="showcase-title-block">核心项目</h2>
 
 <div class="showcase-grid">
-  <a class="showcase-card" href="/work_showcase/示例项目/">
-    <div class="showcase-cover"><img src="/images/showcase/cover-sample.svg" alt="示例项目封面"></div>
-    <div class="showcase-body">
-      <div class="showcase-title">示例：电商用户行为分析</div>
-      <div class="showcase-desc">一句话描述项目：用 pandas 清洗 10 万条订单数据，分析用户分层与复购率，并用 ECharts 产出可视化看板。</div>
-      <div class="showcase-meta">
-        <span class="showcase-tag">Python</span>
-        <span class="showcase-tag">pandas</span>
-        <span class="showcase-tag">ECharts</span>
-        <span class="showcase-tag">数据分析</span>
-      </div>
-      <div class="showcase-links">
-        <a href="https://github.com/yohoten" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
-        <a href="https://example.com/demo" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>演示</a>
-      </div>
-    </div>
-  </a>
 
-  <div class="showcase-card showcase-placeholder">
-    ＋ 添加你的第一个作品<br>（复制上方示例卡片替换即可）
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">交互式数据分析可视化平台</h3>
+      <span class="showcase-badge badge-viz">数据可视化</span>
+    </div>
+    <p class="showcase-desc">基于 Streamlit + Plotly + Pandas 打造的交互式数据分析看板，支持多维度筛选、联动图表与关键指标总览，帮助快速洞察数据分布与变化趋势。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">交互式看板</span>
+      <span class="metric-item">多维度联动</span>
+      <span class="metric-item">实时筛选</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">Plotly</span>
+      <span class="tech-item">Pandas</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://ijsywabw6q8r4sn7y66mka.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="/work_showcase/交互式数据分析可视化平台/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
   </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">示例：电商用户行为分析</h3>
+      <span class="showcase-badge badge-tpl">模板示例</span>
+    </div>
+    <p class="showcase-desc">模板卡片，展示如何组织一个作品：用 pandas 清洗 10 万条订单数据，分析用户分层与复购率，并用 ECharts 产出可视化看板。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">10 万条订单</span>
+      <span class="metric-item">复购率分析</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">ECharts</span>
+      <span class="tech-item">数据分析</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-code" href="https://github.com/yohoten" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/work_showcase/示例项目/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
 </div>
 
 {% note info %}
 **如何新增一个作品（三步）**
 
 1. 复制 [`source/work_showcase/示例项目/`](/work_showcase/示例项目/) 文件夹，重命名为 `source/work_showcase/项目slug/`；
-2. 按子页 front matter 规范填写 `title / date / categories / tags / cover / description`，正文使用「背景 → 数据与预处理 → 分析方法 → 可视化与结论 → 相关链接」的统一结构；
-3. 回到本页，在 `.showcase-grid` 中复制一张 `.showcase-card`，把 `href`、封面、标题、描述、标签和链接改成你的项目即可。
+2. 按子页 front matter 规范填写 `title / date / categories / tags / description`，正文使用「项目背景 → 数据与预处理 → 可视化/分析方法 → 结论与演示 → 相关链接」的统一结构；
+3. 回到本页，在 `.showcase-grid` 中复制一张 `.showcase-card`，把标题、徽章（`badge-viz / badge-ml / badge-bi` 三选一）、描述、指标、技术栈和按钮（`btn-demo` 在线演示 / `btn-code` 源码与详情）改成你的项目即可。
 
-> 封面图统一放在 `source/images/showcase/`，建议 960×540（16:9）。未设置封面时卡片会自动显示紫色渐变占位图。
+> 有在线演示的项目优先使用渐变青色按钮 `btn-demo`；仅源码的项目使用描边按钮 `btn-code`；暂无源码的演示项目可省略源码按钮。
 {% endnote %}

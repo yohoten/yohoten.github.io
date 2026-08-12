@@ -1,5 +1,5 @@
 ---
-title: 交互式数据分析可视化平台
+title: 重庆上市车企财务智能预警研究
 date: 2025-02-08 12:00:00
 type: "showcase"
 categories:

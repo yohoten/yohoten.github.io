@@ -14,7 +14,6 @@ showcase:
   demo: https://ijsywabw6q8r4sn7y66mka.streamlit.app/
   tech: [Streamlit, Plotly, Pandas, Python]
 ---
-
 <div class="showcase-detail">
 <p><strong>项目简介</strong>：一个开箱即用的重庆上市车企财务智能预警研究，将数据清洗、统计分析与可视化看板整合到同一个 Web 应用中，无需安装任何环境即可在浏览器中完成数据洞察。</p>
 <p><strong>数据与工具</strong>：Pandas 负责数据读取与聚合计算，Plotly 生成可交互图表（悬停、缩放、联动筛选），Streamlit 搭建界面并发布到 Streamlit Cloud。</p>
@@ -66,4 +65,5 @@ df = load_data()
 
 ## 五、相关链接
 
-- 在线演示：<https://ijsywabw6q8r4sn7y66mka.streamlit.app/>
+- 在线演示：[https://ijsywabw6q8r4sn7y66mka.streamlit.app/](https://ijsywabw6q8r4sn7y66mka.streamlit.app/)
+- 源码仓库：[https://github.com/yohoten/fidac](https://github.com/yohoten/fidac)

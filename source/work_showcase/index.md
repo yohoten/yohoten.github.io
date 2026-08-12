@@ -26,6 +26,7 @@ type: "showcase"
   <li>folium</li>
   <li>RFM</li>
   <li>BTYD</li>
+  <li>scikit-learn</li>
   <li>数据可视化</li>
   <li>数据分析</li>
   <li>机器学习</li>
@@ -86,6 +87,31 @@ type: "showcase"
       <a class="btn-demo" href="https://lbqzltiv9cqooawtaww9pg.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/omma" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
       <a class="btn-code" href="/work_showcase/Olist电商多模态智能分析/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">在线食品数据分析 · 可视化看板</h3>
+      <span class="showcase-badge badge-data">数据分析</span>
+    </div>
+    <p class="showcase-desc">基于 388 条在线食品用户消费记录的商务数据分析，通过 Streamlit + Plotly 构建交互看板：5 个 KPI 指标卡 + 多维联动筛选 + 5 个分析标签页，覆盖用户画像、教育与收入、职业分析及线性回归收入预测。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">388 条样本</span>
+      <span class="metric-item">5 大分析标签页</span>
+      <span class="metric-item">收入预测模型</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">Plotly</span>
+      <span class="tech-item">Pandas</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">Python</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://onlinefoodsanalyze-n5pzeqkftq5y9adncw6s7b.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/onlinefoods_analyze" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/work_showcase/在线食品数据分析/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 

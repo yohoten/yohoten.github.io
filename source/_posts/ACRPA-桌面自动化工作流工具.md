@@ -14,6 +14,8 @@ cover: /images/cover1.svg
 
 ACRPA 是一款轻量级桌面自动化工具，专为普通用户设计。它采用 Python 开发，基于 `tkinter` 构建图形界面，底层操作由 `pyautogui` 实现。用户无需编写代码，只需通过 Excel 脚本文件（`.xls`）和json文本文件（`.json`）编排自动化流程，借助图像识别定位技术，即可让程序自动处理重复性的桌面任务。项目代码托管于 GitHub 和 Gitee，由开发者 **yohoten** 本人维护。
 
+> 🌐 **在线网页介绍**：[https://yohoten.github.io/acrpa/](https://yohoten.github.io/acrpa/) —— 图文并茂的产品主页，含功能演示与使用说明，推荐先从这里了解。
+
 🔗 **仓库地址**：
 - [https://github.com/yohoten/acrpa](https://github.com/yohoten/acrpa)
 - [https://gitee.com/yohoten/acrpa](https://gitee.com/yohoten/acrpa)（推荐）

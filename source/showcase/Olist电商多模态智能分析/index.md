@@ -2,9 +2,6 @@
 title: Olist 电商多模态智能分析（OMMA）
 date: 2025-02-09 12:00:00
 type: "showcase"
-inject:
-  head:
-    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据分析
   - 机器学习

@@ -139,7 +139,7 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 | `lazyload` | 图片懒加载 |
 | `aside` | 侧边栏卡片（作者/公告/最新文章/分类/标签/归档/信息） |
 | `local_search` | 站内搜索 |
-| `inject`（页面级） | 作品集样式 showcase.css 已在作品集各页 front matter 中按页注入，避免全站加载 |
+| `inject.head` | 注入自定义资源（如作品集样式 showcase.css） |
 
 > 主题本身通过 npm 管理（`hexo-theme-butterfly`），配置文件在 `node_modules/` 中，**不要直接改**，所有自定义写入站点根目录的 `_config.butterfly.yml` 即可。
 > 若需要深度定制主题源码（改 pug/stylus/js），请改用 git 方式安装：`git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly`，并把 `package.json` 中 `hexo-theme-butterfly` 依赖移除。
@@ -151,7 +151,7 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 - 总览页：[`source/showcase/index.md`](source/showcase/index.md) —— 作品卡片网格（`.showcase-card`）
 - 每个作品一个子页：`source/showcase/项目slug/index.md`，front matter 统一规范见下方
 - 封面图放 `source/images/showcase/`，建议 960×540（16:9）
-- 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过作品集各页 front matter 的 `inject.head` 按页注入，自动适配深浅色）
+- 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过 `inject.head` 注入，自动适配深浅色）
 
 ### 新增一个作品
 
@@ -163,9 +163,6 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 title: 项目标题
 date: 2025-01-05 12:00:00
 type: "showcase"
-inject:
-  head:
-    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据分析
 tags:
@@ -182,8 +179,6 @@ showcase:
 
 3. 正文按「项目简介 → 数据与预处理 → 分析方法 → 可视化与结论 → 相关链接」编写
 4. 在总览页 `.showcase-grid` 中复制一张 `.showcase-card` 卡片，替换 `href` / 封面 / 标题 / 描述 / 标签 / 链接
-
-> ⚠️ 每个作品子页都要保留 front matter 中的 `inject.head`（用于加载作品集样式 showcase.css），不要删除。
 
 > 命令行方式：`npx hexo new showcase "标题" --path showcase/slug`（使用 [`scaffolds/showcase.md`](scaffolds/showcase.md) 模板）。
 

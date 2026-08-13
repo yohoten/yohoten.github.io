@@ -2,9 +2,6 @@
 title: 峰流智测 · 景区客流智能预测平台
 date: 2025-02-08 12:00:00
 type: "showcase"
-inject:
-  head:
-    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 机器学习
 tags:

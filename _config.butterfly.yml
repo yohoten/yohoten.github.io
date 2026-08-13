@@ -234,5 +234,7 @@ lazyload:
 #   option:
 
 # ---------- 注入自定义资源 ----------
-# 说明：作品集样式（source/css/showcase.css）改为在作品集各页面 front matter 中按页注入，
-#       见 source/showcase/*/index.md 的 inject 字段，避免全站加载。
+# 作品集页面样式（source/css/showcase.css）
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">

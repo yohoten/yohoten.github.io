@@ -2,9 +2,6 @@
 title: 重庆上市车企财务智能预警研究
 date: 2025-02-08 12:00:00
 type: "showcase"
-inject:
-  head:
-    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据可视化
 tags:

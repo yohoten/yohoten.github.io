@@ -17,7 +17,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  作品集: /work_showcase/ || fas fa-chart-line
+  作品集: /showcase/ || fas fa-chart-line
   友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
 
@@ -53,6 +53,8 @@ cover:
   default_cover:
     - /images/cover1.svg
     - /images/cover2.svg
+    - /images/cover3.svg
+    - /images/cover4.svg
 
 # ---------- 首页文章摘要 ----------
 index_post_content:
@@ -183,8 +185,8 @@ theme_color:
   meta_theme_color_dark: "#0d0d0d"
 
 # ---------- 首页布局 ----------
-index_site_info_top: 30%
-index_top_img_height: 65vh
+index_site_info_top: 28%
+index_top_img_height: 58vh
 
 # ---------- 页脚背景与遮罩 ----------
 footer_bg: true
@@ -232,7 +234,5 @@ lazyload:
 #   option:
 
 # ---------- 注入自定义资源 ----------
-# 作品集页面样式（source/css/showcase.css）
-inject:
-  head:
-    - <link rel="stylesheet" href="/css/showcase.css">
+# 说明：作品集样式（source/css/showcase.css）改为在作品集各页面 front matter 中按页注入，
+#       见 source/showcase/*/index.md 的 inject 字段，避免全站加载。

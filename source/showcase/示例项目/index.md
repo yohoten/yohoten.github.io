@@ -2,6 +2,9 @@
 title: 示例项目：电商用户行为分析
 date: 2025-01-05 12:00:00
 type: "showcase"
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据分析
 tags:

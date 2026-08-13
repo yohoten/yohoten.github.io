@@ -39,7 +39,7 @@ Yohoten_Blog/
 │   ├── categories/          # 分类页
 │   ├── tags/                # 标签页
 │   ├── link/                # 友链页
-│   ├── work_showcase/       # 作品集（数据分析/可视化作品展示）
+│   ├── showcase/            # 作品集（数据分析/可视化作品展示）
 │   ├── css/                 # 自定义样式（如 showcase.css）
 │   └── images/              # 本地图片资源（头像、横幅、封面、图标）
 ├── .github/workflows/       # GitHub Actions 自动部署
@@ -109,7 +109,18 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 - `logo.svg` 站点 Logo
 - `favicon.svg` 站点图标
 - `banner-20240815_DSC.jpg` 顶部横幅
-- `cover1.svg` / `cover2.svg` 文章封面
+- `cover1.svg` ~ `cover4.svg` 文章封面（默认封面，随机选用）
+
+### 写作 Checklist（发布前自查）
+
+- [ ] 标题简洁明确，能概括文章主题
+- [ ] `description` 已填写（20~40 字，显示在首页卡片与 SEO）
+- [ ] `tags` / `categories` 已设置（与既有分类体系一致）
+- [ ] `cover` 已指定（不指定则从 `default_cover` 随机）
+- [ ] 正文有明确的标题层级（`##` / `###`），便于生成目录
+- [ ] 代码块标注语言（如 `python` / `bash`），可获得高亮
+- [ ] 图片已压缩并放在 `source/images/`，路径以 `/images/` 开头
+- [ ] 本地执行 `hexo clean` + `hexo generate` 预览无报错
 
 ## 🎨 UI 配置（_config.butterfly.yml）
 
@@ -128,23 +139,23 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 | `lazyload` | 图片懒加载 |
 | `aside` | 侧边栏卡片（作者/公告/最新文章/分类/标签/归档/信息） |
 | `local_search` | 站内搜索 |
-| `inject.head` | 注入自定义资源（如作品集样式 showcase.css） |
+| `inject`（页面级） | 作品集样式 showcase.css 已在作品集各页 front matter 中按页注入，避免全站加载 |
 
 > 主题本身通过 npm 管理（`hexo-theme-butterfly`），配置文件在 `node_modules/` 中，**不要直接改**，所有自定义写入站点根目录的 `_config.butterfly.yml` 即可。
 > 若需要深度定制主题源码（改 pug/stylus/js），请改用 git 方式安装：`git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly`，并把 `package.json` 中 `hexo-theme-butterfly` 依赖移除。
 
-## 🖼 作品集页（work_showcase）
+## 🖼 作品集页（showcase）
 
-导航栏「作品集」入口指向 `https://你的域名/work_showcase/`，用于展示**数据分析 / 数据科学 / 数据可视化**方向的作品。结构：
+导航栏「作品集」入口指向 `https://你的域名/showcase/`，用于展示**数据分析 / 数据科学 / 数据可视化**方向的作品。结构：
 
-- 总览页：[`source/work_showcase/index.md`](source/work_showcase/index.md) —— 作品卡片网格（`.showcase-card`）
-- 每个作品一个子页：`source/work_showcase/项目slug/index.md`，front matter 统一规范见下方
+- 总览页：[`source/showcase/index.md`](source/showcase/index.md) —— 作品卡片网格（`.showcase-card`）
+- 每个作品一个子页：`source/showcase/项目slug/index.md`，front matter 统一规范见下方
 - 封面图放 `source/images/showcase/`，建议 960×540（16:9）
-- 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过 `inject.head` 注入，自动适配深浅色）
+- 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过作品集各页 front matter 的 `inject.head` 按页注入，自动适配深浅色）
 
 ### 新增一个作品
 
-1. 复制 `source/work_showcase/示例项目/` 文件夹，重命名为 `source/work_showcase/项目slug/`
+1. 复制 `source/showcase/示例项目/` 文件夹，重命名为 `source/showcase/项目slug/`
 2. 填写子页 front matter：
 
 ```yaml
@@ -152,6 +163,9 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 title: 项目标题
 date: 2025-01-05 12:00:00
 type: "showcase"
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据分析
 tags:
@@ -169,7 +183,9 @@ showcase:
 3. 正文按「项目简介 → 数据与预处理 → 分析方法 → 可视化与结论 → 相关链接」编写
 4. 在总览页 `.showcase-grid` 中复制一张 `.showcase-card` 卡片，替换 `href` / 封面 / 标题 / 描述 / 标签 / 链接
 
-> 命令行方式：`npx hexo new showcase "标题" --path work_showcase/slug`（使用 [`scaffolds/showcase.md`](scaffolds/showcase.md) 模板）。
+> ⚠️ 每个作品子页都要保留 front matter 中的 `inject.head`（用于加载作品集样式 showcase.css），不要删除。
+
+> 命令行方式：`npx hexo new showcase "标题" --path showcase/slug`（使用 [`scaffolds/showcase.md`](scaffolds/showcase.md) 模板）。
 
 ## 🌐 站点配置（_config.yml）
 
@@ -250,6 +266,17 @@ Hexo 6 官方建议 Node ≥ 14，推荐 LTS 版本。遇到奇怪报错可尝�
 ### 如何更换头像 / 横幅 / 封面？
 
 把新图片放到 `source/images/`，再修改 `_config.butterfly.yml` 中对应的图片路径即可。图片建议直接用本地路径（`/images/xxx.svg`），不依赖外部图床更稳定。
+
+## 🧯 部署故障排查
+
+| 现象 | 原因 / 处理 |
+| --- | --- |
+| 部署后页面是旧的 | 构建缓存未清：`hexo clean` 后重新 `hexo generate` |
+| 404 页背景图不显示 | `/img/404.jpg` 为主题自带资源，确认主题版本与构建正常 |
+| 首页文章顺序不对 | 检查 Front Matter 的 `date`；置顶文章用 `top` |
+| 作品集页面样式丢失 | 确认作品页 front matter 含 `inject.head`（加载 showcase.css），否则样式不加载 |
+| 修改 `_config.butterfly.yml` 不生效 | 先 `hexo clean` 再 `hexo generate` |
+| 中文链接乱码 | 中文标题 URL 会百分号编码，可后续引入 `hexo-abbrlink` / `hexo-permalink-pinyin` 生成短链 |
 
 ## 📚 相关文档
 

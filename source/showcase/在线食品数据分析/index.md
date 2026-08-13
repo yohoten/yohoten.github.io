@@ -2,6 +2,9 @@
 title: 在线食品数据分析 · 可视化看板
 date: 2025-02-09 12:00:00
 type: "showcase"
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">
 categories:
   - 数据分析
 tags:

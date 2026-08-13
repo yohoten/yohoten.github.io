@@ -2,6 +2,9 @@
 title: 作品集
 date: 2025-01-05 12:00:00
 type: "showcase"
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/showcase.css">
 ---
 <div class="showcase-lead">
 这里是 <strong>Yohoten</strong> 的作品展示页，聚焦 <strong>数据分析 · 数据科学 · 数据可视化</strong>。
@@ -59,7 +62,7 @@ type: "showcase"
     <div class="showcase-links">
       <a class="btn-demo" href="https://scenicflowforecast-bfyery7asaxwksfrcshvyw.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/scenicflow_forecast" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
-      <a class="btn-code" href="/work_showcase/峰流智测-景区客流预测/"><i class="fas fa-book-open"></i>详情</a>
+      <a class="btn-code" href="/showcase/峰流智测-景区客流预测/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 
@@ -86,7 +89,7 @@ type: "showcase"
     <div class="showcase-links">
       <a class="btn-demo" href="https://lbqzltiv9cqooawtaww9pg.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/omma" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
-      <a class="btn-code" href="/work_showcase/Olist电商多模态智能分析/"><i class="fas fa-book-open"></i>详情</a>
+      <a class="btn-code" href="/showcase/Olist电商多模态智能分析/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 
@@ -111,7 +114,7 @@ type: "showcase"
     <div class="showcase-links">
       <a class="btn-demo" href="https://onlinefoodsanalyze-n5pzeqkftq5y9adncw6s7b.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/onlinefoods_analyze" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
-      <a class="btn-code" href="/work_showcase/在线食品数据分析/"><i class="fas fa-book-open"></i>详情</a>
+      <a class="btn-code" href="/showcase/在线食品数据分析/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 
@@ -135,7 +138,7 @@ type: "showcase"
     <div class="showcase-links">
       <a class="btn-demo" href="https://ijsywabw6q8r4sn7y66mka.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
       <a class="btn-code" href="https://github.com/yohoten/fidac" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
-      <a class="btn-code" href="/work_showcase/重庆上市车企财务智能预警研究/"><i class="fas fa-book-open"></i>详情</a>
+      <a class="btn-code" href="/showcase/重庆上市车企财务智能预警研究/"><i class="fas fa-book-open"></i>详情</a>
     </div>
   </div>
 

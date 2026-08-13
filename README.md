@@ -108,7 +108,7 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 - `wechat_avatar_01.jpg` 头像
 - `logo.svg` 站点 Logo
 - `favicon.svg` 站点图标
-- `banner-20240815_DSC.jpg` 顶部横幅
+- `banner-20240815_DSC.webp` 顶部横幅
 - `cover1.svg` ~ `cover4.svg` 文章封面（默认封面，随机选用）
 
 ### 写作 Checklist（发布前自查）

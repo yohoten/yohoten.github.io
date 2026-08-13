@@ -43,9 +43,9 @@ avatar:
 
 # ---------- 顶部横幅图片 ----------
 disable_top_img: false
-index_img: /images/banner-20240815_DSC.jpg        # 首页横幅
-default_top_img: /images/banner-20240815_DSC.jpg  # 默认文章/页面横幅
-archive_img: /images/banner-20240815_DSC.jpg      # 归档页横幅
+index_img: /images/banner-20240815_DSC.webp        # 首页横幅
+default_top_img: /images/banner-20240815_DSC.webp  # 默认文章/页面横幅
+archive_img: /images/banner-20240815_DSC.webp      # 归档页横幅
 
 # ---------- 文章封面 ----------
 cover:

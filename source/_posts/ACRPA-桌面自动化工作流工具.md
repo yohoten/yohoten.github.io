@@ -7,7 +7,7 @@ tags:
 categories:
   - 开发
 description: 分享一个个人开发的桌面自动化脚本工具。
-cover: /images/cover3.svg
+cover: /images/cover_acrpa.webp
 top: 1
 ---
 

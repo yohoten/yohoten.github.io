@@ -30,6 +30,9 @@ highlight_shrink: false
 # ---------- 社交链接（请替换为你的真实地址） ----------
 social:
   fab fa-github: https://github.com/yohoten || Github || "#24292e"
+  fab fa-git-alt: https://gitee.com/yohoten || Gitee || "#C71D23"
+  fab fa-zhihu: https://www.zhihu.com/people/yohoten || Zhihu || "#0084ff"
+  fas fa-globe: https://chenxiaoxue.space || Website || "#3b82f6"
   fas fa-envelope: mailto:yoho12138@qq.com || Email || "#4a7dbe"
 
 # ---------- 站点图标与头像 ----------

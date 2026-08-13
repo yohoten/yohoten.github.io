@@ -255,7 +255,7 @@ Hexo 6 官方建议 Node ≥ 14，推荐 LTS 版本。遇到奇怪报错可尝�
 
 - [Hexo 官方文档](https://hexo.io/docs/)
 - [Butterfly 主题文档](https://butterfly.js.org/posts/4aa8abbe/)
-- 本站教程文章：《【2025最新版】搭建个人博客教程》《Hexo 博客使用指南：从写作到发布》
+- 本站教程文章：《Hexo 博客使用指南：从写作到发布》
 
 ---
 

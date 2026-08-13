@@ -17,6 +17,6 @@ type: "about"
 - GitHub: [https://github.com/yohoten](https://github.com/yohoten)
 - Gitee: [https://gitee.com/yohoten](https://gitee.com/yohoten)
 - Zhihu: [https://www.zhihu.com/people/yohoten](https://www.zhihu.com/people/yohoten)
-- Email: [yoho12138@aliyun.com](mailto:yoho12138@aliyun.com) · [yoho12138@qq.com](mailto:yoho12138@qq.com)
+- Email（主）: [yoho12138@qq.com](mailto:yoho12138@qq.com) · 备用：[yoho12138@aliyun.com](mailto:yoho12138@aliyun.com)
 
 欢迎通过上面的方式联系我～

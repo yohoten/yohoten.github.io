@@ -39,6 +39,31 @@ type: "showcase"
 
   <div class="showcase-card">
     <div class="showcase-header">
+      <h3 class="showcase-title">上海房价影响因素挖掘 · 空间数据分析</h3>
+      <span class="showcase-badge badge-data">数据分析</span>
+    </div>
+    <p class="showcase-desc">基于链家上海租房（约 41 万条）与售房（约 32 万条）公开数据，从小区粒度构建每平米月租金、每平米房价与售租比三大核心指标，结合直方图、箱线图与 QGIS 空间可视化，挖掘影响房价的关键因素。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">41 万+ 租房记录</span>
+      <span class="metric-item">32 万+ 售房记录</span>
+      <span class="metric-item">3 大核心指标</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Pandas</span>
+      <span class="tech-item">matplotlib</span>
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">QGIS</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://shanghai-housing-prices-exploration-uzopema9tnjcpgei86d2wp.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/Shanghai-Housing-Prices-Exploration" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/showcase/上海房价探索/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
       <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>

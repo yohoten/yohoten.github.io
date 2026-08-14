@@ -64,6 +64,31 @@ type: "showcase"
 
   <div class="showcase-card">
     <div class="showcase-header">
+      <h3 class="showcase-title">Portugal Hotel Booking · 预订分析与取消预测</h3>
+      <span class="showcase-badge badge-ml">机器学习</span>
+    </div>
+    <p class="showcase-desc">基于 Hotel Booking Demand 公开数据集（119,390 条原始记录，2015–2017 年葡萄牙两类酒店），完整走通数据清洗 → EDA → 特征工程 → 建模 → 可视化全链路，增强随机森林取消预测准确率 86.81%，配套 Streamlit 数据大屏。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">119,210 条有效记录</span>
+      <span class="metric-item">取消率 37.1%</span>
+      <span class="metric-item">准确率 86.81%</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">XGBoost</span>
+      <span class="tech-item">plotly</span>
+      <span class="tech-item">Streamlit</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://portugal-hotel-booking-analysis-mghtrt2nhkzqbv7u5qlshv.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/portugal-hotel-booking-analysis" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/showcase/葡萄牙酒店预订分析/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
       <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>

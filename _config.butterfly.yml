@@ -237,7 +237,9 @@ lazyload:
 #   option:
 
 # ---------- 注入自定义资源 ----------
-# 作品集页面样式（source/css/showcase.css）
+# 作品集页面样式与分页脚本
 inject:
   head:
     - <link rel="stylesheet" href="/css/showcase.css">
+  bottom:
+    - <script src="/js/showcase-pagination.js" defer></script>

@@ -215,3 +215,5 @@ type: "showcase"
   </div>
 
 </div>
+
+<div class="showcase-pagination" id="showcasePagination"></div>

@@ -320,3 +320,58 @@
     flex-direction: column;
   }
 }
+
+/* ---------- 作品集分页 ---------- */
+#article-container .showcase-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.6rem 0 2.4rem;
+}
+
+#article-container .sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: .5em 1.05em;
+  border-radius: 8px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .12));
+  background: var(--card-bg);
+  color: var(--font-color);
+  font-size: .85rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+#article-container .sp-btn:hover:not(:disabled) {
+  border-color: rgba(0, 212, 255, .45);
+  color: #00b8d4;
+  transform: translateY(-1px);
+}
+
+#article-container .sp-btn.active {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(0, 212, 255, .3);
+}
+
+#article-container .sp-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+#article-container .sp-btn i {
+  font-size: .8em;
+}
+
+#article-container .sp-info {
+  font-size: .82rem;
+  color: var(--font-color);
+  opacity: .55;
+  margin-left: .3rem;
+}

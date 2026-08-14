@@ -89,6 +89,31 @@ type: "showcase"
 
   <div class="showcase-card">
     <div class="showcase-header">
+      <h3 class="showcase-title">新能源（太阳能）发电探索性分析及预测</h3>
+      <span class="showcase-badge badge-ml">机器学习</span>
+    </div>
+    <p class="showcase-desc">基于印度两座太阳能电站发电与气象传感器数据（136,472 条合并记录），完整走通数据读取 → EDA → 相关性分析 → 发电功率预测 → 可视化全链路，辐照度为决定性特征，GBM 预测 R² 最高 0.97，配套 Streamlit 数据大屏。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">136,472 条记录</span>
+      <span class="metric-item">2 座电站</span>
+      <span class="metric-item">GBM R² = 0.97</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">plotly</span>
+      <span class="tech-item">seaborn</span>
+      <span class="tech-item">Streamlit</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://solar-energy-eda-prediction-jpb7yet2fu5braxhvsf5kt.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/solar-energy-eda-prediction" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/showcase/太阳能发电分析/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
       <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>

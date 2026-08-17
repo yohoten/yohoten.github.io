@@ -51,11 +51,11 @@ top: 0
 - **前端**：React 18 + TypeScript + Vite 4 + Three.js
 - **桌面壳**：Tauri 2（Rust）
 
-![](https://i.imgs.ovh/2026/08/18/a49f96bce285258e5723376066206174.png)
+![](https://i.imgs.ovh/2026/08/18/e02a0ed3fccb401e44c3289b15fbebb7.webp)
 
 三层技术栈（Python / TypeScript / Rust），一套代码同时覆盖 Web 和桌面。整体代码量大概 **~11000 行**：后端 Python ~5000+、前端 TS/React ~3000+、Rust ~500+、测试 ~500+、文档 ~2000+，26+ 个 API 端点，12+ 个功能模块。
 
-![](https://i.imgs.ovh/2026/08/18/5040bf55aa2385f035cc439eb72bd06b.png)
+![](https://i.imgs.ovh/2026/08/18/10ef35f617d9e16022187d03917e16f0.webp)
 
 关键是——**重写不丢初心**。像素主题一脉相承：GIF 背景、打字机输出、ASCII 艺术、CRT 扫描线、毛玻璃效果，全都保留并且升级了。并且注册购买了域名：**chenxiaoxue.space**，未来会运载在服务器中并挂载在此网址。
 
@@ -79,7 +79,7 @@ top: 0
 
 重写版接入了 MCP（Model Context Protocol），暴露了 `chat_completion`、`analyze_emotion`、`translate`、`get_models`、`collaborative_chat` 等一批工具，并且支持接入外部 MCP 服务器。这意味着陈筱雪的能力可以像插头一样往外扩展，生态一下就打开了。
 
-![](https://i.imgs.ovh/2026/08/18/12e165a10a60881ef5b6b1f6e4c07174.png)
+![](https://i.imgs.ovh/2026/08/18/28f5d475add37ff159c4502393fc42f6.webp)
 
 ### 4. 情感分析：SnowNLP + AI 双模式
 
@@ -98,19 +98,19 @@ top: 0
 
 这是我最舍不得的部分。GIF 动态背景、打字机逐字输出、ASCII 艺术、CRT 扫描线、毛玻璃卡片——一套下来，整个界面就像一台复古掌机。前端是 React 18 + TS + Vite 4 搭的，主题完全围绕「像素 + 复古」这一个核心设计语言展开。
 
-![](https://i.imgs.ovh/2026/08/18/5ea6dec438dd7fa1df05c9755193d394.png)
+![](https://i.imgs.ovh/2026/08/18/0f5696bdaf045e003a62c5a706bdda45.webp)
 
 ### 6. Humanizer AI 检测器
 
 一个很有意思的小工具：内置 **24 种 AI 写作模式**，能对一段文字打分（0-100%），判断它「像不像 AI 写的」。写东西多了之后，真的很需要这样一面镜子来提醒自己「这段是不是又 AI 味太重了」。
 
-![](https://i.imgs.ovh/2026/08/18/f1c795f9a77a20c953d1efe8f83298ec.png)
+![](https://i.imgs.ovh/2026/08/18/cb6998c23b0470d18bfe8f02b6c9abb0.webp)
 
 ### 7. ECG 情感心电图
 
 Canvas 画出来的心电图，**P/QRS/T 波**齐全，颜色和心率会跟着情感状态变化。开心的时候心电图「扑通扑通」跳得欢快，低落的时候慢慢悠悠——把这个做成状态栏，我觉得是整台机器最有灵性的地方。
 
-![](https://i.imgs.ovh/2026/08/18/d9ef0c554e62bea63ef3649f20be5589.png)
+![](https://i.imgs.ovh/2026/08/18/1270c6795143643074377adc04e90aac.webp)
 
 ### 8. 三级自我进化记忆
 

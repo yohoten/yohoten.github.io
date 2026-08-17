@@ -211,8 +211,8 @@ local_search:
 # ---------- 404 页面（需 source/404.md，配合 type: "404"） ----------
 error_404:
   enable: true
-  subtitle: '页面走丢了，去首页看看吧'
-  background: /img/404.jpg
+  subtitle: '🌌 糟糕，页面走丢了…不过没关系，让我送你回首页～'
+  background: /images/cover4.svg
 
 # ---------- 图片懒加载 ----------
 lazyload:
@@ -237,9 +237,11 @@ lazyload:
 #   option:
 
 # ---------- 注入自定义资源 ----------
-# 作品集页面样式与分页脚本
+# 作品集页面样式与分页脚本；404 页面美化样式与增强脚本
 inject:
   head:
     - <link rel="stylesheet" href="/css/showcase.css">
+    - <link rel="stylesheet" href="/css/404.css">
   bottom:
     - <script src="/js/showcase-pagination.js" defer></script>
+    - <script src="/js/404.js" defer></script>

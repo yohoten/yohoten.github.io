@@ -1,0 +1,257 @@
+/* ============================================================
+   Yohoten's Blog - 404 页面美化
+   所有选择器均以 .error404 为作用域，不影响其他页面
+   ============================================================ */
+
+.error404 {
+  --e404-main: #8b5cf6;    /* 主题紫 */
+  --e404-main2: #6366f1;   /* 靛蓝 */
+  --e404-accent: #ec4899;  /* 玫红 */
+  --e404-orb-opacity: .45;
+  --e404-card-bg: rgba(255, 255, 255, .6);
+  --e404-card-border: rgba(139, 92, 246, .25);
+  --e404-card-shadow: 0 20px 60px rgba(80, 20, 160, .18);
+  --e404-star-color: #ffffff;
+}
+
+/* 深色模式下自动适配 */
+[data-theme='dark'] .error404 {
+  --e404-orb-opacity: .55;
+  --e404-card-bg: rgba(255, 255, 255, .06);
+  --e404-card-border: rgba(139, 92, 246, .45);
+  --e404-card-shadow: 0 20px 60px rgba(0, 0, 0, .55);
+}
+
+/* 页面整体背景：细腻渐变 + 氛围光斑 */
+.error404 {
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, .06) 55%, rgba(236, 72, 153, .08) 100%);
+}
+
+/* 卡片区域入场动画 */
+.error404 #error-wrap {
+  z-index: 0;
+  animation: e404-rise .8s cubic-bezier(.22, .61, .36, 1) both;
+}
+
+/* 背景漂浮光斑 */
+.error404 #error-wrap::before,
+.error404 #error-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  opacity: var(--e404-orb-opacity);
+  animation: e404-drift 12s ease-in-out infinite alternate;
+}
+
+.error404 #error-wrap::before {
+  width: 340px;
+  height: 340px;
+  top: -50px;
+  left: -80px;
+  background: radial-gradient(circle, var(--e404-main) 0%, transparent 70%);
+}
+
+.error404 #error-wrap::after {
+  width: 320px;
+  height: 320px;
+  right: -70px;
+  bottom: -60px;
+  background: radial-gradient(circle, var(--e404-accent) 0%, transparent 70%);
+  animation-delay: -6s;
+}
+
+/* 卡片：毛玻璃质感 */
+.error404 .error-content {
+  position: relative;
+  z-index: 1;
+  height: auto;
+  min-height: 400px;
+  padding: 64px 40px 56px;
+  text-align: center;
+  background: var(--e404-card-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid var(--e404-card-border);
+  border-radius: 24px;
+  box-shadow: var(--e404-card-shadow);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.error404 .error-content:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, .55);
+  box-shadow: 0 28px 70px rgba(80, 20, 160, .25);
+}
+
+/* 失效的背景图区块隐藏（/img/404.jpg 不存在） */
+.error404 .error-img {
+  display: none;
+}
+
+/* 文字信息区：占满整卡并居中 */
+.error404 .error-info {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: auto !important;
+  padding: 10px 0;
+  vertical-align: middle;
+}
+
+/* 大号 404 标题：渐变动画 + 漂浮 */
+.error404 .error_title {
+  margin: 0;
+  font-size: clamp(5.5rem, 20vw, 10rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: .08em;
+  color: var(--e404-main);
+  text-shadow: 0 10px 40px rgba(139, 92, 246, .35);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .error404 .error_title {
+    background: linear-gradient(120deg, var(--e404-main) 0%, var(--e404-main2) 35%, var(--e404-accent) 65%, var(--e404-main) 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    animation: e404-gradient 6s ease infinite, e404-float 3.6s ease-in-out infinite;
+  }
+}
+
+/* 副标题 */
+.error404 .error_subtitle {
+  display: block;
+  margin: 18px 0 0;
+  max-width: 640px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  color: var(--font-color);
+  opacity: .82;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+
+/* 操作按钮组（由 /js/404.js 注入） */
+.error404 .e404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.error404 .e404-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+}
+
+.error404 .e404-btn i {
+  font-size: 1.05em;
+}
+
+.error404 .e404-btn--primary {
+  color: #fff;
+  background: linear-gradient(120deg, var(--e404-main), var(--e404-main2));
+  box-shadow: 0 8px 24px rgba(124, 58, 237, .35);
+}
+
+.error404 .e404-btn--primary:hover {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(124, 58, 237, .5);
+}
+
+.error404 .e404-btn--ghost {
+  color: var(--font-color);
+  background: transparent;
+  border-color: rgba(139, 92, 246, .5);
+}
+
+.error404 .e404-btn--ghost:hover {
+  color: var(--font-color);
+  background: rgba(139, 92, 246, .14);
+  transform: translateY(-3px);
+}
+
+/* 星光粒子（由 /js/404.js 生成） */
+.error404 .e404-star {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--e404-star-color);
+  box-shadow: 0 0 6px 1px var(--e404-star-color);
+  opacity: 0;
+  pointer-events: none;
+  animation-name: e404-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* ---------- 动画 ---------- */
+@keyframes e404-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes e404-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes e404-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(34px, -30px) scale(1.15); }
+}
+
+@keyframes e404-twinkle {
+  0%, 100% { opacity: 0; transform: scale(.4); }
+  50% { opacity: .9; transform: scale(1); }
+}
+
+@keyframes e404-rise {
+  from { opacity: 0; transform: translate(0, -50%) translateY(28px); }
+  to { opacity: 1; transform: translate(0, -50%) translateY(0); }
+}
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 768px) {
+  .error404 .error-content {
+    min-height: 460px;
+    padding: 56px 22px 48px;
+  }
+
+  .error404 .error_title {
+    letter-spacing: .04em;
+  }
+
+  .error404 .e404-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

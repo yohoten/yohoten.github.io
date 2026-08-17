@@ -1,16 +1,34 @@
 /* ============================================================
-   Yohoten's Blog - 404 页面增强脚本
+   Yohoten's Blog - 404 页面增强脚本（幽灵 404 风格）
    仅在 404 页面（存在 #error-wrap）时执行，其他页面自动跳过
    ============================================================ */
 (function () {
   var wrap = document.getElementById('error-wrap')
   if (!wrap) return
 
-  // 1. 移除失效的背景图区块（/img/404.jpg 不存在，样式已隐藏，这里彻底移除）
-  var imgBox = wrap.querySelector('.error-img')
-  if (imgBox) imgBox.parentNode && imgBox.parentNode.removeChild(imgBox)
+  var content = wrap.querySelector('.error-content')
 
-  // 2. 生成星光粒子
+  // 1. 移除失效的背景图区块
+  var imgBox = wrap.querySelector('.error-img')
+  if (imgBox && imgBox.parentNode) imgBox.parentNode.removeChild(imgBox)
+
+  // 2. 注入幽灵（白色身体 + 波浪裙摆 + 双眼）
+  if (content) {
+    var ghost = document.createElement('div')
+    ghost.className = 'e404-ghost'
+    ghost.innerHTML =
+      '<div class="e404-ghost__body">' +
+      '<i class="e404-ghost__eye e404-ghost__eye--l"></i>' +
+      '<i class="e404-ghost__eye e404-ghost__eye--r"></i>' +
+      '</div>'
+    content.insertBefore(ghost, content.firstChild)
+  }
+
+  // 3. 副标题设为打字机文字
+  var subtitle = wrap.querySelector('.error_subtitle')
+  if (subtitle) subtitle.textContent = 'Got lost? How.....? why.....? Ahhhh....'
+
+  // 4. 生成星光粒子
   var starCount = Math.min(70, Math.max(24, Math.floor(window.innerWidth / 16)))
   var frag = document.createDocumentFragment()
   for (var i = 0; i < starCount; i++) {
@@ -27,7 +45,7 @@
   }
   wrap.appendChild(frag)
 
-  // 3. 注入操作按钮组
+  // 5. 注入操作按钮组
   var info = wrap.querySelector('.error-info')
   if (info) {
     var actions = document.createElement('div')
@@ -39,7 +57,7 @@
     info.appendChild(actions)
   }
 
-  // 4. 站内搜索：唤起主题自带的搜索框
+  // 6. 站内搜索：唤起主题自带的搜索框
   var searchBtn = document.getElementById('e404-search')
   if (searchBtn) {
     searchBtn.addEventListener('click', function () {

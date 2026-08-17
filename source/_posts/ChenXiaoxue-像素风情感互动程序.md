@@ -10,6 +10,7 @@ tags:
 categories:
   - 开发
 description: 分享我开发的像素复古风 AI 情感互动助手「ChenXiaoxue」——从第一代 PyQt5 单机像素应用，到第二代 FastAPI + React + Tauri 全面重写，重写不丢初心的技术笔记与踩坑实录。
+cover: /images/cover_chenxiaoxue.png
 top: 0
 ---
 

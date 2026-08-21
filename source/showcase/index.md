@@ -27,6 +27,7 @@ type: "showcase"
   <li>RFM</li>
   <li>BTYD</li>
   <li>scikit-learn</li>
+  <li>imbalanced-learn</li>
   <li>数据可视化</li>
   <li>数据分析</li>
   <li>机器学习</li>
@@ -36,6 +37,32 @@ type: "showcase"
 <h2 class="showcase-title-block">核心项目</h2>
 
 <div class="showcase-grid">
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">台湾上市企业破产分析 · TCBA</h3>
+      <span class="showcase-badge badge-ml">机器学习</span>
+    </div>
+    <p class="showcase-desc">基于台湾上市公司财务指标数据（1999–2009 公司-年度样本）构建企业破产风险预测模型：SMOTE 处理严重类别不平衡，Logistic / 决策树 / 随机森林多方案对比 + 调参，以 Recall/F1/PR-AUC 为核心口径评估，配套 6 模块 Streamlit 财务风控决策看板。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">11 个模型方案</span>
+      <span class="metric-item">SMOTE 过采样</span>
+      <span class="metric-item">6 模块风控看板</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">imbalanced-learn</span>
+      <span class="tech-item">plotly</span>
+      <span class="tech-item">Streamlit</span>
+      <span class="tech-item">SHAP</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://gz4sdvz2jg9h9vaqryh8qc.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://github.com/yohoten/TCBA" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
+      <a class="btn-code" href="/showcase/台湾上市企业破产分析/"><i class="fas fa-book-open"></i>详情</a>
+    </div>
+  </div>
 
   <div class="showcase-card">
     <div class="showcase-header">

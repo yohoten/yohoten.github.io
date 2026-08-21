@@ -249,4 +249,5 @@ inject:
     - <link rel="stylesheet" href="/css/404.css">
   bottom:
     - <script src="/js/showcase-pagination.js" defer></script>
+    - <script src="/js/showcase-reveal.js" defer></script>
     - <script src="/js/404.js" defer></script>

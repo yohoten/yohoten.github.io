@@ -6,6 +6,35 @@
    背景与文字仍使用 Butterfly 主题 CSS 变量，自动适配深浅色与紫色主题。
    ============================================================ */
 
+/* ---------- 设计 Token（借鉴 mem.ac 设计系统，--sh-* 前缀避免与主题冲突） ---------- */
+:root {
+  --sh-accent: #7b2cbf;
+  --sh-accent-ink: #3a2c5f;
+  --sh-accent-soft: rgba(123, 44, 191, .10);
+  --sh-cyan: #00d4ff;
+  --sh-ink: #1c2430;
+  --sh-ink-2: #3a3a3d;
+  --sh-ink-3: #6b6b70;
+  --sh-line: #e8dff0;
+  --sh-radius-sm: 6px;
+  --sh-radius: 12px;
+  --sh-radius-lg: 18px;
+  --sh-font-mono: "Fira Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --sh-shadow-sm: 0 2px 8px rgba(123, 44, 191, .06), 0 1px 2px rgba(123, 44, 191, .04);
+  --sh-shadow-md: 0 8px 24px rgba(123, 44, 191, .08), 0 2px 6px rgba(123, 44, 191, .04);
+  --sh-shadow-lg: 0 20px 48px rgba(123, 44, 191, .12), 0 4px 12px rgba(123, 44, 191, .06);
+}
+
+/* ---------- 全局排版细节（字体平滑 + 自定义选区） ---------- */
+#article-container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#article-container ::selection {
+  background: var(--sh-accent-soft);
+  color: var(--sh-accent-ink);
+}
+
 /* ---------- 顶部引言卡片 ---------- */
 #article-container .showcase-lead {
   position: relative;
@@ -26,6 +55,35 @@
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+}
+
+/* 背景光斑装饰（借鉴 mem.ac，纯 CSS 动画，不拦截交互） */
+#article-container .showcase-lead::after,
+#article-container .showcase-detail::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .5;
+  pointer-events: none;
+  animation: sh-blob 18s ease-in-out infinite;
+}
+#article-container .showcase-lead::after {
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(123, 44, 191, .35) 0%, transparent 70%);
+}
+#article-container .showcase-lead > *,
+#article-container .showcase-detail > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes sh-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -16px) scale(1.08); }
 }
 
 #article-container .showcase-lead strong {
@@ -67,14 +125,17 @@
   padding: .45em 1.1em;
   border-radius: 20px;
   font-size: .88em;
+  font-family: var(--sh-font-mono);
+  letter-spacing: .02em;
   color: var(--font-color);
-  background: linear-gradient(135deg, rgba(0, 212, 255, .1), rgba(123, 44, 191, .1));
-  border: 1px solid rgba(0, 212, 255, .22);
+  background: var(--sh-accent-soft);
+  border: 1px solid rgba(123, 44, 191, .22);
   transition: all .3s ease;
 }
 
 #article-container .showcase-cats li:hover {
-  color: #00d4ff;
+  color: var(--sh-accent);
+  border-color: rgba(123, 44, 191, .45);
   transform: translateY(-2px);
 }
 
@@ -279,14 +340,22 @@
   background: linear-gradient(90deg, #00d4ff, #7b2cbf);
 }
 
+#article-container .showcase-detail::after {
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(0, 212, 255, .30) 0%, transparent 70%);
+}
+
 #article-container .showcase-detail p {
   margin: .35rem 0;
 }
 
 #article-container .showcase-meta-line {
   margin: .5rem 0 .9rem;
-  font-size: .9em;
-  color: var(--font-color);
+  font-size: .86em;
+  font-family: var(--sh-font-mono);
+  letter-spacing: .02em;
+  color: var(--sh-ink-2);
   opacity: .75;
 }
 
@@ -448,4 +517,23 @@
   color: var(--font-color);
   opacity: .55;
   margin-left: .3rem;
+}
+
+/* ---------- 滚动显现动画（借鉴 mem.ac，.reveal 由 showcase-reveal.js 添加） ---------- */
+#article-container .showcase-grid .showcase-card.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+#article-container .showcase-grid .showcase-card.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+/* 尊重系统「减少动态效果」设置 */
+@media (prefers-reduced-motion: reduce) {
+  #article-container .showcase-grid .showcase-card.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

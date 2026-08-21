@@ -537,3 +537,36 @@
     transition: none;
   }
 }
+
+/* ============================================================
+   移动端菜单抽屉修复（防御性覆盖）
+   现象：点击三条杠后遮罩（#menu-mask）显示，但抽屉（#sidebar-menus）
+   未滑出，表现为「黑色阴影 + 无菜单按钮」。
+   修复：显式保证抽屉层级在遮罩之上，并用 right 定位作为滑入兜底
+   （transform: translate3d 在部分移动浏览器 / 缓存异常时可能不生效）。
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 抽屉：屏幕右侧外，层级高于遮罩 */
+  #sidebar #sidebar-menus {
+    right: -300px;
+    z-index: 103;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  /* 打开：right 定位滑入（兼容 transform 失效场景） */
+  #sidebar #sidebar-menus.open {
+    right: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  /* 遮罩层级 */
+  #sidebar #menu-mask {
+    z-index: 102;
+  }
+  /* 保证抽屉内文字在深浅色背景下均可读 */
+  #sidebar #sidebar-menus .menus_items .site-page,
+  #sidebar #sidebar-menus .sidebar-site-data .headline,
+  #sidebar #sidebar-menus .sidebar-site-data .length-num {
+    color: var(--font-color);
+  }
+}

@@ -12,6 +12,8 @@ tags:
 description: 基于 Streamlit + Plotly + Pandas 的交互式数据分析看板，支持多维度筛选与联动图表。
 showcase:
   demo: https://ijsywabw6q8r4sn7y66mka.streamlit.app/
+  repo: https://github.com/yohoten/fidac
+  site: https://yohoten.github.io/fidac/
   tech: [Streamlit, Plotly, Pandas, Python]
 ---
 <div class="showcase-detail">
@@ -22,6 +24,8 @@ showcase:
 
 <div class="showcase-btn-row">
   <a class="btn-demo" href="https://ijsywabw6q8r4sn7y66mka.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>打开在线演示</a>
+  <a class="btn-code" href="https://yohoten.github.io/fidac/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目介绍页</a>
+  <a class="btn-code" href="https://github.com/yohoten/fidac" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码仓库</a>
 </div>
 
 <div class="showcase-meta-line">
@@ -66,4 +70,5 @@ df = load_data()
 ## 五、相关链接
 
 - 在线演示：[https://ijsywabw6q8r4sn7y66mka.streamlit.app/](https://ijsywabw6q8r4sn7y66mka.streamlit.app/)
+- 项目介绍页：[https://yohoten.github.io/fidac/](https://yohoten.github.io/fidac/)
 - 源码仓库：[https://github.com/yohoten/fidac](https://github.com/yohoten/fidac)

@@ -236,6 +236,7 @@ type: "showcase"
     </div>
     <div class="showcase-links">
       <a class="btn-demo" href="https://ijsywabw6q8r4sn7y66mka.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+      <a class="btn-code" href="https://yohoten.github.io/fidac/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目介绍页</a>
       <a class="btn-code" href="https://github.com/yohoten/fidac" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码</a>
       <a class="btn-code" href="/showcase/重庆上市车企财务智能预警研究/"><i class="fas fa-book-open"></i>详情</a>
     </div>

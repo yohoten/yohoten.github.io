@@ -310,14 +310,88 @@
   transition: all .3s ease;
 }
 
-/* ---------- 响应式：窄屏单列 ---------- */
+/* ---------- 响应式：平板 / 手机 ---------- */
 @media (max-width: 768px) {
+  /* 作品卡片网格单列 */
   #article-container .showcase-grid {
     grid-template-columns: 1fr;
   }
 
+  /* 卡片头部：标题在上、徽章在下 */
   #article-container .showcase-card .showcase-header {
     flex-direction: column;
+  }
+
+  /* 操作按钮允许换行，每行最多 2 个，保证触控目标足够大 */
+  #article-container .showcase-card .showcase-links {
+    flex-wrap: wrap;
+  }
+  #article-container .showcase-card .showcase-links a {
+    flex: 1 1 calc(50% - .3rem);
+    min-height: 44px;
+  }
+
+  /* 分页：窄屏隐藏数字页码，只保留 上一页 / 下一页 + 页码信息 */
+  #article-container .showcase-pagination .sp-num {
+    display: none;
+  }
+  #article-container .showcase-pagination .sp-btn {
+    min-height: 44px;
+    padding: .55em 1.05em;
+  }
+  #article-container .showcase-pagination .sp-info {
+    flex-basis: 100%;
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+/* ---------- 响应式：手机（超窄屏） ---------- */
+@media (max-width: 480px) {
+  /* 收窄卡片 / 引言 / 详情卡的内边距，让内容更舒展 */
+  #article-container .showcase-lead,
+  #article-container .showcase-detail {
+    padding: 1.1rem 1.05rem;
+  }
+  #article-container .showcase-card {
+    padding: 1.15rem 1.05rem 1.05rem;
+    border-radius: 14px;
+  }
+
+  /* 卡片标题微调 */
+  #article-container .showcase-card .showcase-title {
+    font-size: 1.05rem;
+  }
+
+  /* 操作按钮：窄屏全部纵向堆叠，每个按钮独占一行可点 */
+  #article-container .showcase-card .showcase-links {
+    flex-direction: column;
+  }
+  #article-container .showcase-card .showcase-links a {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  /* 详情页按钮行：等宽纵向堆叠 */
+  #article-container .showcase-btn-row {
+    flex-direction: column;
+  }
+  #article-container .showcase-btn-row a {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* 长文本 / 长 URL 防溢出 */
+  #article-container .showcase-desc,
+  #article-container .showcase-meta-line,
+  #article-container .showcase-detail {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* 区块标题缩小 */
+  #article-container h2.showcase-title-block {
+    font-size: 1.3rem;
   }
 }
 

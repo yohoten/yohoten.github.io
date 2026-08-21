@@ -27,6 +27,11 @@ highlight_copy: true
 highlight_lang: true
 highlight_shrink: false
 
+# ---------- 数学公式（MathJax，per_page 时仅在 front-matter 标记 mathjax: true 的文章页加载） ----------
+mathjax:
+  enable: true
+  per_page: true
+
 # ---------- 社交链接（请替换为你的真实地址） ----------
 social:
   fab fa-github: https://github.com/yohoten || Github || "#24292e"

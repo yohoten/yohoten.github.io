@@ -2,6 +2,7 @@
 title: 作品集
 date: 2025-01-05 12:00:00
 type: "showcase"
+aside: false
 ---
 <div class="showcase-lead">
 这里是 <strong>Yohoten</strong> 的作品展示页，聚焦 <strong>数据分析 · 数据科学 · 数据可视化</strong>。

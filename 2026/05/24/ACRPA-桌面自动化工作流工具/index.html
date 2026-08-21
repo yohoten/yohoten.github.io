@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ACRPA-轻量级桌面自动化工作流工具 | Yohoten's Blog</title><meta name="author" content="yohoten"><meta name="copyright" content="yohoten"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="分享一个个人开发的桌面自动化脚本工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACRPA-轻量级桌面自动化工作流工具">
+<meta property="og:url" content="https://yohoten.github.io/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/">
+<meta property="og:site_name" content="Yohoten&#39;s Blog">
+<meta property="og:description" content="分享一个个人开发的桌面自动化脚本工具。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yohoten.github.io/images/cover_acrpa.webp">
+<meta property="article:published_time" content="2026-05-24T14:07:00.000Z">
+<meta property="article:modified_time" content="2026-05-24T14:07:00.000Z">
+<meta property="article:author" content="yohoten">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yohoten.github.io/images/cover_acrpa.webp"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="https://yohoten.github.io/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ACRPA-轻量级桌面自动化工作流工具',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-05-24 22:07:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/showcase.css"><link rel="stylesheet" href="/css/404.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat_avatar_01.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('/images/banner_acrpa.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Yohoten's Blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/logo.svg"/></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ACRPA-轻量级桌面自动化工作流工具</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-24T14:07:00.000Z" title="发表于 2026-05-24 22:07:00">2026-05-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-24T14:07:00.000Z" title="更新于 2026-05-24 22:07:00">2026-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ACRPA-轻量级桌面自动化工作流工具"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="📖-简介"><a href="#📖-简介" class="headerlink" title="📖 简介"></a>📖 简介</h2><p>ACRPA 是一款轻量级桌面自动化工具，专为普通用户设计。它采用 Python 开发，基于 <code>tkinter</code> 构建图形界面，底层操作由 <code>pyautogui</code> 实现。用户无需编写代码，只需通过 Excel 脚本文件（<code>.xls</code>）和json文本文件（<code>.json</code>）编排自动化流程，借助图像识别定位技术，即可让程序自动处理重复性的桌面任务。项目代码托管于 GitHub 和 Gitee，由开发者 <strong>yohoten</strong> 本人维护。</p>
+<blockquote>
+<p>🌐 <strong>网页直达</strong>：<a href="https://yohoten.github.io/acrpa/">https://yohoten.github.io/acrpa/</a> —— 图文并茂的产品主页，含功能演示与使用说明和下载直链，推荐先从这里了解。</p>
+</blockquote>
+<p>🔗 <strong>仓库地址</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/yohoten/acrpa">https://github.com/yohoten/acrpa</a></li>
+<li><a target="_blank" rel="noopener" href="https://gitee.com/yohoten/acrpa">https://gitee.com/yohoten/acrpa</a>（推荐）</li>
+</ul>
+<hr>
+<h2 id="✨-核心特点"><a href="#✨-核心特点" class="headerlink" title="✨ 核心特点"></a>✨ 核心特点</h2><ul>
+<li><strong>轻量冷启动</strong>：资源占用小，启动迅速</li>
+<li><strong>Excel 脚本驱动</strong>：使用常见表格文件编排流程，无需编程</li>
+<li><strong>图像识别定位</strong>：精准点击，支持区域搜索</li>
+<li><strong>录制回放</strong>：含拖拽录制，一键生成脚本</li>
+<li><strong>窗口管理</strong>：直接操作 Windows 窗口，无需图像识别，支持窗口相对坐标</li>
+<li><strong>工作流编排</strong>：多脚本串联 + 可视化流程图（节点/连线/拖拽）</li>
+<li><strong>变量系统</strong>：支持复杂数据处理和数学运算</li>
+<li><strong>AI 增强</strong>：视觉定位、智能重试、异常检测、自然语言调试</li>
+<li><strong>调试器</strong>：断点/条件断点（标记旁显示表达式）/单步/变量监视/调用栈</li>
+<li><strong>深浅主题切换</strong>、错误重试、日志导出、Py 脚本置入</li>
+</ul>
+<hr>
+<h2 id="🧩-自动化命令支持"><a href="#🧩-自动化命令支持" class="headerlink" title="🧩 自动化命令支持"></a>🧩 自动化命令支持</h2><p>工具支持 <strong>30 种以上</strong> 的操作类型，涵盖桌面自动化常见需求：</p>
+<h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>找图</td>
+<td>button.png, 0.9</td>
+<td>全屏查找图片</td>
+</tr>
+<tr>
+<td>点图</td>
+<td>submit.png, 0.9</td>
+<td>找到并点击</td>
+</tr>
+<tr>
+<td>区域找图</td>
+<td>icon.png, 0.8, 100,100,500,500</td>
+<td>限定区域查找</td>
+</tr>
+<tr>
+<td>按键</td>
+<td>enter, 1</td>
+<td>按键（可指定次数）</td>
+</tr>
+<tr>
+<td>热键</td>
+<td>ctrl, c</td>
+<td>组合键</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>Hello World</td>
+<td>粘贴输入（Ctrl+V）</td>
+</tr>
+<tr>
+<td>写入</td>
+<td>Hello,0.05,auto</td>
+<td>逐字输入（支持 DD 驱动增强）</td>
+</tr>
+<tr>
+<td>等待</td>
+<td>2.5</td>
+<td>延时（秒，支持随机范围如 1.0-3.0）</td>
+</tr>
+<tr>
+<td>坐标</td>
+<td>500, 300</td>
+<td>点击屏幕坐标</td>
+</tr>
+<tr>
+<td>滚轮</td>
+<td>-3</td>
+<td>滚动行数</td>
+</tr>
+</tbody></table>
+<h3 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>激活窗口</td>
+<td>记事本</td>
+<td>激活指定窗口（支持模糊匹配）</td>
+</tr>
+<tr>
+<td>关闭窗口</td>
+<td>无标题 - 记事本</td>
+<td>关闭指定窗口</td>
+</tr>
+<tr>
+<td>最小化窗口</td>
+<td>计算器</td>
+<td>最小化窗口到任务栏</td>
+</tr>
+<tr>
+<td>最大化窗口</td>
+<td>资源管理器</td>
+<td>最大化窗口</td>
+</tr>
+<tr>
+<td>获取窗口位置</td>
+<td>记事本,x,y,w,h</td>
+<td>获取窗口坐标和大小</td>
+</tr>
+<tr>
+<td>等待窗口</td>
+<td>Chrome,10,存在</td>
+<td>等待窗口出现/消失</td>
+</tr>
+<tr>
+<td>窗口坐标</td>
+<td>记事本,100,50</td>
+<td>相对于窗口左上角点击</td>
+</tr>
+</tbody></table>
+<h3 id="变量增强"><a href="#变量增强" class="headerlink" title="变量增强"></a>变量增强</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置变量</td>
+<td>count,100</td>
+<td>设置变量值</td>
+</tr>
+<tr>
+<td>读取剪贴板</td>
+<td>clip_text</td>
+<td>读取剪贴板到变量</td>
+</tr>
+<tr>
+<td>字符串处理</td>
+<td>text,截取,0:5,result</td>
+<td>字符串操作</td>
+</tr>
+<tr>
+<td>数学运算</td>
+<td>x+<em>x</em> +{y},sum</td>
+<td>数学计算</td>
+</tr>
+</tbody></table>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行工作流</td>
+<td>workflow.json</td>
+<td>调用工作流文件执行多脚本编排</td>
+</tr>
+<tr>
+<td>工作流变量</td>
+<td>var_name,value</td>
+<td>设置工作流级共享变量</td>
+</tr>
+</tbody></table>
+<h3 id="AI-增强"><a href="#AI-增强" class="headerlink" title="AI 增强"></a>AI 增强</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>参数示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AI找图</td>
+<td>登录按钮,0.8,click</td>
+<td>AI 分析截图，自然语言描述找元素</td>
+</tr>
+<tr>
+<td>AI识别界面</td>
+<td>ui</td>
+<td>AI 列出所有 UI 元素存入变量</td>
+</tr>
+<tr>
+<td>AI优化建议</td>
+<td>log</td>
+<td>AI 分析执行数据给出优化建议</td>
+</tr>
+<tr>
+<td>[AI] 调试</td>
+<td>点击 [AI] 调试按钮</td>
+<td>自然语言提问，AI 分析日志回答</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>变量引用语法</strong>：使用 <code>$&#123;variable_name&#125;</code> 引用变量</p>
+</blockquote>
+<hr>
+<h2 id="📁-示例脚本库"><a href="#📁-示例脚本库" class="headerlink" title="📁 示例脚本库"></a>📁 示例脚本库</h2><p><strong>全新推出！</strong> 提供 11 个即用型模板，帮助你快速上手 ACRPA 自动化。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yohoten.github.io">yohoten</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yohoten.github.io/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/">https://yohoten.github.io/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yohoten.github.io" target="_blank">Yohoten's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="/images/cover_acrpa.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_chenxiaoxue.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程</div></div></a></div><div class="next-post pull-right"><a href="/2025/01/04/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BF%83%E5%BE%97/" title="我的技术学习路线与心得"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的技术学习路线与心得</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_chenxiaoxue.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2026-07-21</div><div class="title">ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程</div></div></a></div><div><a href="/2024/11/10/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%93%8D/" title="SQL 学习笔记：从入门到实操"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-10</div><div class="title">SQL 学习笔记：从入门到实操</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat_avatar_01.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yohoten</div><div class="author-info__description">过了垭口，就是平原</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yohoten"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yohoten" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/yohoten" target="_blank" title="Gitee"><i class="fab fa-git-alt" style="color: #C71D23;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/yohoten" target="_blank" title="Zhihu"><i class="fab fa-zhihu" style="color: #0084ff;"></i></a><a class="social-icon" href="https://chenxiaoxue.space" target="_blank" title="Website"><i class="fas fa-globe" style="color: #3b82f6;"></i></a><a class="social-icon" href="mailto:yoho12138@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Yohoten's Blog，一起记录成长～</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">📖 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%A8-%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">✨ 核心特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%91%BD%E4%BB%A4%E6%94%AF%E6%8C%81"><span class="toc-number">3.</span> <span class="toc-text">🧩 自动化命令支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">3.1.</span> <span class="toc-text">基础命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">窗口管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%A2%9E%E5%BC%BA"><span class="toc-number">3.3.</span> <span class="toc-text">变量增强</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">3.4.</span> <span class="toc-text">工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-%E5%A2%9E%E5%BC%BA"><span class="toc-number">3.5.</span> <span class="toc-text">AI 增强</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%81-%E7%A4%BA%E4%BE%8B%E8%84%9A%E6%9C%AC%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">📁 示例脚本库</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_chenxiaoxue.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"/></a><div class="content"><a class="title" href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程">ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程</a><time datetime="2026-07-21T14:00:00.000Z" title="发表于 2026-07-21 22:00:00">2026-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/" title="ACRPA-轻量级桌面自动化工作流工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_acrpa.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ACRPA-轻量级桌面自动化工作流工具"/></a><div class="content"><a class="title" href="/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/" title="ACRPA-轻量级桌面自动化工作流工具">ACRPA-轻量级桌面自动化工作流工具</a><time datetime="2026-05-24T14:07:00.000Z" title="发表于 2026-05-24 22:07:00">2026-05-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/04/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BF%83%E5%BE%97/" title="我的技术学习路线与心得"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的技术学习路线与心得"/></a><div class="content"><a class="title" href="/2025/01/04/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BF%83%E5%BE%97/" title="我的技术学习路线与心得">我的技术学习路线与心得</a><time datetime="2025-01-04T04:00:00.000Z" title="发表于 2025-01-04 12:00:00">2025-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/03/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BB%8E%E5%86%99%E4%BD%9C%E5%88%B0%E5%8F%91%E5%B8%83/" title="Hexo 博客使用指南：从写作到发布"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover2.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo 博客使用指南：从写作到发布"/></a><div class="content"><a class="title" href="/2025/01/03/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BB%8E%E5%86%99%E4%BD%9C%E5%88%B0%E5%8F%91%E5%B8%83/" title="Hexo 博客使用指南：从写作到发布">Hexo 博客使用指南：从写作到发布</a><time datetime="2025-01-03T04:00:00.000Z" title="发表于 2025-01-03 12:00:00">2025-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/10/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%93%8D/" title="SQL 学习笔记：从入门到实操"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SQL 学习笔记：从入门到实操"/></a><div class="content"><a class="title" href="/2024/11/10/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%93%8D/" title="SQL 学习笔记：从入门到实操">SQL 学习笔记：从入门到实操</a><time datetime="2024-11-10T04:00:00.000Z" title="发表于 2024-11-10 12:00:00">2024-11-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/images/banner_acrpa.webp')"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yohoten</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">记录技术 · 分享生活 · 保持热爱</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/showcase-pagination.js" defer></script><script src="/js/showcase-reveal.js" defer></script><script src="/js/404.js" defer></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

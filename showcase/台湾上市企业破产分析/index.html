@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>台湾上市企业破产分析 · TCBA | Yohoten's Blog</title><meta name="author" content="yohoten"><meta name="copyright" content="yohoten"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于台湾上市公司财务指标数据（1999–2009 公司-年度样本）构建企业破产风险预测模型，SMOTE 处理严重类别不平衡，Logistic &#x2F; 决策树 &#x2F; 随机森林多方案对比 + 调参，以 Recall&#x2F;F1&#x2F;PR-AUC 为核心口径评估，配套 6 模块 Streamlit 财务风控决策看板。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="台湾上市企业破产分析 · TCBA">
+<meta property="og:url" content="https://yohoten.github.io/showcase/%E5%8F%B0%E6%B9%BE%E4%B8%8A%E5%B8%82%E4%BC%81%E4%B8%9A%E7%A0%B4%E4%BA%A7%E5%88%86%E6%9E%90/">
+<meta property="og:site_name" content="Yohoten&#39;s Blog">
+<meta property="og:description" content="基于台湾上市公司财务指标数据（1999–2009 公司-年度样本）构建企业破产风险预测模型，SMOTE 处理严重类别不平衡，Logistic &#x2F; 决策树 &#x2F; 随机森林多方案对比 + 调参，以 Recall&#x2F;F1&#x2F;PR-AUC 为核心口径评估，配套 6 模块 Streamlit 财务风控决策看板。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yohoten.github.io/images/cover2.svg">
+<meta property="article:published_time" content="2026-08-15T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-15T04:00:00.000Z">
+<meta property="article:author" content="yohoten">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Pandas">
+<meta property="article:tag" content="numpy">
+<meta property="article:tag" content="scikit-learn">
+<meta property="article:tag" content="imbalanced-learn">
+<meta property="article:tag" content="matplotlib">
+<meta property="article:tag" content="seaborn">
+<meta property="article:tag" content="plotly">
+<meta property="article:tag" content="Streamlit">
+<meta property="article:tag" content="SHAP">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yohoten.github.io/images/cover2.svg"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="https://yohoten.github.io/showcase/%E5%8F%B0%E6%B9%BE%E4%B8%8A%E5%B8%82%E4%BC%81%E4%B8%9A%E7%A0%B4%E4%BA%A7%E5%88%86%E6%9E%90/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '台湾上市企业破产分析 · TCBA',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2026-08-15 12:00:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/showcase.css"><link rel="stylesheet" href="/css/404.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat_avatar_01.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url('/images/banner-20240815_DSC.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Yohoten's Blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/logo.svg"/></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">台湾上市企业破产分析 · TCBA</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><div class="showcase-detail">
+<p><strong>项目简介</strong>：基于台湾地区上市公司财务指标数据，构建<strong>企业破产风险预测模型</strong>（TCBA，Taiwan Corporate Bankruptcy Analysis）的机器学习实战案例。针对财务数据普遍存在的<strong>类别不平衡</strong>问题，采用 <strong>SMOTE 过采样</strong>与多种分类模型对比建模，并用 ROC/AUC、混淆矩阵、分类报告评估模型效果。</p>
+<p><strong>核心目标</strong>：① 从 90+ 项财务指标中识别破产关键驱动因子；② 在破产样本占比极低（约 3.2%）的条件下构建高召回预警模型；③ 将分析结论沉淀为「单公司体检」式的财务风控决策看板。</p>
+<p><strong>成果</strong>：11 个模型方案横向对比，以 <strong>Recall / F1 / PR-AUC</strong> 为核心口径（96.8% 多数类下 accuracy 无意义）；特征重要性互证「高负债依赖是破产首要先行信号、ROA 与现金流是保护性指标」；并配套 6 模块交互看板，支持输入财务指标实时评估破产概率。</p>
+</div>
+
+<div class="showcase-btn-row">
+  <a class="btn-demo" href="https://gz4sdvz2jg9h9vaqryh8qc.streamlit.app/" target="_blank" rel="noopener"><i class="fas fa-chart-line"></i>在线演示</a>
+  <a class="btn-code" href="https://yohoten.github.io/TCBA/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目介绍页</a>
+  <a class="btn-code" href="https://github.com/yohoten/TCBA" target="_blank" rel="noopener"><i class="fas fa-code"></i>源码仓库</a>
+</div>
+
+<div class="showcase-meta-line">
+  📅 2026-08-15 ｜ 分类：数据分析 / 机器学习 ｜ 标签：Python / scikit-learn / imbalanced-learn / Streamlit / SHAP
+</div>
+
+<h2 id="一、项目背景"><a href="#一、项目背景" class="headerlink" title="一、项目背景"></a>一、项目背景</h2><p>企业破产往往有先兆可循：债务负担加重、盈利恶化、现金流紧张等财务信号会提前暴露风险。对于金融机构的授信审查、投资尽调与贷后监控，若能基于上市公司公开财务数据提前识别高风险主体，就能将风险处置从「事后补救」前移到「事前预警」。</p>
+<p>本项目以台湾地区上市公司 1999–2009 年的公司-年度财务指标数据为对象，完成数据清洗 → 不平衡处理 → 多模型建模 → 调参 → 评估 → 解释 → 看板交付的完整机器学习链路。</p>
+<h2 id="二、数据与预处理"><a href="#二、数据与预处理" class="headerlink" title="二、数据与预处理"></a>二、数据与预处理</h2><ul>
+<li><strong>数据来源</strong>：<code>data.csv</code>（约 11.4 MB，台湾上市公司财务指标样本）。</li>
+<li><strong>数据规模</strong>：数百家上市公司 × 多年份形成的公司-年度记录，含 90+ 项财务指标与破产标签。</li>
+<li><strong>任务类型</strong>：二分类（是否破产，<code>Bankrupt?</code> 0/1 标签）。</li>
+<li><strong>关键挑战</strong>：破产样本占比仅约 <strong>3.2%<strong>，存在</strong>严重类别不平衡</strong>——直接建模会偏向多数类，须先做不平衡处理。</li>
+<li><strong>预处理要点</strong>：恒值列（无区分度）在建模时剔除；数值特征标准化后进入模型；数据无缺失值可直接建模。</li>
+</ul>
+<h2 id="三、建模方法与不平衡处理"><a href="#三、建模方法与不平衡处理" class="headerlink" title="三、建模方法与不平衡处理"></a>三、建模方法与不平衡处理</h2><table>
+<thead>
+<tr>
+<th>环节</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类别不平衡处理</td>
+<td><strong>SMOTE 过采样</strong>（imblearn），并引入 class_weight 双轨验证</td>
+</tr>
+<tr>
+<td>建模方法</td>
+<td>Logistic Regression、Decision Tree、Random Forest</td>
+</tr>
+<tr>
+<td>超参数调优</td>
+<td>RandomizedSearchCV</td>
+</tr>
+<tr>
+<td>模型评估</td>
+<td>train/test 划分、KFold 交叉验证、accuracy、classification_report、confusion_matrix、<strong>ROC/AUC</strong>、PR-AUC</td>
+</tr>
+<tr>
+<td>模型解释</td>
+<td>Permutation Importance + <strong>SHAP</strong></td>
+</tr>
+<tr>
+<td>可视化</td>
+<td>matplotlib、seaborn、plotly</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ 数据无公司/年份标识，随机切分存在「伪独立」乐观偏差；补充 CompanyId 后应改用 GroupKFold 复核。</p>
+</blockquote>
+<h2 id="四、模型评估与关键结论"><a href="#四、模型评估与关键结论" class="headerlink" title="四、模型评估与关键结论"></a>四、模型评估与关键结论</h2><p>在严重类别不平衡场景下，<strong>accuracy 无意义</strong>（模型只需预测全为未破产即可达到 96.8%），因此统一以 <strong>Recall / F1 / PR-AUC</strong> 为核心决策口径：</p>
+<table>
+<thead>
+<tr>
+<th>决策口径</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Recall（召回率）</td>
+<td>能抓出多少比例的破产公司（漏判率 = 1 − Recall）</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>精确率与召回率的调和平均，兼顾误报与漏报</td>
+</tr>
+<tr>
+<td>PR-AUC</td>
+<td>不平衡场景下比 ROC-AUC 更敏感的排序能力指标</td>
+</tr>
+</tbody></table>
+<h3 id="关键结论"><a href="#关键结论" class="headerlink" title="关键结论"></a>关键结论</h3><ul>
+<li><strong>高负债依赖是破产的首要先行信号</strong>：Borrowing Dependency、Current Liability To Assets 等负债类指标与破产正相关，应作为贷后/投资尽调的强制红灯指标。</li>
+<li><strong>盈利质量与现金造血能力决定存续</strong>：ROA、现金流类指标排名靠前，属保护性因素。</li>
+<li><strong>业务建议</strong>：将重要性 Top 指标组合为「财务健康评分卡」，按月滚动监控阈值变化；模型作为财务预警红灯的前置环节，触发后人工复核。</li>
+<li>建议 SMOTE 与 class_weight 双轨验证后，选择漏判率更低且 F1 不显著下降的方案部署。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不平衡处理 + 建模核心流程（摘要）</span></span><br><span class="line"><span class="keyword">from</span> imblearn.over_sampling <span class="keyword">import</span> SMOTE</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"></span><br><span class="line">sm = SMOTE(sampling_strategy=<span class="string">&quot;minority&quot;</span>, random_state=<span class="number">42</span>)</span><br><span class="line">Xr, yr = sm.fit_resample(X, y)                     <span class="comment"># 过采样后类别均衡</span></span><br><span class="line"></span><br><span class="line">model = RandomForestClassifier(n_estimators=<span class="number">300</span>, random_state=<span class="number">42</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line">model.fit(Xr, yr)                                   <span class="comment"># 训练演示模型</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五、Streamlit-财务风控决策看板"><a href="#五、Streamlit-财务风控决策看板" class="headerlink" title="五、Streamlit 财务风控决策看板"></a>五、Streamlit 财务风控决策看板</h2><p>深蓝 · 金色金融主题交互看板（<code>streamlit_app.py</code>），侧边栏导航共 6 个模块：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① 决策总览</td>
+<td>核心 KPI（样本量 / 破产占比 / 推荐模型 F1·PR-AUC）、破产分布饼图、数据健康检查、战略结论速览</td>
+</tr>
+<tr>
+<td>② 数据探索</td>
+<td>数据结构与质量、数据类型分布、标识列 × 破产交叉画像、财务指标描述统计</td>
+</tr>
+<tr>
+<td>③ 特征风险画像</td>
+<td>Top 16 财务指标 × 破产相关性、关键指标（负债率 / ROA / 现金流等）破产 vs 未破产箱线图对比</td>
+</tr>
+<tr>
+<td>④ 模型对比</td>
+<td>11 个方案横向对比表（Recall / F1 / PR-AUC / ROC-AUC）、按特征选择着色对比图、业务推荐</td>
+</tr>
+<tr>
+<td>⑤ 特征重要性</td>
+<td>Permutation Importance 排序、Top 驱动因子战略解读、SHAP Top 特征与摘要图</td>
+</tr>
+<tr>
+<td>⑥ 单公司体检</td>
+<td>输入关键财务指标 → Random Forest + SMOTE 演示模型实时输出破产概率仪表盘与风险评级</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 Streamlit 看板</span></span><br><span class="line">streamlit run streamlit_app.py</span><br><span class="line"><span class="comment"># 浏览器打开 http://localhost:8501</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="六、技术栈与项目结构"><a href="#六、技术栈与项目结构" class="headerlink" title="六、技术栈与项目结构"></a>六、技术栈与项目结构</h2><p><strong>技术栈</strong>：Python 3 · pandas / numpy / scikit-learn / imbalanced-learn（SMOTE）/ matplotlib / seaborn / plotly / Streamlit / SHAP / Jupyter。</p>
+<table>
+<thead>
+<tr>
+<th>文件 / 目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>data.csv</code></td>
+<td>台湾上市公司财务指标原始数据（含破产标签）</td>
+</tr>
+<tr>
+<td><code>基于台湾上市公司财务数据的破产分析.ipynb</code></td>
+<td>完整分析 Notebook（EDA + 不平衡处理 + 建模 + 解释）</td>
+</tr>
+<tr>
+<td><code>streamlit_app.py</code></td>
+<td>6 模块 Streamlit 财务风控决策看板</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Python 依赖清单（含 <code>imbalanced-learn</code>）</td>
+</tr>
+<tr>
+<td><code>output/</code></td>
+<td>模型对比、Permutation Importance、SHAP 结果 CSV 与图表</td>
+</tr>
+</tbody></table>
+<h2 id="七、相关链接"><a href="#七、相关链接" class="headerlink" title="七、相关链接"></a>七、相关链接</h2><ul>
+<li>在线演示：<a target="_blank" rel="noopener" href="https://gz4sdvz2jg9h9vaqryh8qc.streamlit.app/">https://gz4sdvz2jg9h9vaqryh8qc.streamlit.app/</a></li>
+<li>项目介绍页：<a href="https://yohoten.github.io/TCBA/">https://yohoten.github.io/TCBA/</a></li>
+<li>源码仓库：<a target="_blank" rel="noopener" href="https://github.com/yohoten/TCBA">https://github.com/yohoten/TCBA</a></li>
+</ul>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat_avatar_01.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yohoten</div><div class="author-info__description">过了垭口，就是平原</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yohoten"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yohoten" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://gitee.com/yohoten" target="_blank" title="Gitee"><i class="fab fa-git-alt" style="color: #C71D23;"></i></a><a class="social-icon" href="https://www.zhihu.com/people/yohoten" target="_blank" title="Zhihu"><i class="fab fa-zhihu" style="color: #0084ff;"></i></a><a class="social-icon" href="https://chenxiaoxue.space" target="_blank" title="Website"><i class="fas fa-globe" style="color: #3b82f6;"></i></a><a class="social-icon" href="mailto:yoho12138@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到 Yohoten's Blog，一起记录成长～</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_chenxiaoxue.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程"/></a><div class="content"><a class="title" href="/2026/07/21/ChenXiaoxue-%E5%83%8F%E7%B4%A0%E9%A3%8E%E6%83%85%E6%84%9F%E4%BA%92%E5%8A%A8%E7%A8%8B%E5%BA%8F/" title="ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程">ChenXiaoxue 像素风情感互动程序：从 PyQt5 到全栈重写的心路历程</a><time datetime="2026-07-21T14:00:00.000Z" title="发表于 2026-07-21 22:00:00">2026-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/" title="ACRPA-轻量级桌面自动化工作流工具"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover_acrpa.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ACRPA-轻量级桌面自动化工作流工具"/></a><div class="content"><a class="title" href="/2026/05/24/ACRPA-%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B7%A5%E5%85%B7/" title="ACRPA-轻量级桌面自动化工作流工具">ACRPA-轻量级桌面自动化工作流工具</a><time datetime="2026-05-24T14:07:00.000Z" title="发表于 2026-05-24 22:07:00">2026-05-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/04/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BF%83%E5%BE%97/" title="我的技术学习路线与心得"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的技术学习路线与心得"/></a><div class="content"><a class="title" href="/2025/01/04/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BF%83%E5%BE%97/" title="我的技术学习路线与心得">我的技术学习路线与心得</a><time datetime="2025-01-04T04:00:00.000Z" title="发表于 2025-01-04 12:00:00">2025-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/03/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BB%8E%E5%86%99%E4%BD%9C%E5%88%B0%E5%8F%91%E5%B8%83/" title="Hexo 博客使用指南：从写作到发布"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover2.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo 博客使用指南：从写作到发布"/></a><div class="content"><a class="title" href="/2025/01/03/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97-%E4%BB%8E%E5%86%99%E4%BD%9C%E5%88%B0%E5%8F%91%E5%B8%83/" title="Hexo 博客使用指南：从写作到发布">Hexo 博客使用指南：从写作到发布</a><time datetime="2025-01-03T04:00:00.000Z" title="发表于 2025-01-03 12:00:00">2025-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/10/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%93%8D/" title="SQL 学习笔记：从入门到实操"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/cover1.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SQL 学习笔记：从入门到实操"/></a><div class="content"><a class="title" href="/2024/11/10/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%93%8D/" title="SQL 学习笔记：从入门到实操">SQL 学习笔记：从入门到实操</a><time datetime="2024-11-10T04:00:00.000Z" title="发表于 2024-11-10 12:00:00">2024-11-10</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">开发</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"><span class="card-category-list-name">技术教程</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8/"><span class="card-category-list-name">日常</span><span class="card-category-list-count">2</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 1.1em; color: #999">数学</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">学习笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.3em; color: #99a1ac">随笔</a> <a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.1em; color: #999">教程</a> <a href="/tags/AI/" style="font-size: 1.1em; color: #999">AI</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" style="font-size: 1.1em; color: #999">抽象代数</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" style="font-size: 1.1em; color: #999">线性代数</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">学习</a> <a href="/tags/Python/" style="font-size: 1.5em; color: #99a9bf">Python</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.1em; color: #999">数据库</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.3em; color: #99a1ac">工具</a> <a href="/tags/TypeScript/" style="font-size: 1.1em; color: #999">TypeScript</a> <a href="/tags/SQLite/" style="font-size: 1.1em; color: #999">SQLite</a> <a href="/tags/%E7%BE%A4%E8%AE%BA/" style="font-size: 1.1em; color: #999">群论</a> <a href="/tags/Hexo/" style="font-size: 1.1em; color: #999">Hexo</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">开发</a> <a href="/tags/SQL/" style="font-size: 1.1em; color: #999">SQL</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">2026年07月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">2026年05月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">2025年01月</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">2024年11月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">2024年06月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">2024年01月</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-08-21T02:13:32.774Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/images/banner-20240815_DSC.webp')"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yohoten</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">记录技术 · 分享生活 · 保持热爱</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/showcase-pagination.js" defer></script><script src="/js/showcase-reveal.js" defer></script><script src="/js/404.js" defer></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

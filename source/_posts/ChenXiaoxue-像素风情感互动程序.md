@@ -77,7 +77,7 @@ top: 0
 
 ### 3. MCP 协议
 
-重写版接入了 MCP（Model Context Protocol），暴露了 `chat_completion`、`analyze_emotion`、`translate`、`get_models`、`collaborative_chat` 等一批工具，并且支持接入外部 MCP 服务器。这意味着陈筱雪的能力可以像插头一样往外扩展，生态一下就打开了。
+重写版接入了 MCP（Model Context Protocol），暴露了 `chat_completion`、`analyze_emotion`、`translate`、`get_models`、`collaborative_chat` 等一批工具，并且支持接入外部 MCP 服务器。这意味着chenxiaoxue的能力可以像插头一样往外扩展，生态一下就打开了。
 
 ![](https://i.imgs.ovh/2026/08/18/28f5d475add37ff159c4502393fc42f6.webp)
 
@@ -146,12 +146,12 @@ Canvas 画出来的心电图，**P/QRS/T 波**齐全，颜色和心率会跟着�
 
 ## 六、结尾
 
-陈筱雪这个项目，是我把前端、后端、桌面三块能力真正「合体」的一次尝试。第一代让我理解了「一个完整的 AI 应用」长什么样，第二代让我学会了「如何把一套个人玩具做成正经的多层架构」。如果你也喜欢像素风，或者对「AI 情感陪伴」「全栈 + Tauri 桌面」感兴趣，欢迎来仓库逛逛、提提 issue。
+chenxiaoxue这个项目，是我把前端、后端、桌面三块能力真正「合体」的一次尝试。第一代让我理解了「一个完整的 AI 应用」长什么样，第二代让我学会了「如何把一套个人玩具做成正经的多层架构」。如果你也喜欢像素风，或者对「AI 情感陪伴」「全栈 + Tauri 桌面」感兴趣，欢迎来仓库逛逛、提提 issue。
 
 **项目仓库：**
 
-- 第一代：<https://gitee.com/yohotens/chenxiaoxue-orgin>
-- 第二代：<https://gitee.com/yohoten_space/chenxiaoxue-reborn>
+- 第一代：<https://github.com/yohoten/chenxiaoxue-orgin> / <https://gitee.com/yohotens/chenxiaoxue-orgin>
+- 第二代：<https://github.com/yohoten/chenxiaoxue-reborn> / <https://gitee.com/yohoten_space/chenxiaoxue-reborn>
 
 **相关阅读：**
 

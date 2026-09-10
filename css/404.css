@@ -1,0 +1,325 @@
+/* ============================================================
+   Yohoten's Blog - 404 页面美化（幽灵 404 风格）
+   所有选择器均以 .error404 为作用域，不影响其他页面
+   ============================================================ */
+
+.error404 {
+  --e404-main: #8b5cf6;    /* 主题紫 */
+  --e404-main2: #6366f1;   /* 靛蓝 */
+  --e404-accent: #1ea7ab;  /* 幽灵青 */
+  --e404-orb-opacity: .45;
+  --e404-card-bg: #000;
+  --e404-card-border: rgba(139, 92, 246, .35);
+  --e404-card-shadow: 0 20px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(139, 92, 246, .12);
+  --e404-star-color: #ffffff;
+}
+
+/* 页面整体背景：细腻渐变 */
+.error404 {
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, .06) 55%, rgba(30, 167, 171, .08) 100%);
+}
+
+/* 卡片区域入场动画 */
+.error404 #error-wrap {
+  z-index: 0;
+  animation: e404-rise .8s cubic-bezier(.22, .61, .36, 1) both;
+}
+
+/* 背景漂浮光斑 */
+.error404 #error-wrap::before,
+.error404 #error-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(70px);
+  opacity: var(--e404-orb-opacity);
+  animation: e404-drift 12s ease-in-out infinite alternate;
+}
+
+.error404 #error-wrap::before {
+  width: 340px;
+  height: 340px;
+  top: -50px;
+  left: -80px;
+  background: radial-gradient(circle, var(--e404-main) 0%, transparent 70%);
+}
+
+.error404 #error-wrap::after {
+  width: 320px;
+  height: 320px;
+  right: -70px;
+  bottom: -60px;
+  background: radial-gradient(circle, var(--e404-accent) 0%, transparent 70%);
+  animation-delay: -6s;
+}
+
+/* 卡片：幽灵舞台（纯黑背景） */
+.error404 .error-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 480px;
+  padding: 56px 40px 48px;
+  text-align: center;
+  background: var(--e404-card-bg);
+  border: 1px solid var(--e404-card-border);
+  border-radius: 24px;
+  box-shadow: var(--e404-card-shadow);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.error404 .error-content:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, .6);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .6), 0 0 60px rgba(139, 92, 246, .2);
+}
+
+/* 失效的背景图区块隐藏 */
+.error404 .error-img {
+  display: none;
+}
+
+/* 文字信息区：占满整卡并居中 */
+.error404 .error-info {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   幽灵：白色身体 + 波浪裙摆 + 眨眼的双眼，整体轻微抖动
+   ============================================================ */
+.error404 .e404-ghost {
+  position: relative;
+  width: 200px;
+  height: 230px;
+  margin: 0 auto 26px;
+  animation: e404-shake .2s infinite;
+}
+
+.error404 .e404-ghost__body {
+  position: relative;
+  width: 200px;
+  height: 230px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 50% 50% 50% 50% / 100px 100px 44px 44px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, .18);
+}
+
+/* 幽灵底部波浪裙摆（用黑色半圆在白色身体上"切"出波浪） */
+.error404 .e404-ghost__body::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  background:
+    radial-gradient(circle at 20px 15px, #000 0 13px, transparent 14px),
+    radial-gradient(circle at 60px 15px, #000 0 13px, transparent 14px),
+    radial-gradient(circle at 100px 15px, #000 0 13px, transparent 14px),
+    radial-gradient(circle at 140px 15px, #000 0 13px, transparent 14px),
+    radial-gradient(circle at 180px 15px, #000 0 13px, transparent 14px);
+  background-color: transparent;
+}
+
+/* 幽灵双眼 */
+.error404 .e404-ghost__eye {
+  position: absolute;
+  top: 74px;
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+  animation: e404-eye 2.5s infinite;
+}
+
+.error404 .e404-ghost__eye--l {
+  left: 50px;
+}
+
+.error404 .e404-ghost__eye--r {
+  right: 50px;
+}
+
+/* ============================================================
+   「404」标题：白色幽灵风（覆盖之前的渐变样式）
+   ============================================================ */
+.error404 .error_title {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .05em;
+  color: #fff;
+  background: none;
+  -webkit-text-fill-color: #fff;
+  text-shadow: 0 0 30px rgba(30, 167, 171, .45);
+  animation: none;
+}
+
+/* ============================================================
+   副标题：青蓝打字机逐段显示
+   ============================================================ */
+.error404 .error_subtitle {
+  display: inline-block;
+  width: 120px;
+  max-width: none;
+  margin: 16px auto 0;
+  color: #1ea7ab;
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  animation: e404-text-show 2s infinite steps(3);
+}
+
+/* ============================================================
+   操作按钮组（由 /js/404.js 注入）
+   ============================================================ */
+.error404 .e404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.error404 .e404-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+}
+
+.error404 .e404-btn i {
+  font-size: 1.05em;
+}
+
+.error404 .e404-btn--primary {
+  color: #fff;
+  background: linear-gradient(120deg, var(--e404-main), var(--e404-main2));
+  box-shadow: 0 8px 24px rgba(124, 58, 237, .35);
+}
+
+.error404 .e404-btn--primary:hover {
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(124, 58, 237, .5);
+}
+
+.error404 .e404-btn--ghost {
+  color: #fff;
+  background: transparent;
+  border-color: rgba(30, 167, 171, .55);
+}
+
+.error404 .e404-btn--ghost:hover {
+  color: #fff;
+  background: rgba(30, 167, 171, .16);
+  transform: translateY(-3px);
+}
+
+/* 星光粒子（由 /js/404.js 生成） */
+.error404 .e404-star {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--e404-star-color);
+  box-shadow: 0 0 6px 1px var(--e404-star-color);
+  opacity: 0;
+  pointer-events: none;
+  animation-name: e404-twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* ---------- 动画 ---------- */
+@keyframes e404-shake {
+  0% { transform: translate(1px, 0); }
+  50% { transform: translate(0, 0); }
+  100% { transform: translate(-1px, 0); }
+}
+
+@keyframes e404-eye {
+  0%, 30%, 55%, 90%, 100% { transform: translate(0, 0) scaleY(1); }
+  10%, 25% { transform: translate(0, 20px) scaleY(1); }
+  40%, 45% { transform: translate(0, 0) scaleY(.08); } /* 眨眼 */
+  65% { transform: translate(-20px, 0) scaleY(1); }
+  80% { transform: translate(20px, 0) scaleY(1); }
+}
+
+@keyframes e404-text-show {
+  to { text-indent: -373px; }
+}
+
+@keyframes e404-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(34px, -30px) scale(1.15); }
+}
+
+@keyframes e404-twinkle {
+  0%, 100% { opacity: 0; transform: scale(.4); }
+  50% { opacity: .9; transform: scale(1); }
+}
+
+@keyframes e404-rise {
+  from { opacity: 0; transform: translate(0, -50%) translateY(28px); }
+  to { opacity: 1; transform: translate(0, -50%) translateY(0); }
+}
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 768px) {
+  .error404 .error-content {
+    min-height: 460px;
+    padding: 44px 22px 40px;
+  }
+
+  .error404 .e404-ghost {
+    transform-origin: top center;
+    transform: scale(.85);
+  }
+
+  .error404 .error_title {
+    font-size: 56px;
+  }
+
+  .error404 .error_subtitle {
+    font-size: 22px;
+  }
+
+  .error404 .e404-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

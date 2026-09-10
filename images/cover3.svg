@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4338ca"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="640" cy="110" r="170" fill="#ffffff" opacity="0.12"/>
+  <circle cx="120" cy="330" r="120" fill="#ffffff" opacity="0.10"/>
+  <circle cx="520" cy="360" r="60" fill="#ffffff" opacity="0.08"/>
+  <text x="400" y="225" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#ffffff" text-anchor="middle">Yohoten's Blog</text>
+  <text x="400" y="275" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" opacity="0.85" text-anchor="middle">数据分析 · 机器学习 · 可视化</text>
+</svg>

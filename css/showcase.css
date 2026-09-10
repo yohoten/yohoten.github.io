@@ -1,0 +1,572 @@
+/* ============================================================
+   作品集页面样式（showcase）
+   设计参考：https://hjl-beautiful.github.io/（数据科学项目作品集）
+   布局模仿：项目卡片 = 标题 + 分类徽章 / 描述 / 核心指标 / 技术栈 / 操作按钮
+   配色借鉴：#00d4ff（青）#7b2cbf（紫）#64ffda（薄荷）
+   背景与文字仍使用 Butterfly 主题 CSS 变量，自动适配深浅色与紫色主题。
+   ============================================================ */
+
+/* ---------- 设计 Token（借鉴 mem.ac 设计系统，--sh-* 前缀避免与主题冲突） ---------- */
+:root {
+  --sh-accent: #7b2cbf;
+  --sh-accent-ink: #3a2c5f;
+  --sh-accent-soft: rgba(123, 44, 191, .10);
+  --sh-cyan: #00d4ff;
+  --sh-ink: #1c2430;
+  --sh-ink-2: #3a3a3d;
+  --sh-ink-3: #6b6b70;
+  --sh-line: #e8dff0;
+  --sh-radius-sm: 6px;
+  --sh-radius: 12px;
+  --sh-radius-lg: 18px;
+  --sh-font-mono: "Fira Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --sh-shadow-sm: 0 2px 8px rgba(123, 44, 191, .06), 0 1px 2px rgba(123, 44, 191, .04);
+  --sh-shadow-md: 0 8px 24px rgba(123, 44, 191, .08), 0 2px 6px rgba(123, 44, 191, .04);
+  --sh-shadow-lg: 0 20px 48px rgba(123, 44, 191, .12), 0 4px 12px rgba(123, 44, 191, .06);
+}
+
+/* ---------- 全局排版细节（字体平滑 + 自定义选区） ---------- */
+#article-container {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#article-container ::selection {
+  background: var(--sh-accent-soft);
+  color: var(--sh-accent-ink);
+}
+
+/* ---------- 顶部引言卡片 ---------- */
+#article-container .showcase-lead {
+  position: relative;
+  padding: 1.6rem 1.7rem;
+  margin-bottom: 1.8rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, .07), rgba(123, 44, 191, .07)), var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  line-height: 1.9;
+  overflow: hidden;
+}
+
+#article-container .showcase-lead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+}
+
+/* 背景光斑装饰（借鉴 mem.ac，纯 CSS 动画，不拦截交互） */
+#article-container .showcase-lead::after,
+#article-container .showcase-detail::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .5;
+  pointer-events: none;
+  animation: sh-blob 18s ease-in-out infinite;
+}
+#article-container .showcase-lead::after {
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(123, 44, 191, .35) 0%, transparent 70%);
+}
+#article-container .showcase-lead > *,
+#article-container .showcase-detail > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes sh-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -16px) scale(1.08); }
+}
+
+#article-container .showcase-lead strong {
+  color: #00b8d4;
+}
+
+/* ---------- 区块标题（参考站点 section-title 风格） ---------- */
+#article-container h2.showcase-title-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2.2rem 0 1.2rem;
+  padding-bottom: 0;
+  border: none;
+}
+
+#article-container h2.showcase-title-block::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(180deg, #00d4ff, #7b2cbf);
+  border-radius: 2px;
+}
+
+/* ---------- 技术栈标签（参考站点 skill-tag） ---------- */
+#article-container .showcase-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 0 0 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+#article-container .showcase-cats li {
+  margin: 0;
+  padding: .45em 1.1em;
+  border-radius: 20px;
+  font-size: .88em;
+  font-family: var(--sh-font-mono);
+  letter-spacing: .02em;
+  color: var(--font-color);
+  background: var(--sh-accent-soft);
+  border: 1px solid rgba(123, 44, 191, .22);
+  transition: all .3s ease;
+}
+
+#article-container .showcase-cats li:hover {
+  color: var(--sh-accent);
+  border-color: rgba(123, 44, 191, .45);
+  transform: translateY(-2px);
+}
+
+/* ---------- 作品卡片网格 ---------- */
+#article-container .showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.5rem;
+  margin: 1.4rem 0 2rem;
+}
+
+#article-container .showcase-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem 1.4rem;
+  border-radius: 16px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .06));
+  color: var(--font-color);
+  text-decoration: none !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+#article-container .showcase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+#article-container .showcase-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 212, 255, .25);
+  box-shadow: var(--card-hover-box-shadow);
+}
+
+#article-container .showcase-card:hover::before {
+  opacity: 1;
+}
+
+/* 卡片头部：标题 + 分类徽章 */
+#article-container .showcase-card .showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .8rem;
+  margin-bottom: .7rem;
+}
+
+#article-container .showcase-card .showcase-title {
+  margin: 0;
+  font-size: 1.14rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--font-color);
+}
+
+#article-container .showcase-card .showcase-badge {
+  flex-shrink: 0;
+  padding: .22em .72em;
+  border-radius: 6px;
+  font-size: .72rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+#article-container .showcase-card .badge-viz  { background: rgba(0, 212, 255, .15); color: #00b8d4; }
+#article-container .showcase-card .badge-ml   { background: rgba(123, 44, 191, .15); color: #b26bfa; }
+#article-container .showcase-card .badge-bi   { background: rgba(100, 255, 218, .15); color: #1fb98c; }
+#article-container .showcase-card .badge-data { background: rgba(0, 212, 255, .15); color: #00b8d4; }
+#article-container .showcase-card .badge-tpl  { background: rgba(200, 200, 200, .18); color: var(--font-color); opacity: .8; }
+
+/* 描述 */
+#article-container .showcase-card .showcase-desc {
+  margin: 0 0 1rem;
+  font-size: .9em;
+  line-height: 1.7;
+  color: var(--font-color);
+  opacity: .78;
+}
+
+/* 核心指标（参考站点 metric-item） */
+#article-container .showcase-card .showcase-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+#article-container .showcase-card .metric-item {
+  padding: .22em .8em;
+  background: rgba(0, 212, 255, .08);
+  border-radius: 4px;
+  font-size: .76rem;
+  color: #00b8d4;
+  font-weight: 500;
+}
+
+/* 技术栈（参考站点 tech-item） */
+#article-container .showcase-card .showcase-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 1.2rem;
+}
+
+#article-container .showcase-card .tech-item {
+  padding: .2em .72em;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .08));
+  border-radius: 4px;
+  font-size: .74rem;
+  color: var(--font-color);
+  opacity: .8;
+}
+
+/* 操作按钮（参考站点 project-links） */
+#article-container .showcase-card .showcase-links {
+  display: flex;
+  gap: .6rem;
+  margin-top: auto;
+}
+
+#article-container .showcase-card .showcase-links a {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35em;
+  padding: .6em .5em;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: .84rem;
+  font-weight: 500;
+  transition: all .3s ease;
+}
+
+#article-container .showcase-card .showcase-links a i {
+  font-size: .9em;
+}
+
+#article-container .showcase-card .btn-demo {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: #fff;
+}
+
+#article-container .showcase-card .btn-demo:hover {
+  box-shadow: 0 4px 16px rgba(0, 212, 255, .35);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+#article-container .showcase-card .btn-code {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .15));
+  color: var(--font-color);
+}
+
+#article-container .showcase-card .btn-code:hover {
+  background: var(--card-hover-bg, rgba(0, 0, 0, .03));
+  border-color: rgba(0, 212, 255, .35);
+  color: #00b8d4;
+}
+
+#article-container .showcase-card .btn-disabled {
+  background: var(--card-bg);
+  border: 1px dashed var(--card-border, rgba(0, 0, 0, .15));
+  color: var(--font-color);
+  opacity: .45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- 详情子页：项目信息卡 ---------- */
+#article-container .showcase-detail {
+  position: relative;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.4rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, .06), rgba(123, 44, 191, .06)), var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  line-height: 1.85;
+  overflow: hidden;
+}
+
+#article-container .showcase-detail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+}
+
+#article-container .showcase-detail::after {
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(0, 212, 255, .30) 0%, transparent 70%);
+}
+
+#article-container .showcase-detail p {
+  margin: .35rem 0;
+}
+
+#article-container .showcase-meta-line {
+  margin: .5rem 0 .9rem;
+  font-size: .86em;
+  font-family: var(--sh-font-mono);
+  letter-spacing: .02em;
+  color: var(--sh-ink-2);
+  opacity: .75;
+}
+
+/* 详情页操作按钮 */
+#article-container .showcase-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin: 1.2rem 0 1rem;
+}
+
+#article-container .showcase-btn-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: .6em 1.4em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: all .3s ease;
+}
+
+/* ---------- 响应式：平板 / 手机 ---------- */
+@media (max-width: 768px) {
+  /* 作品卡片网格单列 */
+  #article-container .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 卡片头部：标题在上、徽章在下 */
+  #article-container .showcase-card .showcase-header {
+    flex-direction: column;
+  }
+
+  /* 操作按钮允许换行，每行最多 2 个，保证触控目标足够大 */
+  #article-container .showcase-card .showcase-links {
+    flex-wrap: wrap;
+  }
+  #article-container .showcase-card .showcase-links a {
+    flex: 1 1 calc(50% - .3rem);
+    min-height: 44px;
+  }
+
+  /* 分页：窄屏隐藏数字页码，只保留 上一页 / 下一页 + 页码信息 */
+  #article-container .showcase-pagination .sp-num {
+    display: none;
+  }
+  #article-container .showcase-pagination .sp-btn {
+    min-height: 44px;
+    padding: .55em 1.05em;
+  }
+  #article-container .showcase-pagination .sp-info {
+    flex-basis: 100%;
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+/* ---------- 响应式：手机（超窄屏） ---------- */
+@media (max-width: 480px) {
+  /* 收窄卡片 / 引言 / 详情卡的内边距，让内容更舒展 */
+  #article-container .showcase-lead,
+  #article-container .showcase-detail {
+    padding: 1.1rem 1.05rem;
+  }
+  #article-container .showcase-card {
+    padding: 1.15rem 1.05rem 1.05rem;
+    border-radius: 14px;
+  }
+
+  /* 卡片标题微调 */
+  #article-container .showcase-card .showcase-title {
+    font-size: 1.05rem;
+  }
+
+  /* 操作按钮：窄屏全部纵向堆叠，每个按钮独占一行可点 */
+  #article-container .showcase-card .showcase-links {
+    flex-direction: column;
+  }
+  #article-container .showcase-card .showcase-links a {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  /* 详情页按钮行：等宽纵向堆叠 */
+  #article-container .showcase-btn-row {
+    flex-direction: column;
+  }
+  #article-container .showcase-btn-row a {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* 长文本 / 长 URL 防溢出 */
+  #article-container .showcase-desc,
+  #article-container .showcase-meta-line,
+  #article-container .showcase-detail {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* 区块标题缩小 */
+  #article-container h2.showcase-title-block {
+    font-size: 1.3rem;
+  }
+}
+
+/* ---------- 作品集分页 ---------- */
+#article-container .showcase-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1.6rem 0 2.4rem;
+}
+
+#article-container .sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  padding: .5em 1.05em;
+  border-radius: 8px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .12));
+  background: var(--card-bg);
+  color: var(--font-color);
+  font-size: .85rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+#article-container .sp-btn:hover:not(:disabled) {
+  border-color: rgba(0, 212, 255, .45);
+  color: #00b8d4;
+  transform: translateY(-1px);
+}
+
+#article-container .sp-btn.active {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(0, 212, 255, .3);
+}
+
+#article-container .sp-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+#article-container .sp-btn i {
+  font-size: .8em;
+}
+
+#article-container .sp-info {
+  font-size: .82rem;
+  color: var(--font-color);
+  opacity: .55;
+  margin-left: .3rem;
+}
+
+/* ---------- 滚动显现动画（借鉴 mem.ac，.reveal 由 showcase-reveal.js 添加） ---------- */
+#article-container .showcase-grid .showcase-card.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+#article-container .showcase-grid .showcase-card.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+/* 尊重系统「减少动态效果」设置 */
+@media (prefers-reduced-motion: reduce) {
+  #article-container .showcase-grid .showcase-card.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   移动端菜单抽屉修复（防御性覆盖）
+   现象：点击三条杠后遮罩（#menu-mask）显示，但抽屉（#sidebar-menus）
+   未滑出，表现为「黑色阴影 + 无菜单按钮」。
+   修复：显式保证抽屉层级在遮罩之上，并用 right 定位作为滑入兜底
+   （transform: translate3d 在部分移动浏览器 / 缓存异常时可能不生效）。
+   ============================================================ */
+@media (max-width: 768px) {
+  /* 抽屉：屏幕右侧外，层级高于遮罩 */
+  #sidebar #sidebar-menus {
+    right: -300px;
+    z-index: 103;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  /* 打开：right 定位滑入（兼容 transform 失效场景） */
+  #sidebar #sidebar-menus.open {
+    right: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  /* 遮罩层级 */
+  #sidebar #menu-mask {
+    z-index: 102;
+  }
+  /* 保证抽屉内文字在深浅色背景下均可读 */
+  #sidebar #sidebar-menus .menus_items .site-page,
+  #sidebar #sidebar-menus .sidebar-site-data .headline,
+  #sidebar #sidebar-menus .sidebar-site-data .length-num {
+    color: var(--font-color);
+  }
+}

@@ -10,7 +10,7 @@ tags:
 categories:
   - 技术教程
 description: 通过实操学会 SQL：从 SQLite 安装、建表、增删改查，到主键外键、JOIN、索引、事务与 Python 中使用 SQL 的完整学习笔记。
-cover: /images/cover1.svg
+cover: /images/sqlite-install-files.webp
 ---
 
 通过实操学会 SQL。

@@ -7,7 +7,7 @@ tags:
 categories:
   - 技术教程
 description: 建好博客只是开始，本文分享 Hexo 的日常写作、本地预览与一键部署的完整流程。
-cover: /images/cover2.svg
+cover: /images/wechat_avatar_01.jpg
 ---
 
 ## 前言

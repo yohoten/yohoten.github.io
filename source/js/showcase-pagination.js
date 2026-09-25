@@ -59,7 +59,7 @@
     while (btn && btn !== pager && !(btn.classList && btn.classList.contains('sp-btn'))) {
       btn = btn.parentNode;
     }
-    if (!btn || btn.disabled) return;
+    if (!btn || btn === pager || btn.disabled) return; // 点空白区域不翻页
     showPage(parseInt(btn.getAttribute('data-page'), 10));
   });
 

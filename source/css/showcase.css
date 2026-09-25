@@ -218,6 +218,9 @@
 /* 小口袋（自研工具）页徽章 */
 #article-container .showcase-card .badge-app  { background: rgba(255, 159, 67, .16); color: #ef8a1f; }
 #article-container .showcase-card .badge-script { background: rgba(46, 196, 182, .16); color: #12a598; }
+#article-container .showcase-card .badge-web    { background: rgba(76, 139, 245, .16); color: #3b74d6; }
+#article-container .showcase-card .badge-game   { background: rgba(233, 96, 146, .16); color: #d94f80; }
+#article-container .showcase-card .badge-skill  { background: rgba(140, 122, 230, .16); color: #7b62d8; }
 
 /* 描述 */
 #article-container .showcase-card .showcase-desc {

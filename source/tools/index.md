@@ -3,11 +3,11 @@ title: 小口袋
 date: 2026-09-25 12:00:00
 type: "showcase"
 aside: false
-description: Yohoten 自研的桌面工具与脚本合集：ACRPA 桌面自动化、Py 书斋 PyShelf 书架阅读器等，每个条目直达项目主页与源码仓库。
+description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA 桌面自动化、Py 书斋、WinSweep 系统清理、InEx_System 收支管理、天青中国象棋、Pikachu Mermaid 等。
 ---
 <div class="showcase-lead">
-这里是 <strong>Yohoten</strong> 的「小口袋」——放自己写的 <strong>桌面工具 · 脚本 · 效率应用</strong>。
-和「作品集」侧重数据分析和可视化不同，这里的东西都是<strong>日常真的在用</strong>的：为了解决一个具体的小麻烦而写，写完就顺手放上来。
+这里是 <strong>Yohoten</strong> 的「小口袋」——放自己写的 <strong>桌面工具 · 网页应用 · 脚本</strong>。
+和「作品集」侧重数据分析与可视化不同，这里的东西都是<strong>日常真的在用</strong>的：为了解决一个具体的小麻烦而写，写完就顺手放上来。
 每张卡片的「项目主页」是图文并茂的介绍页，含功能演示与下载直链；「源码」可以直接看实现细节。
 </div>
 
@@ -16,18 +16,25 @@ description: Yohoten 自研的桌面工具与脚本合集：ACRPA 桌面自动�
 <ul class="showcase-cats">
   <li>Python</li>
   <li>tkinter</li>
+  <li>PyQt5</li>
+  <li>pygame</li>
   <li>PyMuPDF</li>
   <li>Pillow</li>
   <li>pyautogui</li>
+  <li>socket</li>
   <li>图像识别</li>
-  <li>桌面自动化</li>
-  <li>Excel 脚本编排</li>
-  <li>工作流编排</li>
-  <li>JSON 规则书源</li>
-  <li>本地存储</li>
-  <li>Windows</li>
+  <li>Mermaid</li>
+  <li>PWA</li>
+  <li>PowerBuilder</li>
+  <li>DataWindow</li>
+  <li>SQLite</li>
+  <li>MySQL</li>
+  <li>Sybase ASA</li>
+  <li>pandas</li>
+  <li>matplotlib</li>
+  <li>Alpha-Beta</li>
+  <li>零依赖</li>
   <li>GitHub Pages</li>
-  <li>效率工具</li>
 </ul>
 
 <h2 class="showcase-title-block">工具清单</h2>
@@ -81,6 +88,177 @@ description: Yohoten 自研的桌面工具与脚本合集：ACRPA 桌面自动�
     <div class="showcase-links">
       <a class="btn-demo" href="https://yohoten.github.io/PyShelf/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
       <a class="btn-code" href="https://github.com/yohoten/PyShelf" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">WinSweep · Windows 垃圾清理与一站式优化</h3>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">只用 Python 标准库写的系统清理与优化工具，双击即用、零第三方依赖。五大模块覆盖缓存清理、预装应用移除（集成 Win11Debloat）、Neon 优化包、DISM / sfc / chkdsk 系统工具与磁盘信息监控，危险项按低 / 中 / 高危分级并强制二次确认。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">14 项清理 · 3 种模式</span>
+      <span class="metric-item">零第三方依赖</span>
+      <span class="metric-item">高危项引导建还原点</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">tkinter</span>
+      <span class="tech-item">ctypes</span>
+      <span class="tech-item">DISM / sfc</span>
+      <span class="tech-item">Windows 10/11</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/WinSweep/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/WinSweep" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">InEx_System v2.0 · 个人收支管理系统</h3>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">基于 PyQt5 的跨数据库桌面记账软件：策略模式 + 工厂模式抽象出 DatabaseBackend，一套业务代码同时驱动 SQLite / MySQL 8.0 / Sybase ASA 9。覆盖录入 → 流水账 → 月报 → 可视化 → AI 建议的完整闭环，含预算四级预警与消费异常检测。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">3 种数据库引擎</span>
+      <span class="metric-item">9 个功能模块</span>
+      <span class="metric-item">约 3,500 行 Python</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">PyQt5</span>
+      <span class="tech-item">SQLite</span>
+      <span class="tech-item">MySQL</span>
+      <span class="tech-item">Sybase ASA</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">DeepSeek API</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/InEx_System-v2.0/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/InEx_System-v2.0" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">天青 · 中国象棋（Tianqing Chinese Chess）</h3>
+      <span class="showcase-badge badge-game">小游戏</span>
+    </div>
+    <p class="showcase-desc">Python + pygame 的中国象棋人机对战程序：negamax + Alpha-Beta 剪枝、Zobrist 置换表、历史启发与迭代加深，默认 2 秒思考预算且界面不冻结。规则层覆盖蹩马腿、塞象眼、炮架、飞将与不送将过滤，支持悔棋、将军 / 将死 / 困毙判定与棋局分析面板。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">Alpha-Beta + 置换表</span>
+      <span class="metric-item">44 项单元测试</span>
+      <span class="metric-item">深度 3 提速约 7×</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">pygame</span>
+      <span class="tech-item">negamax</span>
+      <span class="tech-item">Zobrist</span>
+      <span class="tech-item">chessai</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/Tianqing-Chinese-Chess/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/Tianqing-Chinese-Chess" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">Pikachu Mermaid · 零依赖图表编辑器</h3>
+      <span class="showcase-badge badge-web">网页应用</span>
+    </div>
+    <p class="showcase-desc">纯 Web 单文件方案的 Mermaid 编辑器，浏览器打开即用，不需要 Python / PyQt 或任何安装。实时预览带 200ms 防抖与语法高亮，自建历史栈支持撤销重做，渲染失败在对应行标红波浪线；可安装为 PWA 桌面应用并完全离线使用。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">9 种图表模板</span>
+      <span class="metric-item">导出 PNG / SVG / PDF / MD</span>
+      <span class="metric-item">PWA 离线可用</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">HTML</span>
+      <span class="tech-item">JavaScript</span>
+      <span class="tech-item">Mermaid</span>
+      <span class="tech-item">PWA</span>
+      <span class="tech-item">Service Worker</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/Pikachu_Mermaid/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>在线打开</a>
+      <a class="btn-code" href="https://github.com/yohoten/Pikachu_Mermaid" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">pb-dev · PowerBuilder 开发辅助 Skill</h3>
+      <span class="showcase-badge badge-skill">AI Skill</span>
+    </div>
+    <p class="showcase-desc">面向 PowerBuilder 10 / 25 桌面开发的 Agent Skill：覆盖 .sr* 源文件编辑、ORCA 与 PBL 库管理、DataWindow 设计、嵌入式与动态 SQL、匈牙利命名法、SQL Anywhere 连接排错、exe 编译打包与项目重命名改造，并把 CRLF、双重编码、.srm 导入失败等实战红线固化成清单。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">1386 行 SKILL.md</span>
+      <span class="metric-item">13 篇参考文档</span>
+      <span class="metric-item">PBL ⇄ .sr* 全流程</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">PowerBuilder</span>
+      <span class="tech-item">PowerScript</span>
+      <span class="tech-item">ORCA</span>
+      <span class="tech-item">DataWindow</span>
+      <span class="tech-item">SQL Anywhere</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/PB-dev/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/PB-dev" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">JD Sniper · 京东预约秒杀脚本</h3>
+      <span class="showcase-badge badge-script">脚本工具</span>
+    </div>
+    <p class="showcase-desc">三步跑通一次抢购的命令行脚本：JD APP 扫码登录（无需手动维护 Cookie）、与服务器校时的定时预约、到点自动提交订单并在日志中回传订单号。<strong>仅供技术学习与研究</strong>，使用可能违反平台用户协议，风险自负（GPL-3.0）。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">扫码登录</span>
+      <span class="metric-item">网络校时预约</span>
+      <span class="metric-item">日志确认结果</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">requests</span>
+      <span class="tech-item">lxml</span>
+      <span class="tech-item">config.ini</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/JD_Sniper/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/JD_Sniper" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card">
+    <div class="showcase-header">
+      <h3 class="showcase-title">CQCR · 局域网聊天室</h3>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">服务端与客户端合一的局域网聊天室：socket 负责通信、tkinter 负责界面，服务端用 select 多路复用，单线程即可并发处理多客户端。采用 4 字节长度前缀帧协议防粘包 / 半包，上线下线自动广播、在线成员树形列表实时刷新，端口可配置并持久化到 config.ini。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">select 多路复用</span>
+      <span class="metric-item">长度前缀帧协议</span>
+      <span class="metric-item">零第三方依赖</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">socket</span>
+      <span class="tech-item">select</span>
+      <span class="tech-item">tkinter</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://github.com/yohoten/CQCR" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码仓库</a>
+      <span class="btn-disabled"><i class="fas fa-hourglass-half"></i>介绍页未发布</span>
+      <!-- 等 Pages 上线后，把上面两行换成下面这两行：
+      <a class="btn-demo" href="https://yohoten.github.io/CQCR/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/CQCR" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+      -->
     </div>
   </div>
 

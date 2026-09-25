@@ -190,12 +190,12 @@ showcase:
 - 页面文件：[`source/tools/index.md`](source/tools/index.md)（front matter：`type: "showcase"` + `aside: false`）
 - 内容分工：工具介绍页放在**各自仓库自己的 GitHub Pages**（`index.html`），博客只做入口，避免同一份内容两处维护
 - 按钮约定：`.btn-demo`（青色渐变，主入口）→ 项目主页；`.btn-code` → 源码仓库 / 国内镜像 / 站内开发笔记
-- 徐章配色：`.badge-app`（桌面应用）、`.badge-script`（脚本工具），定义在 `source/css/showcase.css`
+- 徽章配色：`.badge-app`（桌面应用）、`.badge-script`（脚本工具）、`.badge-web`（网页应用）、`.badge-game`（小游戏）、`.badge-skill`（AI Skill），定义在 `source/css/showcase.css`
 
 ### 新增一个工具
 
 1. 在 `source/tools/index.md` 的 `.showcase-grid` 中复制一张 `.showcase-card`
-2. 替换标题、徐章、`showcase-desc`（20~60 字）、`showcase-metrics`、`showcase-meta` 与 `showcase-links`
+2. 替换标题、徽章、`showcase-desc`（20~60 字）、`showcase-metrics`、`showcase-meta` 与 `showcase-links`
 3. 若该工具已有站内文章，可追加一条「开发笔记」内链（如 `/2026/05/24/ACRPA-桌面自动化工作流工具/`）
 4. 卡片超过 6 张会自动分页；不足一页时分页条自动隐藏
 

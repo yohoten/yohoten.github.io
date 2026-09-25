@@ -194,10 +194,15 @@ showcase:
 
 ### 新增一个工具
 
-1. 在 `source/tools/index.md` 的 `.showcase-grid` 中复制一张 `.showcase-card`
-2. 替换标题、徽章、`showcase-desc`（20~60 字）、`showcase-metrics`、`showcase-meta` 与 `showcase-links`
-3. 若该工具已有站内文章，可追加一条「开发笔记」内链（如 `/2026/05/24/ACRPA-桌面自动化工作流工具/`）
-4. 卡片超过 6 张会自动分页；不足一页时分页条自动隐藏
+1. 在 `source/tools/index.md` 的 `.showcase-grid` 中复制一张 `.showcase-card`，**卡片上的 `data-badge` 必须与徽章类型一致**（`app` / `web` / `script` / `game` / `skill`），否则类型筛选会漏掉它
+2. 标题行用 `.showcase-headline` 包住「图标 + 标题」，图标类名与徽章同色（`.icon-app` / `.icon-web` / …）
+3. 替换标题、徽章、`showcase-desc`（20~60 字）、`showcase-metrics`、`showcase-meta` 与 `showcase-links`
+4. 若该工具已有站内文章，可追加一条「开发笔记」内链（如 `/2026/05/24/ACRPA-桌面自动化工作流工具/`）
+5. 分页与筛选无需改动：`showcase-pagination.js` 会自动统计每个 chip 的数量、按筛选结果分页（每页 6 张，不足一页时分页条自动隐藏）
+
+> 新增一个**类别**时要改三处：`showcase.css` 里加 `.badge-xxx` 与 `.icon-xxx`（颜色走 `--sh-c-xxx` 变量，并在 `html[data-theme="light"]` 里给一个压暗值）、卡片徽章、以及页内 `#showcaseFilter` 的 chip。
+>
+> 描述会被 `-webkit-line-clamp` 统一截成 4 行以保持卡片等高，完整说明请放在项目主页。
 
 > 建议子目录 / 文章 slug 用英文（如 `/tools/`），中文目录名在 GitHub Pages 上会被百分号编码，链接不好读。
 

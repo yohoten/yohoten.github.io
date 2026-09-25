@@ -23,6 +23,28 @@
   --sh-shadow-sm: 0 2px 8px rgba(123, 44, 191, .06), 0 1px 2px rgba(123, 44, 191, .04);
   --sh-shadow-md: 0 8px 24px rgba(123, 44, 191, .08), 0 2px 6px rgba(123, 44, 191, .04);
   --sh-shadow-lg: 0 20px 48px rgba(123, 44, 191, .12), 0 4px 12px rgba(123, 44, 191, .06);
+
+  /* 徽章 / 强调色：深色模式为默认值，浅色模式在下方压暗 */
+  --sh-c-viz: #00b8d4;
+  --sh-c-ml: #b26bfa;
+  --sh-c-bi: #1fb98c;
+  --sh-c-app: #ef8a1f;
+  --sh-c-script: #12a598;
+  --sh-c-web: #3b74d6;
+  --sh-c-game: #d94f80;
+  --sh-c-skill: #7b62d8;
+}
+
+/* 浅色模式下白底上固定 hex 偏淡，统一压暗一档保证对比度 */
+html[data-theme="light"] {
+  --sh-c-viz: #0090a8;
+  --sh-c-ml: #8a30cc;
+  --sh-c-bi: #128a68;
+  --sh-c-app: #b96405;
+  --sh-c-script: #0b7d72;
+  --sh-c-web: #2a5bb5;
+  --sh-c-game: #b53a66;
+  --sh-c-skill: #5c43b8;
 }
 
 /* ---------- 全局排版细节（字体平滑 + 自定义选区） ---------- */
@@ -210,25 +232,30 @@
   white-space: nowrap;
 }
 
-#article-container .showcase-card .badge-viz  { background: rgba(0, 212, 255, .15); color: #00b8d4; }
-#article-container .showcase-card .badge-ml   { background: rgba(123, 44, 191, .15); color: #b26bfa; }
-#article-container .showcase-card .badge-bi   { background: rgba(100, 255, 218, .15); color: #1fb98c; }
-#article-container .showcase-card .badge-data { background: rgba(0, 212, 255, .15); color: #00b8d4; }
+#article-container .showcase-card .badge-viz  { background: rgba(0, 212, 255, .15); color: var(--sh-c-viz); }
+#article-container .showcase-card .badge-ml   { background: rgba(123, 44, 191, .15); color: var(--sh-c-ml); }
+#article-container .showcase-card .badge-bi   { background: rgba(100, 255, 218, .15); color: var(--sh-c-bi); }
+#article-container .showcase-card .badge-data { background: rgba(0, 212, 255, .15); color: var(--sh-c-viz); }
 #article-container .showcase-card .badge-tpl  { background: rgba(200, 200, 200, .18); color: var(--font-color); opacity: .8; }
 /* 小口袋（自研工具）页徽章 */
-#article-container .showcase-card .badge-app  { background: rgba(255, 159, 67, .16); color: #ef8a1f; }
-#article-container .showcase-card .badge-script { background: rgba(46, 196, 182, .16); color: #12a598; }
-#article-container .showcase-card .badge-web    { background: rgba(76, 139, 245, .16); color: #3b74d6; }
-#article-container .showcase-card .badge-game   { background: rgba(233, 96, 146, .16); color: #d94f80; }
-#article-container .showcase-card .badge-skill  { background: rgba(140, 122, 230, .16); color: #7b62d8; }
+#article-container .showcase-card .badge-app  { background: rgba(255, 159, 67, .16); color: var(--sh-c-app); }
+#article-container .showcase-card .badge-script { background: rgba(46, 196, 182, .16); color: var(--sh-c-script); }
+#article-container .showcase-card .badge-web    { background: rgba(76, 139, 245, .16); color: var(--sh-c-web); }
+#article-container .showcase-card .badge-game   { background: rgba(233, 96, 146, .16); color: var(--sh-c-game); }
+#article-container .showcase-card .badge-skill  { background: rgba(140, 122, 230, .16); color: var(--sh-c-skill); }
 
-/* 描述 */
+/* 描述：统一限高 4 行，避免长短不一把卡片撑得高高低低（完整说明在项目主页） */
 #article-container .showcase-card .showcase-desc {
   margin: 0 0 1rem;
   font-size: .9em;
   line-height: 1.7;
   color: var(--font-color);
   opacity: .78;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* 核心指标（参考站点 metric-item） */
@@ -244,7 +271,7 @@
   background: rgba(0, 212, 255, .08);
   border-radius: 4px;
   font-size: .76rem;
-  color: #00b8d4;
+  color: var(--sh-c-viz);
   font-weight: 500;
 }
 
@@ -541,6 +568,127 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* ============================================================
+   小口袋页增强：卡片图标锚点 + 类型筛选 + 键盘焦点
+   ============================================================ */
+
+/* ---------- 标题行：图标 + 标题 ---------- */
+#article-container .showcase-card .showcase-headline {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  min-width: 0;
+}
+
+#article-container .showcase-card .showcase-headline .showcase-title {
+  flex: 1;
+  min-width: 0;
+}
+
+#article-container .showcase-card .showcase-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  font-size: 1rem;
+  background: var(--sh-accent-soft);
+  color: var(--sh-accent);
+  transition: transform .35s ease;
+}
+
+#article-container .showcase-card:hover .showcase-icon {
+  transform: scale(1.06) rotate(-4deg);
+}
+
+/* 图标配色跟随徽章类型 */
+#article-container .showcase-card .icon-app    { background: rgba(255, 159, 67, .14); color: var(--sh-c-app); }
+#article-container .showcase-card .icon-script { background: rgba(46, 196, 182, .14); color: var(--sh-c-script); }
+#article-container .showcase-card .icon-web    { background: rgba(76, 139, 245, .14); color: var(--sh-c-web); }
+#article-container .showcase-card .icon-game   { background: rgba(233, 96, 146, .14); color: var(--sh-c-game); }
+#article-container .showcase-card .icon-skill  { background: rgba(140, 122, 230, .14); color: var(--sh-c-skill); }
+
+/* ---------- 类型筛选 chip ---------- */
+#article-container .showcase-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 1.4rem;
+}
+
+#article-container .filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .45em;
+  padding: .42em 1em;
+  border-radius: 20px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, .1));
+  background: var(--card-bg);
+  color: var(--font-color);
+  font-family: inherit;
+  font-size: .84rem;
+  cursor: pointer;
+  transition: all .28s ease;
+}
+
+#article-container .filter-chip:hover {
+  border-color: rgba(0, 212, 255, .45);
+  transform: translateY(-1px);
+}
+
+#article-container .filter-chip.active {
+  background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 212, 255, .25);
+}
+
+#article-container .filter-chip .filter-count {
+  font-family: var(--sh-font-mono);
+  font-size: .74em;
+  opacity: .7;
+}
+
+/* 筛选无结果时的提示（由 JS 切换 display） */
+#article-container .showcase-empty {
+  display: none;
+  margin: 1.2rem 0 2rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px dashed var(--card-border, rgba(0, 0, 0, .15));
+  color: var(--font-color);
+  opacity: .65;
+  font-size: .9rem;
+  text-align: center;
+}
+
+/* ---------- 键盘可达：焦点可见（此前全站没有任何 :focus-visible） ---------- */
+#article-container .showcase-card a:focus-visible,
+#article-container .filter-chip:focus-visible,
+#article-container .sp-btn:focus-visible {
+  outline: 2px solid var(--sh-cyan);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ---------- 窄屏：图标不挤压标题，chip 更紧凑 ---------- */
+@media (max-width: 480px) {
+  #article-container .showcase-card .showcase-icon {
+    width: 34px;
+    height: 34px;
+    font-size: .92rem;
+  }
+  #article-container .showcase-filter {
+    gap: .4rem;
+  }
+  #article-container .filter-chip {
+    padding: .45em .85em;
+    font-size: .8rem;
   }
 }
 

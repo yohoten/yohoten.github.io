@@ -39,11 +39,23 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
 
 <h2 class="showcase-title-block">工具清单</h2>
 
+<div class="showcase-filter" id="showcaseFilter">
+  <button type="button" class="filter-chip active" data-filter="all">全部<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="app">桌面应用<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="web">网页应用<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="script">脚本工具<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="game">小游戏<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="skill">AI Skill<span class="filter-count"></span></button>
+</div>
+
 <div class="showcase-grid">
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="app">
     <div class="showcase-header">
-      <h3 class="showcase-title">ACRPA · 轻量级桌面自动化工作流工具</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-robot"></i></span>
+        <h3 class="showcase-title">ACRPA · 轻量级桌面自动化工作流工具</h3>
+      </div>
       <span class="showcase-badge badge-app">桌面应用</span>
     </div>
     <p class="showcase-desc">专为普通用户设计的桌面自动化工具：Python + tkinter 图形界面，底层操作由 pyautogui 实现。不用写代码，用 Excel（.xls）与 JSON 脚本编排流程，借助图像识别定位，即可让电脑自动完成重复性桌面任务。</p>
@@ -67,9 +79,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="app">
     <div class="showcase-header">
-      <h3 class="showcase-title">Py 书斋 · PyShelf 拟物复古书架阅读器</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-book-open"></i></span>
+        <h3 class="showcase-title">Py 书斋 · PyShelf 拟物复古书架阅读器</h3>
+      </div>
       <span class="showcase-badge badge-app">桌面应用</span>
     </div>
     <p class="showcase-desc">纯 Python 本地桌面工具：把书籍目录变成一间深色书房——程序化绘制木纹书架、以 PDF 首页作真实封面、红丝带书签与烛光夜读模式。内置 GitHub 开源书库 / arXiv / Gutenberg / URL 直链与自定义 JSON 规则书源检索，阅读数据全本地，不改原书一字一节。</p>
@@ -91,9 +106,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="app">
     <div class="showcase-header">
-      <h3 class="showcase-title">WinSweep · Windows 垃圾清理与一站式优化</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-broom"></i></span>
+        <h3 class="showcase-title">WinSweep · Windows 垃圾清理与一站式优化</h3>
+      </div>
       <span class="showcase-badge badge-app">桌面应用</span>
     </div>
     <p class="showcase-desc">只用 Python 标准库写的系统清理与优化工具，双击即用、零第三方依赖。五大模块覆盖缓存清理、预装应用移除（集成 Win11Debloat）、Neon 优化包、DISM / sfc / chkdsk 系统工具与磁盘信息监控，危险项按低 / 中 / 高危分级并强制二次确认。</p>
@@ -115,9 +133,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="app">
     <div class="showcase-header">
-      <h3 class="showcase-title">InEx_System v2.0 · 个人收支管理系统</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-calculator"></i></span>
+        <h3 class="showcase-title">InEx_System v2.0 · 个人收支管理系统</h3>
+      </div>
       <span class="showcase-badge badge-app">桌面应用</span>
     </div>
     <p class="showcase-desc">基于 PyQt5 的跨数据库桌面记账软件：策略模式 + 工厂模式抽象出 DatabaseBackend，一套业务代码同时驱动 SQLite / MySQL 8.0 / Sybase ASA 9。覆盖录入 → 流水账 → 月报 → 可视化 → AI 建议的完整闭环，含预算四级预警与消费异常检测。</p>
@@ -140,9 +161,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="game">
     <div class="showcase-header">
-      <h3 class="showcase-title">天青 · 中国象棋（Tianqing Chinese Chess）</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-game"><i class="fas fa-chess"></i></span>
+        <h3 class="showcase-title">天青 · 中国象棋（Tianqing Chinese Chess）</h3>
+      </div>
       <span class="showcase-badge badge-game">小游戏</span>
     </div>
     <p class="showcase-desc">Python + pygame 的中国象棋人机对战程序：negamax + Alpha-Beta 剪枝、Zobrist 置换表、历史启发与迭代加深，默认 2 秒思考预算且界面不冻结。规则层覆盖蹩马腿、塞象眼、炮架、飞将与不送将过滤，支持悔棋、将军 / 将死 / 困毙判定与棋局分析面板。</p>
@@ -164,9 +188,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="web">
     <div class="showcase-header">
-      <h3 class="showcase-title">Pikachu Mermaid · 零依赖图表编辑器</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-web"><i class="fas fa-diagram-project"></i></span>
+        <h3 class="showcase-title">Pikachu Mermaid · 零依赖图表编辑器</h3>
+      </div>
       <span class="showcase-badge badge-web">网页应用</span>
     </div>
     <p class="showcase-desc">纯 Web 单文件方案的 Mermaid 编辑器，浏览器打开即用，不需要 Python / PyQt 或任何安装。实时预览带 200ms 防抖与语法高亮，自建历史栈支持撤销重做，渲染失败在对应行标红波浪线；可安装为 PWA 桌面应用并完全离线使用。</p>
@@ -188,9 +215,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="skill">
     <div class="showcase-header">
-      <h3 class="showcase-title">pb-dev · PowerBuilder 开发辅助 Skill</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-skill"><i class="fas fa-screwdriver-wrench"></i></span>
+        <h3 class="showcase-title">pb-dev · PowerBuilder 开发辅助 Skill</h3>
+      </div>
       <span class="showcase-badge badge-skill">AI Skill</span>
     </div>
     <p class="showcase-desc">面向 PowerBuilder 10 / 25 桌面开发的 Agent Skill：覆盖 .sr* 源文件编辑、ORCA 与 PBL 库管理、DataWindow 设计、嵌入式与动态 SQL、匈牙利命名法、SQL Anywhere 连接排错、exe 编译打包与项目重命名改造，并把 CRLF、双重编码、.srm 导入失败等实战红线固化成清单。</p>
@@ -212,9 +242,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="script">
     <div class="showcase-header">
-      <h3 class="showcase-title">JD Sniper · 京东预约秒杀脚本</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-script"><i class="fas fa-bolt"></i></span>
+        <h3 class="showcase-title">JD Sniper · 京东预约秒杀脚本</h3>
+      </div>
       <span class="showcase-badge badge-script">脚本工具</span>
     </div>
     <p class="showcase-desc">三步跑通一次抢购的命令行脚本：JD APP 扫码登录（无需手动维护 Cookie）、与服务器校时的定时预约、到点自动提交订单并在日志中回传订单号。<strong>仅供技术学习与研究</strong>，使用可能违反平台用户协议，风险自负（GPL-3.0）。</p>
@@ -235,9 +268,12 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card" data-badge="app">
     <div class="showcase-header">
-      <h3 class="showcase-title">CQCR · 局域网聊天室</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-comments"></i></span>
+        <h3 class="showcase-title">CQCR · 局域网聊天室</h3>
+      </div>
       <span class="showcase-badge badge-app">桌面应用</span>
     </div>
     <p class="showcase-desc">服务端与客户端合一的局域网聊天室：socket 负责通信、tkinter 负责界面，服务端用 select 多路复用，单线程即可并发处理多客户端。采用 4 字节长度前缀帧协议防粘包 / 半包，上线下线自动广播、在线成员树形列表实时刷新，端口可配置并持久化到 config.ini。</p>
@@ -263,5 +299,7 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
   </div>
 
 </div>
+
+<div class="showcase-empty" id="showcaseEmpty">这个类别下暂时没有工具，换一个筛选看看。</div>
 
 <div class="showcase-pagination" id="showcasePagination"></div>

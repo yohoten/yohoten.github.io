@@ -215,6 +215,9 @@
 #article-container .showcase-card .badge-bi   { background: rgba(100, 255, 218, .15); color: #1fb98c; }
 #article-container .showcase-card .badge-data { background: rgba(0, 212, 255, .15); color: #00b8d4; }
 #article-container .showcase-card .badge-tpl  { background: rgba(200, 200, 200, .18); color: var(--font-color); opacity: .8; }
+/* 小口袋（自研工具）页徽章 */
+#article-container .showcase-card .badge-app  { background: rgba(255, 159, 67, .16); color: #ef8a1f; }
+#article-container .showcase-card .badge-script { background: rgba(46, 196, 182, .16); color: #12a598; }
 
 /* 描述 */
 #article-container .showcase-card .showcase-desc {

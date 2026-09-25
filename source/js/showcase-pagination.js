@@ -22,6 +22,13 @@
   if (current > totalPages) current = totalPages;
 
   function renderPager() {
+    // 不足一页时不渲染分页条（条目较少的页面如「小口袋」）
+    if (totalPages <= 1) {
+      pager.innerHTML = '';
+      pager.style.display = 'none';
+      return;
+    }
+    pager.style.display = '';
     var html = '';
     html += '<button type="button" class="sp-btn sp-prev"' + (current === 1 ? ' disabled' : '') + ' data-page="' + (current - 1) + '"><i class="fas fa-chevron-left"></i>上一页</button>';
     for (var p = 1; p <= totalPages; p++) {

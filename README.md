@@ -8,7 +8,7 @@
 
 - 🎨 **现代卡片式 UI**：紫色主色调、顶部横幅（banner）、旋转头像、深浅色切换
 - 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索
-- 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 友链 / 关于 / 404
+- 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 小口袋 / 友链 / 关于 / 404
 - 💻 **Mac 风格代码高亮**、文章封面、目录（TOC）、相关文章、文章版权
 - 📊 **访问统计**：基于不蒜子（busuanzi）的 PV / UV
 - 🔍 **SEO**：sitemap.xml + robots.txt
@@ -40,6 +40,7 @@ Yohoten_Blog/
 │   ├── tags/                # 标签页
 │   ├── link/                # 友链页
 │   ├── showcase/            # 作品集（数据分析/可视化作品展示）
+│   ├── tools/               # 小口袋（自研桌面工具 / 脚本介绍页）
 │   ├── css/                 # 自定义样式（如 showcase.css）
 │   └── images/              # 本地图片资源（头像、横幅、封面、图标）
 ├── .github/workflows/       # GitHub Actions 自动部署
@@ -181,6 +182,24 @@ showcase:
 4. 在总览页 `.showcase-grid` 中复制一张 `.showcase-card` 卡片，替换 `href` / 封面 / 标题 / 描述 / 标签 / 链接
 
 > 命令行方式：`npx hexo new showcase "标题" --path showcase/slug`（使用 [`scaffolds/showcase.md`](scaffolds/showcase.md) 模板）。
+
+## 🧰 小口袋页（tools）
+
+导航栏「小口袋」入口指向 `/tools/`，收录**自研桌面工具 / 脚本 / 效率应用**。它与「作品集」共用一套卡片样式与分页脚本（`showcase.css` / `showcase-pagination.js` 已全站注入，无需额外配置）。
+
+- 页面文件：[`source/tools/index.md`](source/tools/index.md)（front matter：`type: "showcase"` + `aside: false`）
+- 内容分工：工具介绍页放在**各自仓库自己的 GitHub Pages**（`index.html`），博客只做入口，避免同一份内容两处维护
+- 按钮约定：`.btn-demo`（青色渐变，主入口）→ 项目主页；`.btn-code` → 源码仓库 / 国内镜像 / 站内开发笔记
+- 徐章配色：`.badge-app`（桌面应用）、`.badge-script`（脚本工具），定义在 `source/css/showcase.css`
+
+### 新增一个工具
+
+1. 在 `source/tools/index.md` 的 `.showcase-grid` 中复制一张 `.showcase-card`
+2. 替换标题、徐章、`showcase-desc`（20~60 字）、`showcase-metrics`、`showcase-meta` 与 `showcase-links`
+3. 若该工具已有站内文章，可追加一条「开发笔记」内链（如 `/2026/05/24/ACRPA-桌面自动化工作流工具/`）
+4. 卡片超过 6 张会自动分页；不足一页时分页条自动隐藏
+
+> 建议子目录 / 文章 slug 用英文（如 `/tools/`），中文目录名在 GitHub Pages 上会被百分号编码，链接不好读。
 
 ## 🌐 站点配置（_config.yml）
 

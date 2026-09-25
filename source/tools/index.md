@@ -33,6 +33,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
   <li>pandas</li>
   <li>matplotlib</li>
   <li>Alpha-Beta</li>
+  <li>pyqtgraph</li>
+  <li>openpyxl</li>
+  <li>PyInstaller</li>
   <li>零依赖</li>
   <li>GitHub Pages</li>
 </ul>
@@ -158,6 +161,65 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     <div class="showcase-links">
       <a class="btn-demo" href="https://yohoten.github.io/InEx_System-v2.0/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
       <a class="btn-code" href="https://github.com/yohoten/InEx_System-v2.0" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-warehouse"></i></span>
+        <h3 class="showcase-title">进销存管理系统 · Inventory System</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">面向中小企业的轻量级进销存桌面系统：Python + Tkinter 界面，数据全部存在本地 SQLite（inventory.db），不联网、不订阅、不丢账。进货自动累加入库、出库实时扣减并在库存不足时直接拦截防超卖，低于阈值自动红色预警，支持按年查询统计、Excel 导出与单据打印预览。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">6 个功能模块</span>
+      <span class="metric-item">单文件 inventory.db</span>
+      <span class="metric-item">本地存储零订阅</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Tkinter / ttk</span>
+      <span class="tech-item">SQLite3</span>
+      <span class="tech-item">openpyxl</span>
+      <span class="tech-item">PyInstaller</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/inventory_system/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/inventory_system" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-chart-line"></i></span>
+        <h3 class="showcase-title">LTV 数据子序列分析系统</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">PyQt5 + pyqtgraph 写的交互式客户生命周期价值（LTV）分析工具：LTV 序列对比、借鉴定位图的 OncoPrint 事件图、相关性热力图与原始表格四种视图，支持缩放平移、点击详情、条件筛选与时间范围选择，内置趋势线拟合、异常检测标记与 ARIMA / LSTM 预测。</p>
+    <div class="showcase-metrics">
+      <span class="metric-item">4 种可视化视图</span>
+      <span class="metric-item">ARIMA + LSTM 预测</span>
+      <span class="metric-item">分层依赖可打包</span>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">PyQt5</span>
+      <span class="tech-item">pyqtgraph</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">statsmodels</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://github.com/yohoten/LTV_apy_subsequence" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码仓库</a>
+      <span class="btn-disabled"><i class="fas fa-hourglass-half"></i>介绍页未发布</span>
+      <!-- Pages 上线后把上面两行换成这两行（当前 https://yohoten.github.io/LTV_apy_subsequence/ 返回 404）：
+      <a class="btn-demo" href="https://yohoten.github.io/LTV_apy_subsequence/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/LTV_apy_subsequence" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+      -->
     </div>
   </div>
 

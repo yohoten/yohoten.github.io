@@ -15,7 +15,7 @@
   var pager = document.getElementById('showcasePagination');
   if (!grid || !pager) return; // 非作品集/小口袋页面直接跳过
 
-  var PER_PAGE = 6;
+  var PER_PAGE = 9; // 作品集 8 张、小口袋筛选后多数类别单页可放完，避免强制翻页
   var allCards = Array.prototype.slice.call(grid.querySelectorAll('.showcase-card'));
   var filterBar = document.getElementById('showcaseFilter');
   var emptyTip = document.getElementById('showcaseEmpty');

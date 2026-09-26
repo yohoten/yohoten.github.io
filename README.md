@@ -1,8 +1,6 @@
 # Yohoten's Blog 🦋
 
-一个基于 **Hexo + Butterfly** 的个人技术博客，界面设计参考 [Cyrus' Blog](https://blog.codecyrus.com/)。
-
-> 本项目已完成搭建、UI 配置与初始内容编写，`npm install && hexo s` 即可本地预览。
+一个基于 **Hexo + Butterfly** 的个人技术博客
 
 ## ✨ 特性
 
@@ -154,6 +152,9 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 导航栏「作品集」入口指向 `https://你的域名/showcase/`，用于展示**数据分析 / 数据科学 / 数据可视化**方向的作品。结构：
 
 - 总览页：[`source/showcase/index.md`](source/showcase/index.md) —— 作品卡片网格（`.showcase-card`）
+- 卡片视觉：斜切背板分层结构——卡片本身不倾斜，装饰全在 `::before`（背板 skewY）/`::after`（错位投影）上，
+  类型色由 `:has(.badge-*)` 自动映射；首个核心项目可加 `showcase-card--feat` class 跨两列展示；
+  metrics 使用 `<b>数值</b><i>标签</i>` 结构，技术栈超过 5 个自动截断
 - 每个作品一个子页：`source/showcase/项目slug/index.md`，front matter 统一规范见下方
 - 封面图放 `source/images/showcase/`，建议 960×540（16:9）
 - 自定义样式：[`source/css/showcase.css`](source/css/showcase.css)（通过 `inject.head` 注入，自动适配深浅色）

@@ -162,49 +162,93 @@ html[data-theme="light"] {
 }
 
 /* ---------- 作品卡片网格 ---------- */
+/* ---------- 作品卡片网格 ----------
+   row-gap 必须容纳背板 skewY(-5deg) 的垂直溢出（384px 宽约 ±17px），
+   46px = 2×17px 溢出 + 12px 视觉间距；改倾斜角时需同步核对 */
 #article-container .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 1.5rem;
+  gap: 46px 26px;
   margin: 1.4rem 0 2rem;
 }
 
+/* ---------- 卡片：布局层不倾斜，装饰全在伪元素上 ----------
+   ::before = 斜切背板（skewY），::after = 同角度错位投影层（替代 3D 厚度，
+   无需 14.7px 之类依赖固定尺寸的魔数）。内容层保持矩形正向。
+   .reveal 的 transform:none 只作用于卡片本身，不影响伪元素的 skew——
+   这是分层结构的关键收益。isolation:isolate 让 z-index 为负的伪元素
+   不会穿透到页面背景之下。 */
 #article-container .showcase-card {
+  --sk: -5deg;                    /* 背板倾斜角；768px / reduced-motion 下归零 */
+  --sk-soft: -3deg;               /* feature 宽卡用小角度控制溢出 */
+  --sh-c-type: var(--sh-accent);  /* 类型色，由下方 :has(.badge-*) 按徽章映射 */
+  --sh-pt: 1.75rem;               /* 顶部内边距，类型色条纹定位引用，改 padding 需同步 */
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.5rem 1.4rem;
+  padding: var(--sh-pt) 1.625rem 1.5rem;
   border-radius: 16px;
-  background: var(--card-bg);
-  box-shadow: var(--card-box-shadow);
-  border: 1px solid var(--card-border, rgba(0, 0, 0, .06));
+  background: transparent;
   color: var(--font-color);
   text-decoration: none !important;
   position: relative;
-  overflow: hidden;
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  isolation: isolate;
 }
 
 #article-container .showcase-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-  opacity: 0;
-  transition: opacity .3s ease;
+  inset: 0;
+  z-index: -1;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border, rgba(0, 0, 0, .06));
+  transform: skewY(var(--sk));
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1), border-color .3s ease;
 }
 
-#article-container .showcase-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0, 212, 255, .25);
-  box-shadow: var(--card-hover-box-shadow);
+#article-container .showcase-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 16px;
+  background: var(--sh-c-type);
+  opacity: .13;
+  transform: skewY(var(--sk)) translate(12px, 10px);
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1), opacity .3s ease;
 }
 
 #article-container .showcase-card:hover::before {
-  opacity: 1;
+  transform: skewY(0deg) translateY(-5px);
+  border-color: color-mix(in srgb, var(--sh-c-type) 55%, transparent);
 }
+
+#article-container .showcase-card:hover::after {
+  transform: skewY(0deg) translate(0, 0);
+  opacity: .2;
+}
+
+/* 类型色跟随徽章（:has() 免去给每张卡加类型 class） */
+#article-container .showcase-card:has(.badge-viz)    { --sh-c-type: var(--sh-c-viz); }
+#article-container .showcase-card:has(.badge-ml)     { --sh-c-type: var(--sh-c-ml); }
+#article-container .showcase-card:has(.badge-bi)     { --sh-c-type: var(--sh-c-bi); }
+#article-container .showcase-card:has(.badge-data)   { --sh-c-type: var(--sh-c-viz); }
+#article-container .showcase-card:has(.badge-app)    { --sh-c-type: var(--sh-c-app); }
+#article-container .showcase-card:has(.badge-script) { --sh-c-type: var(--sh-c-script); }
+#article-container .showcase-card:has(.badge-web)    { --sh-c-type: var(--sh-c-web); }
+#article-container .showcase-card:has(.badge-game)   { --sh-c-type: var(--sh-c-game); }
+#article-container .showcase-card:has(.badge-skill)  { --sh-c-type: var(--sh-c-skill); }
+
+/* feature 大卡：跨两列突出首个核心项目；宽卡用更小倾斜角控制溢出 */
+#article-container .showcase-card--feat {
+  --sk: var(--sk-soft);
+  grid-column: span 2;
+  padding: 2rem 1.875rem 1.625rem;
+}
+#article-container .showcase-card--feat .showcase-title { font-size: 1.3rem; }
+#article-container .showcase-card--feat .showcase-icon  { width: 50px; height: 50px; font-size: 1.4rem; }
+#article-container .showcase-card--feat .showcase-desc  { font-size: .95em; -webkit-line-clamp: 5; line-clamp: 5; }
+#article-container .showcase-card--feat .metric-item b  { font-size: 1.05rem; }
 
 /* 卡片头部：标题 + 分类徽章 */
 #article-container .showcase-card .showcase-header {
@@ -213,6 +257,27 @@ html[data-theme="light"] {
   align-items: flex-start;
   gap: .8rem;
   margin-bottom: .7rem;
+  position: relative; /* 顶部类型色条纹的定位基准 */
+}
+
+/* 顶部类型色条纹：与背板同角度倾斜（transform-origin 不同但斜率一致，保持平行），
+   hover 时随背板一起归正 */
+#article-container .showcase-card .showcase-header::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--sh-pt));
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--sh-c-type);
+  transform: skewY(var(--sk));
+  transform-origin: left top;
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+}
+
+#article-container .showcase-card:hover .showcase-header::before {
+  transform: skewY(0deg) translateY(-5px);
 }
 
 #article-container .showcase-card .showcase-title {
@@ -258,7 +323,7 @@ html[data-theme="light"] {
   overflow: hidden;
 }
 
-/* 核心指标（参考站点 metric-item） */
+/* 核心指标：数值块（等宽大数值 + 弱化标签），与徽章/技术栈拉开层级 */
 #article-container .showcase-card .showcase-metrics {
   display: flex;
   flex-wrap: wrap;
@@ -267,12 +332,37 @@ html[data-theme="light"] {
 }
 
 #article-container .showcase-card .metric-item {
-  padding: .22em .8em;
-  background: rgba(0, 212, 255, .08);
-  border-radius: 4px;
-  font-size: .76rem;
-  color: var(--sh-c-viz);
+  flex: 1 1 0;
+  min-width: 0;
+  padding: .5rem .65rem;
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--sh-c-type) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sh-c-type) 16%, transparent);
+}
+
+#article-container .showcase-card .metric-item b {
+  display: block;
+  font-family: var(--sh-font-mono);
+  font-size: .92rem;
   font-weight: 500;
+  line-height: 1.35;
+  color: var(--sh-c-type);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#article-container .showcase-card .metric-item i {
+  display: block;
+  font-style: normal;
+  font-size: .72rem;
+  line-height: 1.4;
+  margin-top: 2px;
+  color: var(--font-color);
+  opacity: .55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 技术栈（参考站点 tech-item） */
@@ -291,6 +381,11 @@ html[data-theme="light"] {
   font-size: .74rem;
   color: var(--font-color);
   opacity: .8;
+}
+
+/* 技术栈超过 5 个时截断，保证同行卡片内部高度一致 */
+#article-container .showcase-card .showcase-meta .tech-item:nth-child(n+6) {
+  display: none;
 }
 
 /* 操作按钮（参考站点 project-links） */
@@ -317,6 +412,25 @@ html[data-theme="light"] {
 
 #article-container .showcase-card .showcase-links a i {
   font-size: .9em;
+}
+
+/* 整卡可点：第一个按钮的伪元素铺满整卡作为点击热区（stretched-link 模式），
+   其余按钮提升层级保持各自可点。已知代价：卡片正文文字无法选中。 */
+#article-container .showcase-card .showcase-links a:first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 16px;
+}
+
+#article-container .showcase-card .showcase-links a:not(:first-child) {
+  position: relative;
+  z-index: 2;
+}
+
+#article-container .showcase-card:hover .showcase-links a:first-child {
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--sh-c-type) 40%, transparent);
 }
 
 #article-container .showcase-card .btn-demo {
@@ -412,16 +526,30 @@ html[data-theme="light"] {
   transition: all .3s ease;
 }
 
+/* ---------- 响应式：平板 ---------- */
+@media (max-width: 900px) {
+  #article-container .showcase-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 26px 20px;
+  }
+  /* feature 卡退回单列宽 */
+  #article-container .showcase-card--feat {
+    grid-column: span 1;
+  }
+}
+
 /* ---------- 响应式：平板 / 手机 ---------- */
 @media (max-width: 768px) {
-  /* 作品卡片网格单列 */
+  /* 作品卡片网格单列；背板倾斜归零（触控热区与倾斜轮廓不符） */
   #article-container .showcase-grid {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
-
-  /* 卡片头部：标题在上、徽章在下 */
-  #article-container .showcase-card .showcase-header {
-    flex-direction: column;
+  #article-container .showcase-card {
+    --sk: 0deg;
+    --sk-soft: 0deg;
+    --sh-pt: 1.375rem;
+    padding: 1.375rem 1.25rem 1.25rem;
   }
 
   /* 操作按钮允许换行，每行最多 2 个，保证触控目标足够大 */
@@ -456,6 +584,7 @@ html[data-theme="light"] {
     padding: 1.1rem 1.05rem;
   }
   #article-container .showcase-card {
+    --sh-pt: 1.15rem;
     padding: 1.15rem 1.05rem 1.05rem;
     border-radius: 14px;
   }
@@ -562,11 +691,20 @@ html[data-theme="light"] {
   opacity: 1;
   transform: none;
 }
-/* 尊重系统「减少动态效果」设置 */
+/* 尊重系统「减少动态效果」设置：reveal 直接显示、背板倾斜与过渡全部归零 */
 @media (prefers-reduced-motion: reduce) {
   #article-container .showcase-grid .showcase-card.reveal {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+  #article-container .showcase-card {
+    --sk: 0deg;
+    --sk-soft: 0deg;
+  }
+  #article-container .showcase-card::before,
+  #article-container .showcase-card::after,
+  #article-container .showcase-card .showcase-header::before {
     transition: none;
   }
 }
@@ -606,12 +744,11 @@ html[data-theme="light"] {
   transform: scale(1.06) rotate(-4deg);
 }
 
-/* 图标配色跟随徽章类型 */
-#article-container .showcase-card .icon-app    { background: rgba(255, 159, 67, .14); color: var(--sh-c-app); }
-#article-container .showcase-card .icon-script { background: rgba(46, 196, 182, .14); color: var(--sh-c-script); }
-#article-container .showcase-card .icon-web    { background: rgba(76, 139, 245, .14); color: var(--sh-c-web); }
-#article-container .showcase-card .icon-game   { background: rgba(233, 96, 146, .14); color: var(--sh-c-game); }
-#article-container .showcase-card .icon-skill  { background: rgba(140, 122, 230, .14); color: var(--sh-c-skill); }
+/* 图标配色统一跟随卡片类型色（--sh-c-type 由 :has(.badge-*) 映射），作品集 / 小口袋通用 */
+#article-container .showcase-card .showcase-icon {
+  background: color-mix(in srgb, var(--sh-c-type) 14%, transparent);
+  color: var(--sh-c-type);
+}
 
 /* ---------- 类型筛选 chip ---------- */
 #article-container .showcase-filter {

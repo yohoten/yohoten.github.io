@@ -41,14 +41,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">台湾上市企业破产分析 · TCBA</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-brain"></i></span>
+        <h3 class="showcase-title">台湾上市企业破产分析 · TCBA</h3>
+      </div>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>
     <p class="showcase-desc">基于台湾上市公司财务指标数据（1999–2009 公司-年度样本）构建企业破产风险预测模型：SMOTE 处理严重类别不平衡，Logistic / 决策树 / 随机森林多方案对比 + 调参，以 Recall/F1/PR-AUC 为核心口径评估，配套 6 模块 Streamlit 财务风控决策看板。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">11 个模型方案</span>
-      <span class="metric-item">SMOTE 过采样</span>
-      <span class="metric-item">6 模块风控看板</span>
+      <div class="metric-item"><b>11 个</b><i>模型方案</i></div>
+      <div class="metric-item"><b>SMOTE</b><i>过采样</i></div>
+      <div class="metric-item"><b>6 模块</b><i>风控看板</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -67,14 +70,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">上海房价影响因素挖掘 · 空间数据分析</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-chart-line"></i></span>
+        <h3 class="showcase-title">上海房价影响因素挖掘 · 空间数据分析</h3>
+      </div>
       <span class="showcase-badge badge-data">数据分析</span>
     </div>
     <p class="showcase-desc">基于链家上海租房（约 41 万条）与售房（约 32 万条）公开数据，从小区粒度构建每平米月租金、每平米房价与售租比三大核心指标，结合直方图、箱线图与 QGIS 空间可视化，挖掘影响房价的关键因素。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">41 万+ 租房记录</span>
-      <span class="metric-item">32 万+ 售房记录</span>
-      <span class="metric-item">3 大核心指标</span>
+      <div class="metric-item"><b>41 万+</b><i>租房记录</i></div>
+      <div class="metric-item"><b>32 万+</b><i>售房记录</i></div>
+      <div class="metric-item"><b>3 大</b><i>核心指标</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -92,14 +98,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">Portugal Hotel Booking · 预订分析与取消预测</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-brain"></i></span>
+        <h3 class="showcase-title">Portugal Hotel Booking · 预订分析与取消预测</h3>
+      </div>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>
     <p class="showcase-desc">基于 Hotel Booking Demand 公开数据集（119,390 条原始记录，2015–2017 年葡萄牙两类酒店），完整走通数据清洗 → EDA → 特征工程 → 建模 → 可视化全链路，增强随机森林取消预测准确率 86.81%，配套 Streamlit 数据大屏。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">119,210 条有效记录</span>
-      <span class="metric-item">取消率 37.1%</span>
-      <span class="metric-item">准确率 86.81%</span>
+      <div class="metric-item"><b>119,210</b><i>有效记录</i></div>
+      <div class="metric-item"><b>37.1%</b><i>取消率</i></div>
+      <div class="metric-item"><b>86.81%</b><i>准确率</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -117,14 +126,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">新能源（太阳能）发电探索性分析及预测</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-brain"></i></span>
+        <h3 class="showcase-title">新能源（太阳能）发电探索性分析及预测</h3>
+      </div>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>
     <p class="showcase-desc">基于印度两座太阳能电站发电与气象传感器数据（136,472 条合并记录），完整走通数据读取 → EDA → 相关性分析 → 发电功率预测 → 可视化全链路，辐照度为决定性特征，GBM 预测 R² 最高 0.97，配套 Streamlit 数据大屏。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">136,472 条记录</span>
-      <span class="metric-item">2 座电站</span>
-      <span class="metric-item">GBM R² = 0.97</span>
+      <div class="metric-item"><b>136,472</b><i>合并记录</i></div>
+      <div class="metric-item"><b>2 座</b><i>电站样本</i></div>
+      <div class="metric-item"><b>0.97</b><i>GBM R²</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -140,16 +152,19 @@ aside: false
     </div>
   </div>
 
-  <div class="showcase-card">
+  <div class="showcase-card showcase-card--feat">
     <div class="showcase-header">
-      <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-brain"></i></span>
+        <h3 class="showcase-title">峰流智测 · 景区客流智能预测平台</h3>
+      </div>
       <span class="showcase-badge badge-ml">机器学习</span>
     </div>
     <p class="showcase-desc">以九寨沟 1,869 天真实官方数据为样板，XGBoost 时序预测 R²=0.9665、MAPE≈5.1%，提供未来 7 日滚动预测、90% 置信区间与承载量三色预警，覆盖数据采集→预测→看板→运营决策→API 全链路。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">R² = 0.9665</span>
-      <span class="metric-item">MAPE ≈ 5.1%</span>
-      <span class="metric-item">7 日滚动预测</span>
+      <div class="metric-item"><b>R² = 0.9665</b><i>预测拟合度</i></div>
+      <div class="metric-item"><b>MAPE ≈ 5.1%</b><i>平均误差</i></div>
+      <div class="metric-item"><b>7 日滚动</b><i>带置信区间</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">XGBoost</span>
@@ -168,14 +183,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">Olist 电商多模态智能分析（OMMA）</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-chart-line"></i></span>
+        <h3 class="showcase-title">Olist 电商多模态智能分析（OMMA）</h3>
+      </div>
       <span class="showcase-badge badge-data">数据分析</span>
     </div>
     <p class="showcase-desc">基于巴西 Olist 10 万笔订单的多模态智能分析：融合地理空间、文本情感、评分预测、客户价值细分（RFM + K-Means）、生命周期价值预测（BTYD）与客户流失七大维度，配套 6 模块交互看板。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">10 万笔订单</span>
-      <span class="metric-item">7 大分析维度</span>
-      <span class="metric-item">LSTM 评分预测</span>
+      <div class="metric-item"><b>10 万</b><i>订单笔数</i></div>
+      <div class="metric-item"><b>7 大</b><i>分析维度</i></div>
+      <div class="metric-item"><b>LSTM</b><i>评分预测</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -195,14 +213,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">在线食品数据分析 · 可视化看板</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-chart-line"></i></span>
+        <h3 class="showcase-title">在线食品数据分析 · 可视化看板</h3>
+      </div>
       <span class="showcase-badge badge-data">数据分析</span>
     </div>
     <p class="showcase-desc">基于 388 条在线食品用户消费记录的商务数据分析，通过 Streamlit + Plotly 构建交互看板：5 个 KPI 指标卡 + 多维联动筛选 + 5 个分析标签页，覆盖用户画像、教育与收入、职业分析及线性回归收入预测。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">388 条样本</span>
-      <span class="metric-item">5 大分析标签页</span>
-      <span class="metric-item">收入预测模型</span>
+      <div class="metric-item"><b>388</b><i>有效样本</i></div>
+      <div class="metric-item"><b>5 大</b><i>分析标签页</i></div>
+      <div class="metric-item"><b>回归</b><i>收入预测</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Streamlit</span>
@@ -220,14 +241,17 @@ aside: false
 
   <div class="showcase-card">
     <div class="showcase-header">
-      <h3 class="showcase-title">重庆上市车企财务智能预警研究</h3>
+      <div class="showcase-headline">
+        <span class="showcase-icon"><i class="fas fa-chart-column"></i></span>
+        <h3 class="showcase-title">重庆上市车企财务智能预警研究</h3>
+      </div>
       <span class="showcase-badge badge-viz">数据可视化</span>
     </div>
     <p class="showcase-desc">基于 Streamlit + Plotly + Pandas 打造的交互式数据分析看板，支持多维度筛选、联动图表与关键指标总览，帮助快速洞察数据分布与变化趋势。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">交互式看板</span>
-      <span class="metric-item">多维度联动</span>
-      <span class="metric-item">实时筛选</span>
+      <div class="metric-item"><b>交互看板</b><i>多页联动</i></div>
+      <div class="metric-item"><b>多维联动</b><i>筛选下钻</i></div>
+      <div class="metric-item"><b>实时</b><i>指标总览</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Streamlit</span>

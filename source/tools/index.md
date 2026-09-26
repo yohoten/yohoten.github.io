@@ -63,9 +63,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">专为普通用户设计的桌面自动化工具：Python + tkinter 图形界面，底层操作由 pyautogui 实现。不用写代码，用 Excel（.xls）与 JSON 脚本编排流程，借助图像识别定位，即可让电脑自动完成重复性桌面任务。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">30+ 自动化命令</span>
-      <span class="metric-item">11 个即用模板</span>
-      <span class="metric-item">录制回放生成脚本</span>
+      <div class="metric-item"><b>30+</b><i>自动化命令</i></div>
+      <div class="metric-item"><b>11 个</b><i>即用模板</i></div>
+      <div class="metric-item"><b>录制回放</b><i>脚本生成</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -92,9 +92,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">纯 Python 本地桌面工具：把书籍目录变成一间深色书房——程序化绘制木纹书架、以 PDF 首页作真实封面、红丝带书签与烛光夜读模式。内置 GitHub 开源书库 / arXiv / Gutenberg / URL 直链与自定义 JSON 规则书源检索，阅读数据全本地，不改原书一字一节。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">PDF 2× 超采样渲染</span>
-      <span class="metric-item">5 类内置书源</span>
-      <span class="metric-item">零图片素材</span>
+      <div class="metric-item"><b>PDF 2×</b><i>超采样渲染</i></div>
+      <div class="metric-item"><b>5 类</b><i>内置书源</i></div>
+      <div class="metric-item"><b>零</b><i>图片素材</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -119,9 +119,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">只用 Python 标准库写的系统清理与优化工具，双击即用、零第三方依赖。五大模块覆盖缓存清理、预装应用移除（集成 Win11Debloat）、Neon 优化包、DISM / sfc / chkdsk 系统工具与磁盘信息监控，危险项按低 / 中 / 高危分级并强制二次确认。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">14 项清理 · 3 种模式</span>
-      <span class="metric-item">零第三方依赖</span>
-      <span class="metric-item">高危项引导建还原点</span>
+      <div class="metric-item"><b>14 项</b><i>清理 · 3 模式</i></div>
+      <div class="metric-item"><b>零依赖</b><i>标准库实现</i></div>
+      <div class="metric-item"><b>还原点</b><i>高危项引导</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -146,9 +146,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">基于 PyQt5 的跨数据库桌面记账软件：策略模式 + 工厂模式抽象出 DatabaseBackend，一套业务代码同时驱动 SQLite / MySQL 8.0 / Sybase ASA 9。覆盖录入 → 流水账 → 月报 → 可视化 → AI 建议的完整闭环，含预算四级预警与消费异常检测。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">3 种数据库引擎</span>
-      <span class="metric-item">9 个功能模块</span>
-      <span class="metric-item">约 3,500 行 Python</span>
+      <div class="metric-item"><b>3 种</b><i>数据库引擎</i></div>
+      <div class="metric-item"><b>9 个</b><i>功能模块</i></div>
+      <div class="metric-item"><b>3,500</b><i>行 Python</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">PyQt5</span>
@@ -174,9 +174,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">面向中小企业的轻量级进销存桌面系统：Python + Tkinter 界面，数据全部存在本地 SQLite（inventory.db），不联网、不订阅、不丢账。进货自动累加入库、出库实时扣减并在库存不足时直接拦截防超卖，低于阈值自动红色预警，支持按年查询统计、Excel 导出与单据打印预览。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">6 个功能模块</span>
-      <span class="metric-item">单文件 inventory.db</span>
-      <span class="metric-item">本地存储零订阅</span>
+      <div class="metric-item"><b>6 个</b><i>功能模块</i></div>
+      <div class="metric-item"><b>单文件</b><i>inventory.db</i></div>
+      <div class="metric-item"><b>本地</b><i>零订阅</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -201,9 +201,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">PyQt5 + pyqtgraph 写的交互式客户生命周期价值（LTV）分析工具：LTV 序列对比、借鉴定位图的 OncoPrint 事件图、相关性热力图与原始表格四种视图，支持缩放平移、点击详情、条件筛选与时间范围选择，内置趋势线拟合、异常检测标记与 ARIMA / LSTM 预测。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">4 种可视化视图</span>
-      <span class="metric-item">ARIMA + LSTM 预测</span>
-      <span class="metric-item">分层依赖可打包</span>
+      <div class="metric-item"><b>4 种</b><i>可视化视图</i></div>
+      <div class="metric-item"><b>ARIMA</b><i>LSTM 预测</i></div>
+      <div class="metric-item"><b>分层</b><i>依赖可打包</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -233,9 +233,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">Python + pygame 的中国象棋人机对战程序：negamax + Alpha-Beta 剪枝、Zobrist 置换表、历史启发与迭代加深，默认 2 秒思考预算且界面不冻结。规则层覆盖蹩马腿、塞象眼、炮架、飞将与不送将过滤，支持悔棋、将军 / 将死 / 困毙判定与棋局分析面板。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">Alpha-Beta + 置换表</span>
-      <span class="metric-item">44 项单元测试</span>
-      <span class="metric-item">深度 3 提速约 7×</span>
+      <div class="metric-item"><b>Alpha-Beta</b><i>置换表加速</i></div>
+      <div class="metric-item"><b>44 项</b><i>单元测试</i></div>
+      <div class="metric-item"><b>≈7×</b><i>深度 3 提速</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -260,9 +260,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">纯 Web 单文件方案的 Mermaid 编辑器，浏览器打开即用，不需要 Python / PyQt 或任何安装。实时预览带 200ms 防抖与语法高亮，自建历史栈支持撤销重做，渲染失败在对应行标红波浪线；可安装为 PWA 桌面应用并完全离线使用。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">9 种图表模板</span>
-      <span class="metric-item">导出 PNG / SVG / PDF / MD</span>
-      <span class="metric-item">PWA 离线可用</span>
+      <div class="metric-item"><b>9 种</b><i>图表模板</i></div>
+      <div class="metric-item"><b>PNG / SVG</b><i>PDF / MD 导出</i></div>
+      <div class="metric-item"><b>PWA</b><i>离线可用</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">HTML</span>
@@ -287,9 +287,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">面向 PowerBuilder 10 / 25 桌面开发的 Agent Skill：覆盖 .sr* 源文件编辑、ORCA 与 PBL 库管理、DataWindow 设计、嵌入式与动态 SQL、匈牙利命名法、SQL Anywhere 连接排错、exe 编译打包与项目重命名改造，并把 CRLF、双重编码、.srm 导入失败等实战红线固化成清单。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">1386 行 SKILL.md</span>
-      <span class="metric-item">13 篇参考文档</span>
-      <span class="metric-item">PBL ⇄ .sr* 全流程</span>
+      <div class="metric-item"><b>1386</b><i>SKILL.md 行数</i></div>
+      <div class="metric-item"><b>13 篇</b><i>参考文档</i></div>
+      <div class="metric-item"><b>全流程</b><i>PBL ⇄ .sr*</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">PowerBuilder</span>
@@ -314,9 +314,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">三步跑通一次抢购的命令行脚本：JD APP 扫码登录（无需手动维护 Cookie）、与服务器校时的定时预约、到点自动提交订单并在日志中回传订单号。<strong>仅供技术学习与研究</strong>，使用可能违反平台用户协议，风险自负（GPL-3.0）。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">扫码登录</span>
-      <span class="metric-item">网络校时预约</span>
-      <span class="metric-item">日志确认结果</span>
+      <div class="metric-item"><b>扫码</b><i>免维护 Cookie</i></div>
+      <div class="metric-item"><b>校时</b><i>网络定时预约</i></div>
+      <div class="metric-item"><b>日志</b><i>结果回传</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>
@@ -340,9 +340,9 @@ description: Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA
     </div>
     <p class="showcase-desc">服务端与客户端合一的局域网聊天室：socket 负责通信、tkinter 负责界面，服务端用 select 多路复用，单线程即可并发处理多客户端。采用 4 字节长度前缀帧协议防粘包 / 半包，上线下线自动广播、在线成员树形列表实时刷新，端口可配置并持久化到 config.ini。</p>
     <div class="showcase-metrics">
-      <span class="metric-item">select 多路复用</span>
-      <span class="metric-item">长度前缀帧协议</span>
-      <span class="metric-item">零第三方依赖</span>
+      <div class="metric-item"><b>select</b><i>多路复用</i></div>
+      <div class="metric-item"><b>帧协议</b><i>防粘包</i></div>
+      <div class="metric-item"><b>零依赖</b><i>标准库实现</i></div>
     </div>
     <div class="showcase-meta">
       <span class="tech-item">Python</span>

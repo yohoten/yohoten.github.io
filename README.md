@@ -9,11 +9,12 @@
 - 🎨 **现代卡片式 UI**：紫色主色调、顶部横幅（banner）、旋转头像、深浅色切换
 - 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索，`search.xml` 首次点开搜索框时才加载
 - 📡 **RSS 订阅**：基于 `hexo-generator-feed` 生成 `atom.xml`，页脚提供订阅入口
+- 📱 **PWA 基础**：manifest + 全端图标（含 maskable），可"添加到主屏幕"；离线缓存需另配 Service Worker
 - 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 小口袋 / 友链 / 关于 / 404
 - 💻 **Mac 风格代码高亮**、文章封面、目录（TOC）、相关文章、文章版权
 - 📊 **访问统计**：基于不蒜子（busuanzi）的 PV / UV
 - 🔍 **SEO**：sitemap.xml + robots.txt
-- 🚀 **一键部署**：本地 `hexo deploy` 或 GitHub Actions 自动发布到 GitHub Pages
+- 🚀 **一键部署**：GitHub Actions 自动发布到 GitHub Pages（本地 deploy 已弃用）
 
 ## 📦 环境要求
 
@@ -64,7 +65,7 @@ npm run build           # 或 npx hexo generate
 npm run clean           # 或 npx hexo clean
 ```
 
-> **Windows cmd 提示**：cmd 不支持 `&&` 链式，请分步执行 `hexo clean`、`hexo generate`、`hexo deploy`。
+> **Windows cmd 提示**：cmd 不支持 `&&` 链式，请分步执行 `hexo clean`、`hexo generate`。
 
 ## ✍️ 写作指南
 
@@ -212,48 +213,40 @@ showcase:
 [`_config.yml`](_config.yml) 中主要改：
 
 - **站点信息**：`title` / `subtitle` / `description` / `author`
-- **URL**：`url` 改成你的真实域名，例如 `https://你的用户名.github.io`
+- **URL**：`url` 改成你的真实域名，例如 `https://你的用户名.github.io`（自定义域名预案见 `_config.yml` 内注释）
 - **时区**：`timezone: Asia/Shanghai`
-- **部署**：`deploy.repo` 改成你自己的仓库地址
 
 ## 🚢 部署到 GitHub Pages
 
-### 方式一：GitHub Actions 自动部署（推荐）
+本项目统一由 **GitHub Actions 自动部署**（`.github/workflows/deploy.yml`），本地 `hexo deploy` 已弃用，`_config.yml` 中的 `deploy` 段已注释保留。双链路（本地推 `main`、CI 推 `gh-pages`）会互相覆盖，不要同时启用。
 
 1. 把本项目源码推送到 GitHub 仓库（`git init` → `git add .` → `git commit` → `git push`）
 2. 仓库 Settings → Pages → **Build and deployment** → Source 选择 **Deploy from a branch** → Branch 选择 **gh-pages**，根目录 `/`
 3. 之后每次 push 到 `main`，Actions 会自动构建并发布到 `gh-pages` 分支，无需手动操作
 
-### 方式二：本地 hexo deploy
+产物根目录包含 `source/.nojekyll`（通过 `_config.yml` 的 `include` 纳入生成），让 GitHub Pages 跳过 Jekyll 处理，避免 `_` 开头路径被忽略。
 
-1. 在 GitHub 新建仓库，命名为 **`你的用户名.github.io`**
-2. 把 [`_config.yml`](_config.yml) 中 `deploy.repo` 换成你的仓库地址（HTTPS 需本机已配置 GitHub 凭证，或改用 SSH 地址）
-3. 执行：
-
-```bash
-npm run clean
-npm run build
-npm run deploy
-```
-
-访问 `https://你的用户名.github.io` 即可看到你的博客。
-
-> 手动部署会把 `public/` 推送到 `deploy.repo` 仓库的 `main` 分支；使用 GitHub Actions 时则推送到 `gh-pages` 分支。二者选其一，避免冲突。
+> 如需恢复本地部署：取消 `_config.yml` 中 `deploy` 的注释（已改为 SSH 地址 + `gh-pages` 分支），并保持与 Pages 设置的分支一致。
 
 ## 📄 404 页面
 
 项目已内置 `source/404.md`（`type: "404"`），构建后生成 `public/404.html`。GitHub Pages 会自动使用根目录的 `404.html` 作为自定义错误页。
 
-## 💬 评论系统（默认关闭）
+## 💬 评论系统：Giscus（基于 GitHub Discussions，零后端）
 
-`_config.butterfly.yml` 末尾已预留 Twikoo 配置模板。启用步骤：
+评论数据存放在仓库 Discussions 中，无需自建服务端。`repo_id` 已实测填好，启用步骤：
 
-1. 部署 Twikoo 服务端（[文档](https://twikoo.js.org/)），拿到环境 ID（envId）
-2. 取消 `_config.butterfly.yml` 末尾 `comments` / `twikoo` 的注释，填入 envId
-3. 执行 `npx hexo clean && npx hexo generate`
+1. 仓库 Settings → General → Features 勾选 **Discussions**，并建一个分类（推荐 Announcements）
+2. 安装 [giscus app](https://github.com/apps/giscus)，仅授权 `yohoten.github.io`
+3. 在 [GraphQL Explorer](https://docs.github.com/en/graphql/overview/explorer) 执行
+   `query { repository(owner:"yohoten", name:"yohoten.github.io") { discussionCategories(first:10){ nodes{ id name } } } }`
+   把分类 id 填入 `_config.butterfly.yml` 的 `giscus.category_id`
+4. 取消 `_config.butterfly.yml` 中 `comments:` / `giscus:` 两处注释，执行 `npx hexo clean && npx hexo generate`
 
 ## 🔍 SEO
 
+- `robots.txt` 不再屏蔽归档/标签/分类页（这些聚合页是长尾入口，屏蔽会导致 sitemap 报
+  「已提交但被 robots.txt 屏蔽」）
 - `hexo-generator-sitemap` 生成 `sitemap.xml`（构建时自动生成）
 - `hexo-generator-feed` 生成 `atom.xml`（构建时自动生成），并在每个页面 `<head>` 注入
   `<link rel="alternate" type="application/atom+xml">` 供阅读器 / AI 聚合器自动发现

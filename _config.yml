@@ -13,8 +13,15 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-## 部署到 GitHub Pages 后，请改成你的真实地址，例如 https://你的用户名.github.io
 url: https://yohoten.github.io
+## 【自定义域名待启用 · 现状：chenxiaoxue.space 当前 DNS 无解析记录（本机 nslookup / curl 均取不到 IP）】
+## 绑定自定义域名需三步同时完成，缺一则 sitemap / atom.xml / canonical 的绝对 URL 会指向不可达地址：
+##   1. 域名 DNS 添加 CNAME 记录指向 yohoten.github.io（A 记录亦可，见 GitHub 文档）
+##   2. 新建 source/CNAME，内容单行写入 chenxiaoxue.space
+##   3. 把上面 url 改为 https://chenxiaoxue.space，并同步 Settings → Pages → Custom domain
+## 三步确认全部就绪后，取消下面两行的注释即为最终形态：
+# url: https://chenxiaoxue.space
+# root: /
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -92,7 +99,9 @@ pagination_dir: page
 
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
+## include 用于把默认被忽略的点文件纳入生成（.nojekyll 让 GitHub Pages 跳过 Jekyll 处理）
 include:
+  - .nojekyll
 exclude:
 ignore:
 
@@ -125,10 +134,16 @@ feed:
   autodiscovery: true
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-## 部署到 GitHub Pages 前请安装: npm install hexo-deployer-git --save
-## 并把 repo 改成你自己的仓库地址
-deploy:
-  type: git
-  repo: https://github.com/yohoten/yohoten.github.io.git # 建议改用 SSH: git@github.com:yohoten/yohoten.github.io.git
-  branch: main
+## 本站统一由 GitHub Actions 部署，本地 deploy 已停用（见下方说明），无需 hexo-deployer-git。
+## CI 链路：.github/workflows/deploy.yml → npm ci → hexo generate → 推送 public/ 到 gh-pages 分支
+##
+## 【务必核对】Settings → Pages → Build and deployment → Source 必须是
+##   "Deploy from a branch" 且分支选 gh-pages / 目录选 / (root)，
+##   否则 CI 跑成功但线上不更新。
+##
+## 本地一键部署已弃用（目标分支 main 与 CI 的 gh-pages 不一致，双链路容易互相覆盖；
+## 且本机 github.com:443 不可达，HTTPS 方式推送必然失败）。确需恢复时再取消下方注释：
+# deploy:
+#   type: git
+#   repo: git@github.com:yohoten/yohoten.github.io.git   # 必须走 SSH，HTTPS 在本机不可达
+#   branch: gh-pages                                     # 与 CI 保持一致

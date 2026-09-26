@@ -229,20 +229,54 @@ lazyload:
   placeholder:
   blur: false
 
-# ---------- 评论系统（默认关闭，按需启用） ----------
-# 使用步骤：
-#   1. 部署 Twikoo 服务端并拿到环境 ID（envId），参考 https://twikoo.js.org/
-#   2. 取消下方注释，填入 envId，保存后执行 hexo clean && hexo generate
+# ---------- 评论系统：Giscus（基于 GitHub Discussions，零后端） ----------
+#
+# ⚠️ 当前状态：差最后一步，未启用。
+#    核查结果（GitHub API）：仓库 yohoten/yohoten.github.io 的 has_discussions = false，
+#    即 Discussions 尚未开启，此时挂上评论会出现加载失败。
+#
+# 启用步骤（约 3 分钟，均需在你的 GitHub 账号下操作）：
+#   1. 仓库 Settings → General → Features 勾选 Discussions，保存后在 Discussions 里建一个分类
+#      （推荐 Announcements，或新建「Blog Comments」）
+#   2. 安装 giscus app：https://github.com/apps/giscus → Configure → 只对 yohoten.github.io 授权
+#   3. 取得该分类的 id（repo_id 已帮你查到并填好）：
+#      打开 https://docs.github.com/en/graphql/overview/explorer 执行
+#        query { repository(owner:"yohoten", name:"yohoten.github.io") {
+#                  discussionCategories(first:10){ nodes{ id name } } } }
+#      把对应分类的 id 填到下面 category_id
+#   4. 取消下方 comments: 与 giscus: 两处注释，执行 npx hexo clean && npx hexo generate
+#
+# 选 Giscus 而非 Twikoo 的理由：本站纯静态托管在 GitHub Pages，Giscus 把评论存在
+# GitHub Discussions，无需自建服务端、无数据库运维成本，也没有第三方服务停摆风险。
+
+giscus:
+  repo: yohoten/yohoten.github.io
+  repo_id: R_kgDOT1gaRw        # 已实测获取（REST /repos 返回的 node_id）
+  category_id: TODO_FILL_ME    # ← 步骤 3 拿到后替换
+  theme:
+    light: light               # 浅色主题
+    dark: dark                 # 深色主题（站点已启用 darkmode，会随主题自动切换）
+  option:
+
 # comments:
-#   use: twikoo
-#   text: true
-#   lazyload: true
-#   count: true
-#   card_post_count: true
-# twikoo:
-#   envId: https://你的twikoo服务地址
-#   region:
-#   option:
+#   use: giscus
+#   text: true                 # 评价/ Emoji 反馈按钮
+#   lazyload: true             # 滚动到评论区才加载 iframe，不影响正文性能
+#   count: false               # 不在列表页显示评论数（省一次 API 往返）
+#   card_post_count: false
+
+# ---------- PWA ----------
+# Butterfly 只注入 manifest 与各端图标 link；离线缓存需另行加 Service Worker（当前未加）。
+# 也就是说：用户可"添加到主屏幕"并获得独立窗口与正确图标，但 Chrome 的
+# 完整"可安装 PWA"判定还要求 Service Worker，如需离线访问再补。
+pwa:
+  enable: true
+  manifest: /pwa/manifest.json
+  theme_color: "#8b5cf6" # 与站点主题色一致
+  apple_touch_icon: /pwa/icons/apple-touch-icon.png # iOS 添加到主屏幕（SVG 不被 iOS 支持，故用 PNG）
+  favicon_32_32: /pwa/icons/favicon-32x32.png
+  favicon_16_16: /pwa/icons/favicon-16x16.png
+  mask_icon: /images/favicon.svg # Safari 固定标签页（需单色 SVG）
 
 # ---------- 注入自定义资源 ----------
 # 作品集页面样式与分页脚本；404 页面美化样式与增强脚本；移动端侧栏精简样式

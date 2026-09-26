@@ -108,11 +108,12 @@ related_post:
   date_type: created
 
 # ---------- 页脚 ----------
+# custom_text 支持 HTML：末尾追加了 RSS 订阅入口（/atom.xml）
 footer:
   owner:
     enable: true
     since: 2025
-  custom_text: 记录技术 · 分享生活 · 保持热爱
+  custom_text: '记录技术 · 分享生活 · 保持热爱 · <a class="footer-rss" href="/atom.xml" target="_blank" rel="noopener" title="订阅本站 RSS"><i class="fas fa-rss"></i> RSS 订阅</a>'
   copyright: true
 
 # ---------- 侧边栏 ----------
@@ -208,9 +209,10 @@ enter_transitions: true
 rightside_scroll_percent: true
 
 # ---------- 本地搜索（需已安装 hexo-generator-search） ----------
+# preload: false —— search.xml 不在首页预加载，改为首次点开搜索框时再请求（首屏少一个请求）
 local_search:
   enable: true
-  preload: true
+  preload: false
   top_n_per_article: 1
   unescape: false
 
@@ -243,11 +245,13 @@ lazyload:
 #   option:
 
 # ---------- 注入自定义资源 ----------
-# 作品集页面样式与分页脚本；404 页面美化样式与增强脚本
+# 作品集页面样式与分页脚本；404 页面美化样式与增强脚本；移动端侧栏精简样式
 inject:
   head:
     - <link rel="stylesheet" href="/css/showcase.css">
     - <link rel="stylesheet" href="/css/404.css">
+    - <link rel="stylesheet" href="/css/mobile-aside.css">
+    - <link rel="stylesheet" href="/css/footer-rss.css">
   bottom:
     - <script src="/js/showcase-pagination.js" defer></script>
     - <script src="/js/showcase-reveal.js" defer></script>

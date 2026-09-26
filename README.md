@@ -7,7 +7,8 @@
 ## ✨ 特性
 
 - 🎨 **现代卡片式 UI**：紫色主色调、顶部横幅（banner）、旋转头像、深浅色切换
-- 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索
+- 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索，`search.xml` 首次点开搜索框时才加载
+- 📡 **RSS 订阅**：基于 `hexo-generator-feed` 生成 `atom.xml`，页脚提供订阅入口
 - 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 小口袋 / 友链 / 关于 / 404
 - 💻 **Mac 风格代码高亮**、文章封面、目录（TOC）、相关文章、文章版权
 - 📊 **访问统计**：基于不蒜子（busuanzi）的 PV / UV
@@ -114,14 +115,14 @@ cover: /images/cover1.svg   # 封面图（可选，默认从 default_cover 随�
 
 ### 写作 Checklist（发布前自查）
 
-- [ ] 标题简洁明确，能概括文章主题
-- [ ] `description` 已填写（20~40 字，显示在首页卡片与 SEO）
-- [ ] `tags` / `categories` 已设置（与既有分类体系一致）
-- [ ] `cover` 已指定（不指定则从 `default_cover` 随机）
-- [ ] 正文有明确的标题层级（`##` / `###`），便于生成目录
-- [ ] 代码块标注语言（如 `python` / `bash`），可获得高亮
-- [ ] 图片已压缩并放在 `source/images/`，路径以 `/images/` 开头
-- [ ] 本地执行 `hexo clean` + `hexo generate` 预览无报错
+- [x] 标题简洁明确，能概括文章主题
+- [x] `description` 已填写（20~40 字，显示在首页卡片与 SEO）
+- [x] `tags` / `categories` 已设置（与既有分类体系一致）
+- [x] `cover` 已指定（不指定则从 `default_cover` 随机）
+- [x] 正文有明确的标题层级（`##` / `###`），便于生成目录
+- [x] 代码块标注语言（如 `python` / `bash`），可获得高亮
+- [x] 图片已压缩并放在 `source/images/`，路径以 `/images/` 开头
+- [x] 本地执行 `hexo clean` + `hexo generate` 预览无报错
 
 ## 🎨 UI 配置（_config.butterfly.yml）
 
@@ -254,6 +255,8 @@ npm run deploy
 ## 🔍 SEO
 
 - `hexo-generator-sitemap` 生成 `sitemap.xml`（构建时自动生成）
+- `hexo-generator-feed` 生成 `atom.xml`（构建时自动生成），并在每个页面 `<head>` 注入
+  `<link rel="alternate" type="application/atom+xml">` 供阅读器 / AI 聚合器自动发现
 - `source/robots.txt` 声明抓取规则与 Sitemap 地址
 
 ## ❓ 常见问题

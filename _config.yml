@@ -112,6 +112,18 @@ search:
 sitemap:
   path: sitemap.xml
 
+# Feed / RSS 订阅（需 hexo-generator-feed 插件）
+# 生成 /atom.xml；autodiscovery 会自动往每个页面的 <head> 注入
+# <link rel="alternate" type="application/atom+xml">，供 RSS 阅读器与 AI 聚合器自动发现
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  content: true
+  icon: /images/favicon.svg
+  autodiscovery: true
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 ## 部署到 GitHub Pages 前请安装: npm install hexo-deployer-git --save

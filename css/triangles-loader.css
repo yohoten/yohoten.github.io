@@ -1,0 +1,125 @@
+/* ============================================================
+ * 三角形脉冲加载动画（triangles loader）
+ * ------------------------------------------------------------
+ * 用途：
+ *   1) 搜索框首次打开加载 search.xml 时（#loading-database）
+ *   2) 懒加载图片（img[data-lazy-src]）未加载完成时，在所属容器上做占位
+ * 结构：.triangles 容器内 9 个 .tri（部分带 .invert），由 triangles-loader.js 注入
+ * ============================================================ */
+
+.triangles {
+  /* 站点主色；原始配色 #215A6D，需要还原改这一行即可 */
+  --triangles-color: #8b5cf6;
+  transform: translate(-50%, -50%);
+  height: 81px;
+  width: 90px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+/* 缩小版：用于侧栏缩略图等空间较小的容器 */
+.triangles--sm {
+  transform: translate(-50%, -50%) scale(0.45);
+}
+
+/* 覆盖在图片容器之上：不拦截鼠标事件 */
+.triangles--overlay {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 行内版（搜索加载提示）：取消绝对定位，居中排在文字上方 */
+.triangles--inline {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  margin: 0 auto 10px;
+}
+
+.tri {
+  position: absolute;
+  animation: pulse_51 750ms ease-in infinite;
+  border-top: 27px solid var(--triangles-color);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 0px;
+}
+
+.tri.invert {
+  border-top: 0px;
+  border-bottom: 27px solid var(--triangles-color);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.tri:nth-child(1) {
+  left: 30px;
+}
+
+.tri:nth-child(2) {
+  left: 15px;
+  top: 27px;
+  animation-delay: -125ms;
+}
+
+.tri:nth-child(3) {
+  left: 30px;
+  top: 27px;
+}
+
+.tri:nth-child(4) {
+  left: 45px;
+  top: 27px;
+  animation-delay: -625ms;
+}
+
+.tri:nth-child(5) {
+  top: 54px;
+  animation-delay: -250ms;
+}
+
+.tri:nth-child(6) {
+  top: 54px;
+  left: 15px;
+  animation-delay: -250ms;
+}
+
+.tri:nth-child(7) {
+  top: 54px;
+  left: 30px;
+  animation-delay: -375ms;
+}
+
+.tri:nth-child(8) {
+  top: 54px;
+  left: 45px;
+  animation-delay: -500ms;
+}
+
+.tri:nth-child(9) {
+  top: 54px;
+  left: 60px;
+  animation-delay: -500ms;
+}
+
+@keyframes pulse_51 {
+  0% {
+    opacity: 1;
+  }
+  16.666% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 降低动效偏好：静态显示，不做脉冲（无障碍） */
+@media (prefers-reduced-motion: reduce) {
+  .tri {
+    animation: none;
+    opacity: 0.85;
+  }
+}

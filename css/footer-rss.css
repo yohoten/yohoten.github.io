@@ -1,0 +1,27 @@
+/* ============================================================
+ * 页脚 RSS 订阅入口
+ * ------------------------------------------------------------
+ * 配合 _config.butterfly.yml → footer.custom_text 中的
+ * <a class="footer-rss" href="/atom.xml"> 使用。
+ * 订阅源由 hexo-generator-feed 生成（/atom.xml），
+ * <head> 中另有 rel="alternate" 自动发现标签供阅读器/聚合器识别。
+ * ============================================================ */
+
+.footer-rss {
+  color: var(--light-grey);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-rss i {
+  margin-right: 0.25em;
+  color: #f26522; /* RSS 标准橙 */
+}
+
+.footer-rss:hover {
+  text-decoration: underline;
+}
+
+.footer-rss:hover i {
+  color: #ff8c42;
+}

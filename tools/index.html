@@ -1,0 +1,556 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>小口袋 | Yohoten's Blog</title><meta name="author" content="yohoten"><meta name="copyright" content="yohoten"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA 桌面自动化、Py 书斋、WinSweep 系统清理、InEx_System 收支管理、天青中国象棋、Pikachu Mermaid 等。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小口袋">
+<meta property="og:url" content="https://yohoten.github.io/tools/">
+<meta property="og:site_name" content="Yohoten&#39;s Blog">
+<meta property="og:description" content="Yohoten 自研的桌面工具、网页应用与脚本合集：ACRPA 桌面自动化、Py 书斋、WinSweep 系统清理、InEx_System 收支管理、天青中国象棋、Pikachu Mermaid 等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yohoten.github.io/images/cover4.svg">
+<meta property="article:published_time" content="2026-09-25T04:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-25T04:00:00.000Z">
+<meta property="article:author" content="yohoten">
+<meta property="article:tag" content="博客,数据分析,机器学习,Python,XGBoost,Streamlit,数据可视化,桌面自动化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yohoten.github.io/images/cover4.svg"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="https://yohoten.github.io/tools/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><meta name="msapplication-TileColor" content="#8b5cf6"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/icons/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/icons/favicon-16x16.png"/><link rel="mask-icon" href="/images/favicon.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '小口袋',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2026-09-25 12:00:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/showcase.css"><link rel="stylesheet" href="/css/404.css"><link rel="stylesheet" href="/css/mobile-aside.css"><link rel="stylesheet" href="/css/footer-rss.css"><link rel="stylesheet" href="/css/triangles-loader.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Yohoten's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/wechat_avatar_01.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-toolbox"></i><span> 小口袋</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url('/images/banner-20240815_DSC.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Yohoten's Blog"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/logo.svg"/></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/showcase/"><i class="fa-fw fas fa-chart-line"></i><span> 作品集</span></a></div><div class="menus_item"><a class="site-page" href="/tools/"><i class="fa-fw fas fa-toolbox"></i><span> 小口袋</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">小口袋</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="page"><div id="article-container"><div class="showcase-lead">
+这里是 <strong>Yohoten</strong> 的「小口袋」——放自己写的 <strong>桌面工具 · 网页应用 · 脚本</strong>。
+和「作品集」侧重数据分析与可视化不同，这里的东西都是<strong>日常真的在用</strong>的：为了解决一个具体的小麻烦而写，写完就顺手放上来。
+每张卡片的「项目主页」是图文并茂的介绍页，含功能演示与下载直链；「源码」可以直接看实现细节。
+</div>
+
+<h2 class="showcase-title-block">用到的东西</h2>
+
+<ul class="showcase-cats">
+  <li>Python</li>
+  <li>tkinter</li>
+  <li>PyQt5</li>
+  <li>pygame</li>
+  <li>PyMuPDF</li>
+  <li>Pillow</li>
+  <li>pyautogui</li>
+  <li>socket</li>
+  <li>图像识别</li>
+  <li>Mermaid</li>
+  <li>PWA</li>
+  <li>PowerBuilder</li>
+  <li>DataWindow</li>
+  <li>SQLite</li>
+  <li>MySQL</li>
+  <li>Sybase ASA</li>
+  <li>pandas</li>
+  <li>matplotlib</li>
+  <li>Alpha-Beta</li>
+  <li>pyqtgraph</li>
+  <li>openpyxl</li>
+  <li>PyInstaller</li>
+  <li>零依赖</li>
+  <li>GitHub Pages</li>
+</ul>
+
+<h2 class="showcase-title-block">工具清单</h2>
+
+<div class="showcase-filter" id="showcaseFilter">
+  <button type="button" class="filter-chip active" data-filter="all">全部<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="app">桌面应用<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="web">网页应用<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="script">脚本工具<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="game">小游戏<span class="filter-count"></span></button>
+  <button type="button" class="filter-chip" data-filter="skill">AI Skill<span class="filter-count"></span></button>
+</div>
+
+<div class="showcase-grid">
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-robot"></i></span>
+        <h3 class="showcase-title">ACRPA · 轻量级桌面自动化工作流工具</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">专为普通用户设计的桌面自动化工具：Python + tkinter 图形界面，底层操作由 pyautogui 实现。不用写代码，用 Excel（.xls）与 JSON 脚本编排流程，借助图像识别定位，即可让电脑自动完成重复性桌面任务。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>30+</b><i>自动化命令</i></div>
+      <div class="metric-item"><b>11 个</b><i>即用模板</i></div>
+      <div class="metric-item"><b>录制回放</b><i>脚本生成</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">tkinter</span>
+      <span class="tech-item">pyautogui</span>
+      <span class="tech-item">图像识别</span>
+      <span class="tech-item">工作流编排</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/acrpa/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/acrpa" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+      <a class="btn-code" href="https://gitee.com/yohoten/acrpa" target="_blank" rel="noopener"><i class="fas fa-server"></i>国内镜像</a>
+      <a class="btn-code" href="/2026/05/24/ACRPA-桌面自动化工作流工具/"><i class="fas fa-book-open"></i>开发笔记</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-book-open"></i></span>
+        <h3 class="showcase-title">Py 书斋 · PyShelf 拟物复古书架阅读器</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">纯 Python 本地桌面工具：把书籍目录变成一间深色书房——程序化绘制木纹书架、以 PDF 首页作真实封面、红丝带书签与烛光夜读模式。内置 GitHub 开源书库 / arXiv / Gutenberg / URL 直链与自定义 JSON 规则书源检索，阅读数据全本地，不改原书一字一节。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>PDF 2×</b><i>超采样渲染</i></div>
+      <div class="metric-item"><b>5 类</b><i>内置书源</i></div>
+      <div class="metric-item"><b>零</b><i>图片素材</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">tkinter</span>
+      <span class="tech-item">PyMuPDF</span>
+      <span class="tech-item">Pillow</span>
+      <span class="tech-item">Windows</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/PyShelf/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/PyShelf" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-broom"></i></span>
+        <h3 class="showcase-title">WinSweep · Windows 垃圾清理与一站式优化</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">只用 Python 标准库写的系统清理与优化工具，双击即用、零第三方依赖。五大模块覆盖缓存清理、预装应用移除（集成 Win11Debloat）、Neon 优化包、DISM / sfc / chkdsk 系统工具与磁盘信息监控，危险项按低 / 中 / 高危分级并强制二次确认。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>14 项</b><i>清理 · 3 模式</i></div>
+      <div class="metric-item"><b>零依赖</b><i>标准库实现</i></div>
+      <div class="metric-item"><b>还原点</b><i>高危项引导</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">tkinter</span>
+      <span class="tech-item">ctypes</span>
+      <span class="tech-item">DISM / sfc</span>
+      <span class="tech-item">Windows 10/11</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/WinSweep/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/WinSweep" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-calculator"></i></span>
+        <h3 class="showcase-title">InEx_System v2.0 · 个人收支管理系统</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">基于 PyQt5 的跨数据库桌面记账软件：策略模式 + 工厂模式抽象出 DatabaseBackend，一套业务代码同时驱动 SQLite / MySQL 8.0 / Sybase ASA 9。覆盖录入 → 流水账 → 月报 → 可视化 → AI 建议的完整闭环，含预算四级预警与消费异常检测。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>3 种</b><i>数据库引擎</i></div>
+      <div class="metric-item"><b>9 个</b><i>功能模块</i></div>
+      <div class="metric-item"><b>3,500</b><i>行 Python</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">PyQt5</span>
+      <span class="tech-item">SQLite</span>
+      <span class="tech-item">MySQL</span>
+      <span class="tech-item">Sybase ASA</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">DeepSeek API</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/InEx_System-v2.0/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/InEx_System-v2.0" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-warehouse"></i></span>
+        <h3 class="showcase-title">进销存管理系统 · Inventory System</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">面向中小企业的轻量级进销存桌面系统：Python + Tkinter 界面，数据全部存在本地 SQLite（inventory.db），不联网、不订阅、不丢账。进货自动累加入库、出库实时扣减并在库存不足时直接拦截防超卖，低于阈值自动红色预警，支持按年查询统计、Excel 导出与单据打印预览。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>6 个</b><i>功能模块</i></div>
+      <div class="metric-item"><b>单文件</b><i>inventory.db</i></div>
+      <div class="metric-item"><b>本地</b><i>零订阅</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Tkinter / ttk</span>
+      <span class="tech-item">SQLite3</span>
+      <span class="tech-item">openpyxl</span>
+      <span class="tech-item">PyInstaller</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/inventory_system/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/inventory_system" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-chart-line"></i></span>
+        <h3 class="showcase-title">LTV 数据子序列分析系统</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">PyQt5 + pyqtgraph 写的交互式客户生命周期价值（LTV）分析工具：LTV 序列对比、借鉴定位图的 OncoPrint 事件图、相关性热力图与原始表格四种视图，支持缩放平移、点击详情、条件筛选与时间范围选择，内置趋势线拟合、异常检测标记与 ARIMA / LSTM 预测。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>4 种</b><i>可视化视图</i></div>
+      <div class="metric-item"><b>ARIMA</b><i>LSTM 预测</i></div>
+      <div class="metric-item"><b>分层</b><i>依赖可打包</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">PyQt5</span>
+      <span class="tech-item">pyqtgraph</span>
+      <span class="tech-item">pandas</span>
+      <span class="tech-item">scikit-learn</span>
+      <span class="tech-item">statsmodels</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://github.com/yohoten/LTV_apy_subsequence" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码仓库</a>
+      <span class="btn-disabled"><i class="fas fa-hourglass-half"></i>介绍页未发布</span>
+      <!-- Pages 上线后把上面两行换成这两行（当前 https://yohoten.github.io/LTV_apy_subsequence/ 返回 404）：
+      <a class="btn-demo" href="https://yohoten.github.io/LTV_apy_subsequence/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/LTV_apy_subsequence" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+      -->
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="game">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-game"><i class="fas fa-chess"></i></span>
+        <h3 class="showcase-title">天青 · 中国象棋（Tianqing Chinese Chess）</h3>
+      </div>
+      <span class="showcase-badge badge-game">小游戏</span>
+    </div>
+    <p class="showcase-desc">Python + pygame 的中国象棋人机对战程序：negamax + Alpha-Beta 剪枝、Zobrist 置换表、历史启发与迭代加深，默认 2 秒思考预算且界面不冻结。规则层覆盖蹩马腿、塞象眼、炮架、飞将与不送将过滤，支持悔棋、将军 / 将死 / 困毙判定与棋局分析面板。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>Alpha-Beta</b><i>置换表加速</i></div>
+      <div class="metric-item"><b>44 项</b><i>单元测试</i></div>
+      <div class="metric-item"><b>≈7×</b><i>深度 3 提速</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">pygame</span>
+      <span class="tech-item">negamax</span>
+      <span class="tech-item">Zobrist</span>
+      <span class="tech-item">chessai</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/Tianqing-Chinese-Chess/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/Tianqing-Chinese-Chess" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="web">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-web"><i class="fas fa-diagram-project"></i></span>
+        <h3 class="showcase-title">Pikachu Mermaid · 零依赖图表编辑器</h3>
+      </div>
+      <span class="showcase-badge badge-web">网页应用</span>
+    </div>
+    <p class="showcase-desc">纯 Web 单文件方案的 Mermaid 编辑器，浏览器打开即用，不需要 Python / PyQt 或任何安装。实时预览带 200ms 防抖与语法高亮，自建历史栈支持撤销重做，渲染失败在对应行标红波浪线；可安装为 PWA 桌面应用并完全离线使用。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>9 种</b><i>图表模板</i></div>
+      <div class="metric-item"><b>PNG / SVG</b><i>PDF / MD 导出</i></div>
+      <div class="metric-item"><b>PWA</b><i>离线可用</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">HTML</span>
+      <span class="tech-item">JavaScript</span>
+      <span class="tech-item">Mermaid</span>
+      <span class="tech-item">PWA</span>
+      <span class="tech-item">Service Worker</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/Pikachu_Mermaid/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>在线打开</a>
+      <a class="btn-code" href="https://github.com/yohoten/Pikachu_Mermaid" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="skill">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-skill"><i class="fas fa-screwdriver-wrench"></i></span>
+        <h3 class="showcase-title">pb-dev · PowerBuilder 开发辅助 Skill</h3>
+      </div>
+      <span class="showcase-badge badge-skill">AI Skill</span>
+    </div>
+    <p class="showcase-desc">面向 PowerBuilder 10 / 25 桌面开发的 Agent Skill：覆盖 .sr* 源文件编辑、ORCA 与 PBL 库管理、DataWindow 设计、嵌入式与动态 SQL、匈牙利命名法、SQL Anywhere 连接排错、exe 编译打包与项目重命名改造，并把 CRLF、双重编码、.srm 导入失败等实战红线固化成清单。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>1386</b><i>SKILL.md 行数</i></div>
+      <div class="metric-item"><b>13 篇</b><i>参考文档</i></div>
+      <div class="metric-item"><b>全流程</b><i>PBL ⇄ .sr*</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">PowerBuilder</span>
+      <span class="tech-item">PowerScript</span>
+      <span class="tech-item">ORCA</span>
+      <span class="tech-item">DataWindow</span>
+      <span class="tech-item">SQL Anywhere</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/PB-dev/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/PB-dev" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="script">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-script"><i class="fas fa-bolt"></i></span>
+        <h3 class="showcase-title">JD Sniper · 京东预约秒杀脚本</h3>
+      </div>
+      <span class="showcase-badge badge-script">脚本工具</span>
+    </div>
+    <p class="showcase-desc">三步跑通一次抢购的命令行脚本：JD APP 扫码登录（无需手动维护 Cookie）、与服务器校时的定时预约、到点自动提交订单并在日志中回传订单号。<strong>仅供技术学习与研究</strong>，使用可能违反平台用户协议，风险自负（GPL-3.0）。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>扫码</b><i>免维护 Cookie</i></div>
+      <div class="metric-item"><b>校时</b><i>网络定时预约</i></div>
+      <div class="metric-item"><b>日志</b><i>结果回传</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">requests</span>
+      <span class="tech-item">lxml</span>
+      <span class="tech-item">config.ini</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://yohoten.github.io/JD_Sniper/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/JD_Sniper" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+    </div>
+  </div>
+
+  <div class="showcase-card" data-badge="app">
+    <div class="showcase-header">
+      <div class="showcase-headline">
+        <span class="showcase-icon icon-app"><i class="fas fa-comments"></i></span>
+        <h3 class="showcase-title">CQCR · 局域网聊天室</h3>
+      </div>
+      <span class="showcase-badge badge-app">桌面应用</span>
+    </div>
+    <p class="showcase-desc">服务端与客户端合一的局域网聊天室：socket 负责通信、tkinter 负责界面，服务端用 select 多路复用，单线程即可并发处理多客户端。采用 4 字节长度前缀帧协议防粘包 / 半包，上线下线自动广播、在线成员树形列表实时刷新，端口可配置并持久化到 config.ini。</p>
+    <div class="showcase-metrics">
+      <div class="metric-item"><b>select</b><i>多路复用</i></div>
+      <div class="metric-item"><b>帧协议</b><i>防粘包</i></div>
+      <div class="metric-item"><b>零依赖</b><i>标准库实现</i></div>
+    </div>
+    <div class="showcase-meta">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">socket</span>
+      <span class="tech-item">select</span>
+      <span class="tech-item">tkinter</span>
+    </div>
+    <div class="showcase-links">
+      <a class="btn-demo" href="https://github.com/yohoten/CQCR" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码仓库</a>
+      <span class="btn-disabled"><i class="fas fa-hourglass-half"></i>介绍页未发布</span>
+      <!-- 等 Pages 上线后，把上面两行换成下面这两行：
+      <a class="btn-demo" href="https://yohoten.github.io/CQCR/" target="_blank" rel="noopener"><i class="fas fa-globe"></i>项目主页</a>
+      <a class="btn-code" href="https://github.com/yohoten/CQCR" target="_blank" rel="noopener"><i class="fab fa-github"></i>源码</a>
+      -->
+    </div>
+  </div>
+
+</div>
+
+<div class="showcase-empty" id="showcaseEmpty">这个类别下暂时没有工具，换一个筛选看看。</div>
+
+<div class="showcase-pagination" id="showcasePagination"></div>
+</div></div></main><footer id="footer" style="background-image: url('/images/banner-20240815_DSC.webp')"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By yohoten</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">记录技术 · 分享生活 · 保持热爱 · <a class="footer-rss" href="/atom.xml" target="_blank" rel="noopener" title="订阅本站 RSS"><i class="fas fa-rss"></i> RSS 订阅</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="/js/showcase-pagination.js" defer></script><script src="/js/showcase-reveal.js" defer></script><script src="/js/404.js" defer></script><script src="/js/triangles-loader.js" defer></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

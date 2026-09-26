@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 说明：不要 Disallow 归档/标签/分类页。
+# 这些聚合页是搜索引擎的长尾入口；一旦屏蔽，sitemap 里对应条目会被
+# 判定为「已提交但被 robots.txt 屏蔽」，既不抓取也不索引。
+# 若担心重复内容，正确做法是 canonical 标签或 noindex meta，而非阻断爬取。
+
+Sitemap: https://yohoten.github.io/sitemap.xml

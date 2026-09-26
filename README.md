@@ -10,6 +10,8 @@
 - 📝 **本地搜索**：基于 `hexo-generator-search` 的站内全文搜索，`search.xml` 首次点开搜索框时才加载
 - 📡 **RSS 订阅**：基于 `hexo-generator-feed` 生成 `atom.xml`，页脚提供订阅入口
 - 📱 **PWA 基础**：manifest + 全端图标（含 maskable），可"添加到主屏幕"；离线缓存需另配 Service Worker
+- ⏳ **加载动效**：三角形脉冲动画（`source/css/triangles-loader.css` + `source/js/triangles-loader.js`），
+  用于搜索数据首次加载与懒加载图片的占位
 - 🧭 **完整页面**：首页 / 归档 / 标签 / 分类 / 作品集 / 小口袋 / 友链 / 关于 / 404
 - 💻 **Mac 风格代码高亮**、文章封面、目录（TOC）、相关文章、文章版权
 - 📊 **访问统计**：基于不蒜子（busuanzi）的 PV / UV
